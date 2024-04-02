@@ -3,17 +3,12 @@
 :root {
   //colors
 
-  --primary-font-family: "Inter", sans-serif;
+  --primary-font-family: "Inter Display", sans-serif;
   --secondary-font-family: "Roboto", sans-serif;
-  --primary-color: #50d873;
-  --secondary-color-1: #1d4d39;
-  --secondary-color-2: #0e3f2a;
-  --white-color-1: #ffffff;
-  --white-color-2: #fffffff2;
-  --white-color-3: #ffffffb2;
-  --gray-color-1: #fbfbfb;
-  --gray-color-2: #f2f2f2;
-  --gray-color-3: #bbbbbb;
+  --Colors-Dark-green: #0F1E00;
+  --Colors-White: #FFF;
+  --Colors-Primary: #70B32F;
+  --Colors-Grey: #F6F6F6;
 
   //gradients
 
@@ -22,6 +17,7 @@
     #50d873 1.86%,
     rgba(80, 216, 115, 0.02) 101.78%
   );
+
   --gradient-card: linear-gradient(180deg, rgba(0, 0, 0, 0) 0%, #000 100%);
   --gradient-white: linear-gradient(
     180deg,
@@ -41,13 +37,13 @@
 
   //screens
 
-  --lg-laptop: @media only screen and (min-width: 1400px);
-  --md-laptop: @media only screen and (min-width: 1200px);
-  --sm-laptop: @media only screen and (min-width: 992px);
-  --sm-mobile: @media only screen and (min-width: 320px);
-  --md-mobile: @media only screen and (min-width: 350px);
-  --lg-mobile: @media only screen and (min-width: 380px);
-  --sm-tablet: @media only screen and (min-width: 460px);
-  --md-tablet: @media only screen and (min-width: 580px);
-  --lg-tablet: @media only screen and (min-width: 720px);
+  --lg-laptop: @media only screen and (max-width: 1400px);
+  --md-laptop: @media only screen and (max-width: 1200px);
+  --sm-laptop: @media only screen and (max-width: 992px);
+  --lg-tablet: @media only screen and (max-width: 720px);
+  --md-tablet: @media only screen and (max-width: 580px);
+  --sm-tablet: @media only screen and (max-width: 460px);
+  --md-mobile: @media only screen and (max-width: 350px);
+  --lg-mobile: @media only screen and (max-width: 380px);
+  --sm-mobile: @media only screen and (max-width: 320px);
 }

@@ -5,7 +5,17 @@
 }
 
 .header-navbar {
-  display: flex;
-  align-items: center;
-  
+  &__list {
+    display: flex;
+    align-items: center;
+    margin-right: 50px;
+  }
+
+  &__list-item {
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 20px;
+    margin-right: 50px;
+  }
 }
