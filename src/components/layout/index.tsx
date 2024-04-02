@@ -9,7 +9,7 @@ const { Content } = Layout;
 const App: React.FC = () => {
   return (
     <Layout className="h-full">
-      {/* <Header/> */}
+      <Header/>
       <Layout>
         <Content className="bg-[#fff]">
           <Outlet />

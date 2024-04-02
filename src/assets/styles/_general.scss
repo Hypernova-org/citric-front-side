@@ -2,6 +2,10 @@
 @tailwind components;
 @tailwind utilities;
 
+body {
+  color: #0F1E00;
+}
+
 .ant-layout {
   background-color: #fff !important;
 }
