@@ -26,7 +26,16 @@ const Edit = () => {
   );
 };
 
+const Arrow = () => {
+  return (
+    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20" fill="none">
+      <path d="M10 13.3333L5 8.33325H15L10 13.3333Z" fill="#0F1E00" />
+    </svg>
+  );
+};
+
 
 export {
-  Edit
+  Edit,
+  Arrow
 };

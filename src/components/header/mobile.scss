@@ -1,0 +1,23 @@
+@media only screen and (max-width: 992px) {
+  .header-navbar {
+    display: none;
+  }
+
+  .logo-image {
+    width: 90px;
+  }
+
+  .lang-select {
+    display: none;
+  }
+
+  .burger-btn {
+    display: flex;
+  }
+  
+  .icon-btn {
+    width: 38px;
+    height: 38px;
+    margin-left: 12px;
+  }
+}
