@@ -1,9 +1,11 @@
-import React from 'react'
+import React from "react";
 
 const Main = () => {
   return (
-    <div>Main</div>
-  )
-}
+    <div className="">
+      <div className="hero_section"></div>
+    </div>
+  );
+};
 
-export default Main
+export default Main;
