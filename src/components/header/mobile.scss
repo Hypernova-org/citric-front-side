@@ -20,4 +20,24 @@
     height: 38px;
     margin-left: 12px;
   }
+
+  .back-btn {
+    width: 40px;
+  }
+}
+@media only screen and (max-width: 375px) {
+
+  .logo-image {
+    width: 75px;
+  }
+  
+  .icon-btn {
+    width: 30px;
+    height: 30px;
+    margin-left: 12px;
+  }
+
+  .back-btn {
+    width: 37px;
+  }
 }
