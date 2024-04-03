@@ -1,0 +1,50 @@
+@media only screen and (max-width: 992px) {
+  .about_page_title {
+    margin: 50px 0;
+    font-size: 24px;
+  }
+  .about_page_img {
+    width: 100%;
+    height: 300px;
+  }
+  .brands_title {
+    font-size: 24px;
+    padding: 40px;
+  }
+  .brands_elements {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+  }
+  .brands_elements_element {
+    padding: 20px;
+    height: 100px;
+    object-fit: contain;
+  }
+  .vacancy_title {
+    font-size: 24px;
+    text-align: center;
+  }
+  .about_page_vacancies {
+    display: grid;
+    grid-template-columns: repeat(1, 1fr);
+    margin: 40px 0;
+    gap: 45px;
+  }
+  .more_vacancies {
+    display: flex;
+    width: 300px;
+    padding: 16px 40px;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+  }
+  .recv_container {
+    height: 250px;
+  }
+  .recv_text {
+    font-size: 24px;
+  }
+  .recv_btn {
+    margin-top: 20px;
+  }
+}

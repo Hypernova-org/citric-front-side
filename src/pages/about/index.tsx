@@ -1,7 +1,9 @@
 import { AboutImgLaptop, AboutImgMobile, AboutImgTablet } from "assets/images";
 import React from "react";
-import "../../assets/styles/_about.scss";
-import { Arrow } from "assets/images/icons";
+import "./_about.scss";
+import "./mobile.scss"
+import { Arrow, Download } from "assets/images/icons";
+import { useHooks } from "hooks";
 interface VacancyProps {
   title: string;
   type: string;
@@ -9,9 +11,10 @@ interface VacancyProps {
   time: string;
 }
 const About = () => {
+  const { t, get } = useHooks();
   return (
     <div className="about_page container">
-      <p className="about_page_title">Kompaniya haqida</p>
+      <p className="about_page_title">{t("Kompaniya haqida")}</p>
       <picture>
         <source media="(max-width:450px)" srcSet={AboutImgMobile} />
         <source media="(max-width:990px)" srcSet={AboutImgTablet} />
@@ -22,7 +25,7 @@ const About = () => {
         />
       </picture>
       <div className="about_page_brands">
-        <p className="brands_title">Biz ishlagan brendlar</p>
+        <p className="brands_title">{t("Biz ishlagan brendlar")}</p>
         <div className="brands_elements">
           <picture>
             <source media="(max-width:450px)" srcSet={AboutImgMobile} />
@@ -98,7 +101,7 @@ const About = () => {
           </picture>
         </div>
       </div>
-      <p className="vacancy_title">Bo’sh ish o’rinlari</p>
+      <p className="vacancy_title">{t("Bo’sh ish o’rinlari")}</p>
       <div className="about_page_vacancies">
         <Vacancy
           title="Hello"
@@ -137,8 +140,14 @@ const About = () => {
           time="jsdcidcsiu"
         />
       </div>
-      <button className="more_vacancies">Yana ko'rish</button>
-      
+      <button className="more_vacancies">{t("Yana ko'rish")}</button>
+      <div className="recv_container">
+        <p className="recv_text">{t("Kompaniya rekvizitlari")}</p>
+        <button className="recv_btn">
+          <p>{t("PDF shaklda yuklab olish")}</p>
+          <Download />
+        </button>
+      </div>
     </div>
   );
 };

@@ -55,5 +55,21 @@ const Arrow2 = () => {
     </svg>
   );
 };
+const Download = () => {
+  return (
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      width="28"
+      height="28"
+      viewBox="0 0 28 28"
+      fill="none"
+    >
+      <path
+        d="M18.6667 2.3335L24.5 8.16683V24.5097C24.5 25.1488 23.9809 25.6668 23.341 25.6668H4.65897C4.01889 25.6668 3.5 25.1356 3.5 24.5097V3.4906C3.5 2.85155 4.01911 2.3335 4.65897 2.3335H18.6667ZM15.1667 14.0002V9.3335H12.8333V14.0002H9.33333L14 18.6668L18.6667 14.0002H15.1667Z"
+        fill="#70B32F"
+      />
+    </svg>
+  );
+};
 
-export { Edit, Arrow, Arrow2 };
+export { Edit, Arrow, Arrow2, Download };

@@ -53,7 +53,7 @@
   }
   width: 100%;
   height: 200px;
-  object-fit: cover;
+  object-fit: contain;
 }
 .vacancy_title {
   color: var(--Colors-Dark-green, #0f1e00);
@@ -176,4 +176,54 @@
   justify-content: center;
   align-items: center;
   gap: 10px;
+}
+.recv_container {
+  display: flex;
+  margin: 50px 0;
+  flex-direction: column;
+  background: url("../../assets/images/about-bg\(laptop\).webp");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  height: 350px;
+  border-radius: 35px;
+  justify-content: center;
+  align-items: center;
+}
+.recv_text {
+  color: var(--Colors-Dark-green, #0f1e00);
+  font-family: "Inter";
+  font-size: 40px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: normal;
+}
+.recv_btn {
+  display: flex;
+  border-radius: 50px;
+  background: #fff;
+  border: 1px solid var(--Colors-Primary, #70b32f);
+  align-items: center;
+  width: fit-content;
+  justify-content: space-between;
+  padding: 15px 20px;
+  color: var(--Colors-Dark-green, #0f1e00);
+  font-family: "Inter";
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 20px;
+  margin-top: 45px;
+  svg {
+    width: 25px;
+    height: 25px;
+    z-index: 2;
+    margin-left: 15px;
+    background-color: #fff;
+    border-radius: 50%;
+    -webkit-border-radius: 50%;
+    -moz-border-radius: 50%;
+    -ms-border-radius: 50%;
+    -o-border-radius: 50%;
+  }
 }
