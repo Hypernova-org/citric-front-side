@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom'
 import { Select, Input } from "antd";
 
 import { useHooks } from 'hooks'
-import { Arrow } from 'assets/images/icons';
+import { Arrow2 } from 'assets/images/icons';
 import Logo from 'assets/images/icons/logo.png'
 import SearchIcon from 'assets/images/icons/search-icon.svg'
 import CartIcon from 'assets/images/icons/cart.svg'
@@ -111,7 +111,7 @@ const Header = () => {
       </div>
       <div className='flex'>
         <Select
-          suffixIcon={<Arrow />}
+          suffixIcon={<Arrow2 />}
           className="lang-select"
           defaultValue={"uz"}
           size={"large"}
