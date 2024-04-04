@@ -20,17 +20,17 @@
     height: 100px;
     object-fit: contain;
   }
-  .vacancy_title {
+  .comment_title {
     font-size: 24px;
     text-align: center;
   }
-  .about_page_vacancies {
+  .about_page_comments {
     display: grid;
     grid-template-columns: repeat(1, 1fr);
     margin: 40px 0;
     gap: 45px;
   }
-  .more_vacancies {
+  .more_comments {
     display: flex;
     width: 300px;
     padding: 16px 40px;
@@ -46,5 +46,19 @@
   }
   .recv_btn {
     margin-top: 20px;
+  }
+  .img_gallery {
+    display: flex;
+    flex-direction: column;
+    div {
+      height: 300px;
+    }
+  }
+  .certificates {
+    grid-template-columns: repeat(1, 1fr);
+    img {
+      height: 200px;
+      border-radius: 25px;
+    }
   }
 }

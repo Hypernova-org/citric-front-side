@@ -71,5 +71,21 @@ const Download = () => {
     </svg>
   );
 };
+const Comment = () => {
+  return (
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      width="57"
+      height="48"
+      viewBox="0 0 57 48"
+      fill="none"
+    >
+      <path
+        d="M26.3672 0L17.7734 47.7539H0L14.2578 0H26.3672ZM56.1523 0L47.5586 47.7539H29.7852L44.043 0H56.1523Z"
+        fill="#F09900"
+      />
+    </svg>
+  );
+};
 
-export { Edit, Arrow, Arrow2, Download };
+export { Edit, Arrow, Arrow2, Download, Comment };

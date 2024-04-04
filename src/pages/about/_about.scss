@@ -55,7 +55,73 @@
   height: 200px;
   object-fit: contain;
 }
-.vacancy_title {
+.img_gallery {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-rows: 1fr 1fr;
+  gap: 25px 25px;
+  margin: 20px 0 100px 0;
+  grid-auto-flow: row;
+  grid-template-areas:
+    "img1 img1 img2"
+    "img3 img4 img4";
+}
+
+.img4 {
+  grid-area: img4;
+  height: 501px;
+  img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 25px;
+  }
+}
+.img1 {
+  grid-area: img1;
+  height: 501px;
+  img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 25px;
+  }
+}
+
+.img3 {
+  grid-area: img3;
+  height: 501px;
+  img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 25px;
+  }
+}
+
+.img2 {
+  grid-area: img2;
+  height: 501px;
+  img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 25px;
+  }
+}
+.certificates {
+  display: grid;
+  margin: 40px 0;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 24px;
+  img {
+    width: 100%;
+    height: 427px;
+    object-fit: cover;
+  }
+}
+
+.comment_title {
   color: var(--Colors-Dark-green, #0f1e00);
   font-family: "Inter";
   font-size: 32px;
@@ -63,104 +129,63 @@
   font-weight: 500;
   line-height: normal;
 }
-.about_page_vacancies {
+.about_page_comments {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   margin: 40px 0;
   gap: 45px;
 }
-.vacancy_item {
+.comment_item {
   display: flex;
   flex-direction: column;
-  border-radius: 25px;
-  border: 2px solid var(--Colors-Grey, #f6f6f6);
+  justify-content: space-between;
+  padding: 35px;
+  border-radius: 15px;
+  border: 1px solid var(--gray-gray-7-c-9-c-9-c-9, #c9c9c9);
+  svg {
+    width: 60px;
+    height: 60px;
+  }
+  height: 451px;
 }
-.vacancy_top {
-  border-radius: 25px 25px 0px 0px;
-  background: #71b32f13;
-  -webkit-border-radius: 25px 25px 0px 0px;
-  -moz-border-radius: 25px 25px 0px 0px;
-  -ms-border-radius: 25px 25px 0px 0px;
-  -o-border-radius: 25px 25px 0px 0px;
-  padding: 25px;
+.comment_author {
+  display: flex;
+  align-items: center;
+  margin-top: 25px;
+  &__img {
+    width: 54px;
+    height: 54px;
+    flex-shrink: 0;
+    border-radius: 54px;
+    object-fit: cover;
+  }
+  &__name {
+    color: var(--Primary-green-Primary, #003600);
+    font-family: Inter;
+    font-size: 24px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: 26px;
+    letter-spacing: -0.48px;
+    margin-left: 20px;
+  }
 }
-.vacancy_text {
-  color: var(--Colors-Primary, #70b32f);
-  font-family: "Inter";
-  font-size: 16px;
-  font-style: normal;
-  font-weight: 400;
-  line-height: 24px; /* 150% */
-}
-.vacancy_type {
-  color: var(--Colors-Primary, #70b32f);
-  font-family: "Inter";
-  font-size: 32px;
-  font-style: normal;
-  font-weight: 600;
-  line-height: normal;
-  margin-top: 15px;
-}
-
-.vacancy_body {
-  padding: 25px;
-  color: var(--Colors-Dark-green, #0f1e00);
-  font-family: "Inter";
+.comment_desc {
+  color: var(--Primary-green-Primary, #003600);
+  font-family: Inter;
   font-size: 18px;
   font-style: normal;
   font-weight: 400;
-  line-height: 30px;
-}
-.vacancy_body p {
-  margin-bottom: 20px;
+  line-height: 32px; /* 177.778% */
+  margin-top: 45px;
   display: -webkit-box;
   max-width: 100%;
-  -webkit-line-clamp: 2;
+  -webkit-line-clamp: 6;
   -webkit-box-orient: vertical;
   overflow: hidden;
   text-overflow: ellipsis;
 }
-.vacancy_bottom {
-  padding: 25px;
-  border-top: 2px solid var(--Colors-Grey, #f6f6f6);
-}
-.vacancy_btn {
-  display: flex;
-  border-radius: 50px;
-  background: #fff;
-  border: 1px solid var(--Colors-Primary, #70b32f);
-  align-items: center;
-  width: 100%;
-  justify-content: space-between;
-  padding: 15px 20px;
-  color: var(--Colors-Dark-green, #0f1e00);
-  font-family: "Inter";
-  font-size: 16px;
-  font-style: normal;
-  font-weight: 500;
-  line-height: 20px; /* 125% */
-  transition: all ease-in-out 0.5s;
-  -webkit-transition: all ease-in-out 0.5s;
-  -moz-transition: all ease-in-out 0.5s;
-  -ms-transition: all ease-in-out 0.5s;
-  -o-transition: all ease-in-out 0.5s;
-  svg {
-    width: 25px;
-    height: 25px;
-    z-index: 2;
-    background-color: #fff;
-    border-radius: 50%;
-    -webkit-border-radius: 50%;
-    -moz-border-radius: 50%;
-    -ms-border-radius: 50%;
-    -o-border-radius: 50%;
-  }
-}
-.vacancy_btn:hover {
-  background: #71b32f;
-  color: #fff;
-}
-.more_vacancies {
+.more_comments {
   color: var(--Colors-Dark-green, #0f1e00);
   font-family: "Inter";
   font-size: 18px;
