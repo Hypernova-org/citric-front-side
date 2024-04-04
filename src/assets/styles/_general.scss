@@ -10,6 +10,16 @@ body {
   background-color: #fff !important;
 }
 
+.ant-input {
+  outline: none !important;
+  border: none !important;
+  &:focus {
+    border-color: transparent;
+    box-shadow: none;
+    outline: none;
+  }
+}
+
 .ant-select-selector {
   border: none !important;
   outline: none !important;
@@ -23,7 +33,6 @@ body {
   padding-top: 25px !important;
   padding-bottom: 25px !important;
   padding-left: 20px !important;
-
 
   .ant-select-selection-item {
     margin-right: 10px !important;

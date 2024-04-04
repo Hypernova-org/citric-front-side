@@ -8,6 +8,7 @@ import Logo from 'assets/images/icons/logo.png'
 import SearchIcon from 'assets/images/icons/search-icon.svg'
 import CartIcon from 'assets/images/icons/cart.svg'
 import BurgerIcon from 'assets/images/icons/burger.svg'
+import BackIcon from 'assets/images/icons/back.svg'
 
 import "./style.scss"
 import "./mobile.scss"
@@ -73,17 +74,19 @@ const Header = () => {
 
   return (
     <div className='header-wrapper container'>
-      {/* <div className="search-modal">
-        <div className="search-modal__top">
-          <Input autoFocus={navBarState && true} className='header-searchbar' placeholder={t("Mahsulotlarni izlash")} type="text" />
+      {mobileSearchModal &&
+        <div className="search-modal">
+          <div className="search-modal__top">
+            <div className="icon-btn back-btn mr-[10px]" onClick={() => showMobileSearchModal(false)}>
+              <img src={BackIcon} alt="burger" className="burger-icon" />
+            </div>
+            <Input autoFocus={mobileSearchModal && true} className='header-searchbar' placeholder={t("Mahsulotlarni izlash")} type="text" />
+          </div>
+          <div className="search-modal__bottom">
+            
+          </div>
         </div>
-      </div> */}
-
-
-
-
-
-
+      }
       <div className='flex items-center'>
         <div className="icon-btn burger-btn mr-[16px]">
           <img src={BurgerIcon} alt="burger" className="burger-icon" />

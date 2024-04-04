@@ -16,15 +16,15 @@
     display: flex;
     align-items: center;
 
-    .ant-input {
-      outline: none !important;
-      border: none !important;
-      &:focus {
-        border-color: transparent;
-        box-shadow: none;
-        outline: none;
-      }
-    }
+    // .ant-input {
+    //   outline: none !important;
+    //   border: none !important;
+    //   &:focus {
+    //     border-color: transparent;
+    //     box-shadow: none;
+    //     outline: none;
+    //   }
+    // }
 
     .ant-input-outlined {
       outline: none !important;
@@ -114,4 +114,34 @@
   width: 100vw;
   height: 100vh;
   background-color: #fff;
+  z-index: 999;
+  position: absolute;
+  top: 0;
+  left: 0;
+  padding: 20px;
+  padding: 12px;
+
+  &__top {
+    display: flex;
+    align-items: center;
+    position: relative;
+
+    &:after {
+      content: "";
+      width: 20px;
+      height: 20px;
+      position: absolute;
+      background-image: url("../../assets/images/icons/search-icon.svg");
+      background-repeat: no-repeat;
+      background-size: contain;
+      right: 20px;
+      bottom: 10px;
+    }
+
+    .header-searchbar {
+      border-radius: 44px;
+      background: var(--Colors-Grey, #f6f6f6);
+      padding: 7px 60px 10px 20px;
+    }
+  }
 }

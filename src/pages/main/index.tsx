@@ -1,9 +1,9 @@
-import React from "react";
+import Catalog from "./components/catalog"
 
 const Main = () => {
   return (
-    <div className="">
-      <div className="hero_section"></div>
+    <div className="container">
+      <Catalog/>
     </div>
   );
 };
