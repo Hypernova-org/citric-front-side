@@ -1,9 +1,11 @@
-import React from 'react'
+import Catalog from "./components/catalog"
 
 const Main = () => {
   return (
-    <div>Main</div>
-  )
-}
+    <div className="container">
+      <Catalog/>
+    </div>
+  );
+};
 
-export default Main
+export default Main;
