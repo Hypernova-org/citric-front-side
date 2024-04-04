@@ -103,6 +103,13 @@
   background-color: #f6f6f6;
   border-radius: 50%;
   cursor: pointer;
+}
+
+.cart-btn {
+  margin-left: 12px;
+}
+
+.search-btn {
   margin-left: 12px;
 }
 
@@ -143,5 +150,28 @@
       background: var(--Colors-Grey, #f6f6f6);
       padding: 7px 60px 10px 20px;
     }
+  }
+}
+
+.mobile-menu {
+  width: 100vw;
+  height: 100vh;
+  background-color: #fff;
+  z-index: 999;
+  position: absolute;
+  top: 0;
+  left: 0;
+  padding-top: 12px !important;
+
+  &__top {
+    display: flex;
+    justify-content: space-between;
+  }
+  &__bottom {
+    margin-top: 40px !important;
+  }
+ 
+  .header-navbar__list-item {
+    margin-bottom: 30px;
   }
 }

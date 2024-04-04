@@ -2,13 +2,13 @@ import { useState } from "react";
 import { Link } from "react-router-dom";
 import { Select, Input } from "antd";
 
-import { useHooks } from "hooks";
-import { Arrow2 } from "assets/images/icons";
-import Logo from "assets/images/icons/logo.png";
-import SearchIcon from "assets/images/icons/search-icon.svg";
-import CartIcon from "assets/images/icons/cart.svg";
-import BurgerIcon from "assets/images/icons/burger.svg";
-import BackIcon from "assets/images/icons/back.svg";
+import { useHooks } from 'hooks'
+import { Arrow2 } from 'assets/images/icons';
+import Logo from 'assets/images/icons/logo.png'
+import SearchIcon from 'assets/images/icons/search-icon.svg'
+import CartIcon from 'assets/images/icons/cart.svg'
+import BurgerIcon from 'assets/images/icons/burger.svg'
+import BackIcon from 'assets/images/icons/back.svg'
 
 import "./style.scss";
 import "./mobile.scss";
@@ -28,8 +28,8 @@ interface ILang {
 const Header = () => {
   const { t, get } = useHooks();
   const { Option } = Select;
-  const [navBarState, seacrhBarState] = useState(false);
-  const [mobileSearchModal, showMobileSearchModal] = useState(false);
+  const [navBarState, seacrhBarState] = useState(false)
+  const [mobileSearchModal, showMobileSearchModal] = useState(false)
 
   const navItems: INav[] = [
     {
@@ -90,12 +90,14 @@ const Header = () => {
               type="text"
             />
           </div>
-          <div className="search-modal__bottom"></div>
+          <div className="search-modal__bottom">
+            
+          </div>
         </div>
-      )}
-      <div className="flex items-center">
+      }
+      <div className='flex items-center'>
         <div className="icon-btn burger-btn mr-[16px]">
-          <img src={BurgerIcon} alt="burger" className="burger-icon" />
+          <img src={BurgerIcon} alt="burger" className="burger-icon" onClick={() => showMobileMenu(true)} />
         </div>
         <Link to="/" className="logo-wrapper mb-[7px]">
           <img src={Logo} alt="citric.uz" className="logo-image" />
