@@ -9,6 +9,7 @@ import SearchIcon from 'assets/images/icons/search-icon.svg'
 import CartIcon from 'assets/images/icons/cart.svg'
 import BurgerIcon from 'assets/images/icons/burger.svg'
 import BackIcon from 'assets/images/icons/back.svg'
+import CloseIcon from 'assets/images/icons/close.svg'
 
 import "./style.scss";
 import "./mobile.scss";
@@ -30,6 +31,7 @@ const Header = () => {
   const { Option } = Select;
   const [navBarState, seacrhBarState] = useState(false)
   const [mobileSearchModal, showMobileSearchModal] = useState(false)
+  const [mobileMenu, showMobileMenu] = useState(false)
 
   const navItems: INav[] = [
     {
@@ -83,18 +85,48 @@ const Header = () => {
             >
               <img src={BackIcon} alt="burger" className="burger-icon" />
             </div>
-            <Input
-              autoFocus={mobileSearchModal && true}
-              className="header-searchbar"
-              placeholder={t("Mahsulotlarni izlash")}
-              type="text"
-            />
+            <Input autoFocus={mobileSearchModal && true} className='header-searchbar' placeholder={t("Mahsulotlarni izlash")} type="text" />
           </div>
           <div className="search-modal__bottom">
-            
+
           </div>
+          <div className="search-modal__bottom"></div>
+        </div>
+      )}
+      {mobileMenu &&
+        <div className='mobile-menu'>
+          <div className="mobile-menu__top container">
+            <div className="icon-btn close-btn mr-[10px]" onClick={() => showMobileMenu(false)}>
+              <img src={CloseIcon} alt="close" className="close-icon" />
+            </div>
+            <Select
+              suffixIcon={<Arrow2 />}
+              className="lang-select inline-block"
+              defaultValue={"uz"}
+              size={"large"}
+              onChange={(value: any) => {
+                // changeLanguage(value);
+              }}
+            >
+              {langs.map(lang => (
+                <Option value={get(lang, "value")}>
+                  <p>{t(get(lang, "name"))}</p>
+                </Option>
+              ))}
+            </Select>
+          </div>
+          <ul className="mobile-menu__bottom container">
+            {navItems.map(menu => (
+              <li className="header-navbar__list-item">
+                <Link to={get(menu, "link")}>
+                  {t(get(menu, "title"))}
+                </Link>
+              </li>
+            ))}
+          </ul>
         </div>
       }
+
       <div className='flex items-center'>
         <div className="icon-btn burger-btn mr-[16px]">
           <img src={BurgerIcon} alt="burger" className="burger-icon" onClick={() => showMobileMenu(true)} />
