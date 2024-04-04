@@ -30,9 +30,14 @@ body {
   font-style: normal;
   font-weight: 500;
   line-height: 22px;
-  padding-top: 25px !important;
-  padding-bottom: 25px !important;
+  padding-top: 18px !important;
+  padding-bottom: 23px !important;
   padding-left: 20px !important;
+
+  @media only screen and (max-width: 375px) {
+    padding-top: 0px !important;
+    padding-bottom: 0px !important;
+  }
 
   .ant-select-selection-item {
     margin-right: 10px !important;
@@ -55,6 +60,8 @@ body {
 }
 
 .ant-select .ant-select-arrow {
-  margin-left: 10px;
-  margin-top: 0px !important;
+  margin-top: -7px !important;
+  @media only screen and (max-width: 375px) {
+    margin-top: -6px !important;
+  }
 }
