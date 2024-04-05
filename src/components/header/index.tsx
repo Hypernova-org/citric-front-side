@@ -74,6 +74,12 @@ const Header = () => {
     },
   ]
 
+  const openMobileMenu = () => {
+    const body = document.getElementsByTagName('body')[0];
+    body.classList.add("overflow-hidden")
+    showMobileMenu(true)
+  }
+
   return (
     <div className='header-wrapper container'>
       {mobileSearchModal &&
@@ -125,7 +131,7 @@ const Header = () => {
 
       <div className='flex items-center'>
         <div className="icon-btn burger-btn mr-[16px]">
-          <img src={BurgerIcon} alt="burger" className="burger-icon" onClick={() => showMobileMenu(true)} />
+          <img src={BurgerIcon} alt="burger" className="burger-icon" onClick={() => openMobileMenu()} />
         </div>
         <Link to="/" className="logo-wrapper mb-[7px]">
           <img src={Logo} alt="citric.uz" className="logo-image" />
