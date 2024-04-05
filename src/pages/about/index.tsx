@@ -1,17 +1,20 @@
 import { AboutImgLaptop, AboutImgMobile, AboutImgTablet } from "assets/images";
 import React from "react";
-import "../../assets/styles/_about.scss";
-import { Arrow } from "assets/images/icons";
-interface VacancyProps {
+import "./_about.scss";
+import "./mobile.scss";
+import { Arrow, Comment, Download } from "assets/images/icons";
+import { useHooks } from "hooks";
+
+interface CommentProps {
   title: string;
-  type: string;
-  salary: string;
-  time: string;
+  img: string;
+  author: string;
 }
 const About = () => {
+  const { t, get } = useHooks();
   return (
     <div className="about_page container">
-      <p className="about_page_title">Kompaniya haqida</p>
+      <p className="about_page_title">{t("Kompaniya haqida")}</p>
       <picture>
         <source media="(max-width:450px)" srcSet={AboutImgMobile} />
         <source media="(max-width:990px)" srcSet={AboutImgTablet} />
@@ -22,7 +25,7 @@ const About = () => {
         />
       </picture>
       <div className="about_page_brands">
-        <p className="brands_title">Biz ishlagan brendlar</p>
+        <p className="brands_title">{t("Biz ishlagan brendlar")}</p>
         <div className="brands_elements">
           <picture>
             <source media="(max-width:450px)" srcSet={AboutImgMobile} />
@@ -98,82 +101,61 @@ const About = () => {
           </picture>
         </div>
       </div>
-      <p className="vacancy_title">Bo’sh ish o’rinlari</p>
-      <div className="about_page_vacancies">
-        <Vacancy
+      <div className="img_gallery">
+        <div className="img4">
+          <img src={AboutImgLaptop} alt="" />
+        </div>
+        <div className="img1">
+          <img src={AboutImgLaptop} alt="" />
+        </div>
+        <div className="img3">
+          <img src={AboutImgLaptop} alt="" />
+        </div>
+        <div className="img2">
+          <img src={AboutImgLaptop} alt="" />
+        </div>
+      </div>
+      <p className="comment_title">{t("Sertifikatlar")}</p>
+      <div className="certificates">
+        <img src={AboutImgLaptop} alt="" />
+        <img src={AboutImgLaptop} alt="" />
+      </div>
+      <p className="comment_title">{t("Mijoz fikrlari")}</p>
+      <div className="about_page_comments">
+        <CommentCard
           title="Hello"
-          type="Mello"
-          salary="advndsionivjs vjv sdjvnjsd vsjdvs jvv sjv"
-          time="jsdcidcsiu"
-        />
-        <Vacancy
-          title="Hello"
-          type="Mello"
-          salary="advndsionivjs vjv sdjvnjsd vsjdvs jvv sjv"
-          time="jsdcidcsiu"
-        />
-        <Vacancy
-          title="Hello"
-          type="Mello"
-          salary="advndsionivjs vjv sdjvnjsd vsjdvs jvv sjv"
-          time="jsdcidcsiu"
-        />
-        <Vacancy
-          title="Hello"
-          type="Mello"
-          salary="advndsionivjs vjv sdjvnjsd vsjdvs jvv sjv"
-          time="jsdcidcsiu"
-        />
-        <Vacancy
-          title="Hello"
-          type="Mello"
-          salary="advndsionivjs vjv sdjvnjsd vsjdvs jvv sjv"
-          time="jsdcidcsiu"
-        />
-        <Vacancy
-          title="Hello"
-          type="Mello"
-          salary="advndsionivjs vjv sdjvnjsd vsjdvs jvv sjv"
-          time="jsdcidcsiu"
+          img="n"
+          author="advndsionivjs vjv sdjvnjsd vsjdvs jvv sjv"
         />
       </div>
-      <button className="more_vacancies">Yana ko'rish</button>
-      
+      <button className="more_comments">{t("Yana ko'rish")}</button>
+      <div className="recv_container">
+        <p className="recv_text">{t("Kompaniya rekvizitlari")}</p>
+        <button className="recv_btn">
+          <p>{t("PDF shaklda yuklab olish")}</p>
+          <Download />
+        </button>
+      </div>
     </div>
   );
 };
 
 export default About;
 
-const Vacancy = (props: VacancyProps) => {
+const CommentCard = (props: CommentProps) => {
   return (
-    <div className="vacancy_item">
-      <div className="vacancy_top">
-        <p className="vacancy_text">Ish turi</p>
-        <p className="vacancy_type">{props.type}</p>
-      </div>
-      <div className="vacancy_body">
-        <p className="vacancy_desc">
-          3 yillik tajribaga ega Call center orqali sotuvlarni amalga oshiruvchi
-          mutaxassis kerak. {props.title}
-        </p>
-        <p className="vacancy_salary">
-          Oylik sotuvdan foiz chiqarib beriladi. 3 mln dan 15 mln gacha bo’lishi
-          mumkin. {props.salary}
-        </p>
-        <p className="vacancy_location">
-          Manzil: Toshkent shahri, Olmazor tumani, ko'ch. Jeymi, 299.
-        </p>
-        <p className="vacancy_time">
-          Ish vaqti: 6/1, 9:00 dan 17:00 gacha {props.time}
-        </p>
-        <button className="vacancy_more">Batafsil ma’lumot</button>
-      </div>
-      <div className="vacancy_bottom">
-        <button className="vacancy_btn">
-          <p>Ariza yuborish</p>
-          <Arrow />
-        </button>
+    <div className="comment_item">
+      <Comment />
+      <p className="comment_desc">
+        3 yillik tajribaga ega Call center orqali sotuvlarni amalga oshiruvchi
+        mutaxassis kerak. Lorem, ipsum dolor sit amet consectetur adipisicing
+        elit. Iure eius eum officia possimus nemo, reiciendis, rerum ipsa
+        deleniti perspiciatis excepturi tempore unde numquam? Aliquam unde ab
+        odio harum dolores nulla? blanditiis vero quod nam illo.{props.title}
+      </p>
+      <div className="comment_author">
+        <img className="comment_author__img" src={AboutImgMobile} alt="" />
+        <p className="comment_author__name">Sherzodbek M.</p>
       </div>
     </div>
   );
