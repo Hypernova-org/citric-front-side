@@ -6,6 +6,7 @@ const About = lazy(() => import("pages/about"));
 const Catalog = lazy(() => import("pages/catalog"));
 const Blog = lazy(() => import("pages/blog"));
 const Contact = lazy(() => import("pages/contact"));
+const ProductInner = lazy(() => import("pages/productInner"));
 
 export interface IRoute {
   path: string;
@@ -45,6 +46,11 @@ const publicRoutes: IRoute[] = [
     path: "/contact",
     title: "Contact",
     element: <Contact />,
+  },
+  {
+    path: "/product/:id",
+    title: "product",
+    element: <ProductInner />,
   },
   {
     path: "*",

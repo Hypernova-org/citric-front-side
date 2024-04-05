@@ -110,7 +110,11 @@
 }
 
 .search-btn {
-  margin-left: 12px;
+  display: none;
+  @media only screen and (max-width: 992px) {
+    display: flex;
+    margin-left: 12px;
+  }
 }
 
 .burger-btn {
@@ -170,7 +174,7 @@
   &__bottom {
     margin-top: 40px !important;
   }
- 
+
   .header-navbar__list-item {
     margin-bottom: 30px;
   }

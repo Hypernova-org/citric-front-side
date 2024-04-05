@@ -4,6 +4,10 @@
   border: 2px solid var(--Colors-Grey, #f6f6f6);
   cursor: pointer;
 
+  @media only screen and (max-width: 768px) {
+    width: 80%;
+  }
+
   &:hover {
     .catalog-card__name {
       color: var(--Colors-Primary, #70b32f);
@@ -54,6 +58,13 @@
     padding: 30px;
     padding-top: 30px;
     padding-bottom: 20px;
+
+    @media only screen and (max-width: 768px) {
+      width: 100%;
+      padding: 20px;
+      padding-top: 20px;
+      padding-bottom: 10px;
+    }
   }
 
   &__bottom {
@@ -65,7 +76,6 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-    margin-top: 26px;
   }
 
   &__name {
@@ -75,6 +85,10 @@
     font-weight: 400;
     line-height: normal;
     transition: all ease 0.3s;
+
+    @media only screen and (max-width: 768px) {
+      font-size: 18px;
+    }
   }
 
   &__price {
