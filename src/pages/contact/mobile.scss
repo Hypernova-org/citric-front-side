@@ -1,0 +1,22 @@
+@media only screen and (max-width: 992px) {
+  .contact_page_title {
+    color: var(--Colors-Dark-green, #0f1e00);
+    text-align: center;
+    font-family: "Inter";
+    font-size: 24px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+  }
+  .contact_map p {
+    width: 70%;
+  }
+  .contact_links {
+    display: flex;
+    flex-direction: column;
+  }
+  .contact_links span p {
+    margin-bottom: 14px;
+    margin-top: 50px;
+  }
+}
