@@ -135,6 +135,30 @@ const Instagram = () => {
     </svg>
   );
 };
+const GoBack = ({ className, fill }: any) => {
+  return (
+    <svg className={className} width="17" height="17" viewBox="0 0 17 17" xmlns="http://www.w3.org/2000/svg">
+      <path
+        // fill={fill}
+        d="M7.67008 8.50001L11.1762 12.006L10.1745 13.0078L5.66663 8.50001L10.1745 3.99219L11.1762 4.99392L7.67008 8.50001Z" />
+    </svg>
+  );
+};
+const MinusIcon = ({ className, fill }: any) => {
+  return (
+    <svg width="24" height="24" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+      <path className={className} d="M5 11V13H19V11H5Z" />
+    </svg>
+  );
+};
+const PlusIcon = ({ className, fill }: any) => {
+  return (
+    <svg width="24" height="24" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+      <path className={className} d="M11 11V5H13V11H19V13H13V19H11V13H5V11H11Z" />
+    </svg>
+
+  );
+};
 
 export {
   Edit,
@@ -145,4 +169,7 @@ export {
   Facebook,
   Instagram,
   Telegram,
+  GoBack,
+  MinusIcon,
+  PlusIcon
 };

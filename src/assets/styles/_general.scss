@@ -65,3 +65,16 @@ body {
     margin-top: -6px !important;
   }
 }
+
+.view-more {
+  text-align: center;
+  padding: 20px 110px;
+  border-radius: 35px;
+  background: var(--Colors-Grey, #f6f6f6);
+  color: var(--Colors-Dark-green, #0f1e00);
+  font-size: 18px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 20px; 
+  margin-top: 30px;
+}

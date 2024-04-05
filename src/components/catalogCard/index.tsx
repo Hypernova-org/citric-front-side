@@ -16,11 +16,11 @@ interface ICard {
   info: string
 }
 
-const CatalogCard = ({ item: data }: any) => {
-  const { get } = useHooks()
+const CatalogCard = ({ item: data, className }: any) => {
+  const { get, navigate } = useHooks()
 
   return (
-    <div className='catalog-card' key={get(data, "id")}>
+    <div className={className + ' catalog-card'} key={get(data, "id")} onClick={() => navigate(`/product/${get(data, "id")}`)}>
       <div className="catalog-card__images">
         <Swiper
           pagination={{
@@ -37,9 +37,9 @@ const CatalogCard = ({ item: data }: any) => {
         </Swiper>
       </div>
       <div className="catalog-card__bottom">
-        <p className="catalog-card__name">{get(data, "name")}</p>
         <div className="catalog-card__info">
-          <p className="catalog-card__price">{get(data, "price")}</p>
+          <p className="catalog-card__name">{get(data, "name")}</p>
+          {/* <p className="catalog-card__price">{get(data, "price")}</p> */}
           <button className='addtocart'>
             <img src={CartIcon} alt="cart-image" className="cart-images" />
           </button>
