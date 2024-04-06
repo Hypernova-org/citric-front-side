@@ -1,3 +1,4 @@
+import BlogDetails from "pages/blogDetails";
 import { lazy } from "react";
 
 const NotFound = lazy(() => import("pages/notFound"));
@@ -41,6 +42,11 @@ const publicRoutes: IRoute[] = [
     path: "/blog",
     title: "Blog",
     element: <Blog />,
+  },
+  {
+    path: "/blog/:id",
+    title: "Blog",
+    element: <BlogDetails />,
   },
   {
     path: "/contact",
