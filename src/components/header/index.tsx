@@ -2,14 +2,14 @@ import { useState } from "react";
 import { Link } from "react-router-dom";
 import { Select, Input } from "antd";
 
-import { useHooks } from 'hooks'
-import { Arrow2 } from 'assets/images/icons';
-import Logo from 'assets/images/icons/logo.png'
-import SearchIcon from 'assets/images/icons/search-icon.svg'
-import CartIcon from 'assets/images/icons/cart.svg'
-import BurgerIcon from 'assets/images/icons/burger.svg'
-import BackIcon from 'assets/images/icons/back.svg'
-import CloseIcon from 'assets/images/icons/close.svg'
+import { useHooks } from "hooks";
+import { Arrow2 } from "assets/images/icons";
+import Logo from "assets/images/icons/logo.png";
+import SearchIcon from "assets/images/icons/search-icon.svg";
+import CartIcon from "assets/images/icons/cart.svg";
+import BurgerIcon from "assets/images/icons/burger.svg";
+import BackIcon from "assets/images/icons/back.svg";
+import CloseIcon from "assets/images/icons/close.svg";
 
 import "./style.scss";
 import "./mobile.scss";
@@ -29,9 +29,9 @@ interface ILang {
 const Header = () => {
   const { t, get } = useHooks();
   const { Option } = Select;
-  const [navBarState, seacrhBarState] = useState(false)
-  const [mobileSearchModal, showMobileSearchModal] = useState(false)
-  const [mobileMenu, showMobileMenu] = useState(false)
+  const [navBarState, seacrhBarState] = useState(false);
+  const [mobileSearchModal, showMobileSearchModal] = useState(false);
+  const [mobileMenu, showMobileMenu] = useState<Boolean>(false);
 
   const navItems: INav[] = [
     {
@@ -74,11 +74,11 @@ const Header = () => {
     },
   ];
 
-  const openMobileMenu = () => {
-    const body = document.getElementsByTagName('body')[0];
-    body.classList.add("overflow-hidden")
-    showMobileMenu(true)
-  }
+  const openMobileMenu = (ccc: Boolean) => {
+    const body = document.getElementsByTagName("body")[0];
+    body.classList.toggle("overflow-hidden");
+    showMobileMenu(ccc);
+  };
 
   return (
     <div className="header-wrapper container">
@@ -91,18 +91,24 @@ const Header = () => {
             >
               <img src={BackIcon} alt="burger" className="burger-icon" />
             </div>
-            <Input autoFocus={mobileSearchModal && true} className='header-searchbar' placeholder={t("Mahsulotlarni izlash")} type="text" />
+            <Input
+              autoFocus={mobileSearchModal && true}
+              className="header-searchbar"
+              placeholder={t("Mahsulotlarni izlash")}
+              type="text"
+            />
           </div>
-          <div className="search-modal__bottom">
-
-          </div>
+          <div className="search-modal__bottom"></div>
           <div className="search-modal__bottom"></div>
         </div>
       )}
-      {mobileMenu &&
-        <div className='mobile-menu'>
+      {mobileMenu && (
+        <div className="mobile-menu">
           <div className="mobile-menu__top container">
-            <div className="icon-btn close-btn mr-[10px]" onClick={() => showMobileMenu(false)}>
+            <div
+              className="icon-btn close-btn mr-[10px]"
+              onClick={() => showMobileMenu(false)}
+            >
               <img src={CloseIcon} alt="close" className="close-icon" />
             </div>
             <Select
@@ -114,7 +120,7 @@ const Header = () => {
                 // changeLanguage(value);
               }}
             >
-              {langs.map(lang => (
+              {langs.map((lang) => (
                 <Option value={get(lang, "value")}>
                   <p>{t(get(lang, "name"))}</p>
                 </Option>
@@ -122,20 +128,23 @@ const Header = () => {
             </Select>
           </div>
           <ul className="mobile-menu__bottom container">
-            {navItems.map(menu => (
+            {navItems.map((menu) => (
               <li className="header-navbar__list-item">
-                <Link to={get(menu, "link")}>
-                  {t(get(menu, "title"))}
-                </Link>
+                <Link onClick={() => openMobileMenu(false)} to={get(menu, "link")}>{t(get(menu, "title"))}</Link>
               </li>
             ))}
           </ul>
         </div>
-      }
+      )}
 
-      <div className='flex items-center'>
+      <div className="flex items-center">
         <div className="icon-btn burger-btn mr-[16px]">
-          <img src={BurgerIcon} alt="burger" className="burger-icon" onClick={() => openMobileMenu()} />
+          <img
+            src={BurgerIcon}
+            alt="burger"
+            className="burger-icon"
+            onClick={() => openMobileMenu(true)}
+          />
         </div>
         <Link to="/" className="logo-wrapper mb-[7px]">
           <img src={Logo} alt="citric.uz" className="logo-image" />
@@ -146,7 +155,11 @@ const Header = () => {
           {!navBarState ? (
             navItems.map((menu) => (
               <li className="header-navbar__list-item">
-                <Link to={get(menu, "link")}>{t(get(menu, "title"))}</Link>
+                <Link
+                  to={get(menu, "link")}
+                >
+                  {t(get(menu, "title"))}
+                </Link>
               </li>
             ))
           ) : (
