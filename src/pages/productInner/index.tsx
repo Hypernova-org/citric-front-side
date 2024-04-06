@@ -1,11 +1,18 @@
+import { useState } from 'react'
+import { Swiper, SwiperSlide } from 'swiper/react';
+import { Pagination } from 'swiper/modules';
+
 import { useHooks } from 'hooks'
 import { CatalogCard } from 'components'
 import { products } from 'mock'
 
+
 import { GoBack, PlusIcon, MinusIcon } from 'assets/images/icons'
 import CartIconWhite from 'assets/images/icons/shopping-cart-white.svg'
+
+import 'swiper/css/pagination';
+import 'swiper/css';
 import './style.scss'
-import { useState } from 'react'
 
 const ProductInner = () => {
   const { t, get } = useHooks()
@@ -17,7 +24,21 @@ const ProductInner = () => {
         <GoBack />
         <p>{t("Orqaga")}</p></button>
       <div className="order-section">
-        <div className="order-section__left"></div>
+        <div className="order-section__left">
+          <Swiper
+            pagination={{
+              dynamicBullets: true,
+            }}
+            modules={[Pagination]}
+            className="mySwiper"
+          >
+            {get(products[0], "images", []).map((i: string) => (
+              <SwiperSlide>
+                <img src={i} alt={get(products[0], "name") + "-image"} className="catalog-carousel__images" />
+              </SwiperSlide>
+            ))}
+          </Swiper>
+        </div>
         <div className="order-section__right">
           <div className="order-section__right-top">
             <p className="product-name">Organik xlorella kukuni</p>
