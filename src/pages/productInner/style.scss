@@ -71,9 +71,22 @@
 }
 
 .order-section {
+  display: flex;
+  align-items: stretch;
+  margin-top: 21px;
+
+  &__left {
+    width: 44%;
+    height: 100%;
+    border-radius: 25px;
+    border: 2px solid var(--Colors-Grey, #f6f6f6);
+    margin-right: 24px;
+  }
+
   &__right {
     border-radius: 25px;
     background: var(--Colors-Grey, #f6f6f6);
+    width: 55%;
   }
 
   &__right-top {
@@ -138,6 +151,13 @@
       justify-content: space-between;
       align-items: center;
       padding: 16px 30px;
+      width: 100%;
+      transition: all ease 0.3s;
+      margin-top: 150px;
+
+      &:hover {
+        opacity: 0.7;
+      }
 
       p {
         color: #fff;
