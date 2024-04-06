@@ -9,6 +9,7 @@ import { products } from 'mock'
 
 import { GoBack, PlusIcon, MinusIcon } from 'assets/images/icons'
 import CartIconWhite from 'assets/images/icons/shopping-cart-white.svg'
+import ArrowUp from 'assets/images/icons/arrow-up.svg'
 
 import 'swiper/css/pagination';
 import 'swiper/css';
@@ -66,7 +67,17 @@ const ProductInner = () => {
           </div>
         </div>
       </div>
-      <h2 className="product-heading">{t("O’xshash mahsulotlar")}</h2>
+      <div className="product-info">
+        <p className="product-info__title">Mahsulot haqida ma’lumotlar</p>
+        <p className="product-info__desc">
+          Bug'doy o'tida ovqat hazm qilish va immunitetni yaxshilashga yordam beradigan 70 dan ortiq turli xil fermentlar mavjud. Bug'doy o'ti tarkibidagi aminokislotalar charchoq bilan kurashishga yordam beradi, antioksidantlarning yuqori miqdori esa tanadagi erkin radikallarning shikastlanishini kamaytiradi.
+
+          Bug'doy o'ti kukunini smetana yoki sharbatga qo'shish oson; Tez suratga olish uchun uni suv yoki sevimli suyuqlik bilan aralashtiring
+        </p>
+      </div>
+      <h2 className="product-heading">{t("O’xshash mahsulotlar")}
+        <img src={ArrowUp} alt="arrow-up" className="text-arrow" />
+      </h2>
       <div className="similar-list">
         {
           slicedData.map((item) => (

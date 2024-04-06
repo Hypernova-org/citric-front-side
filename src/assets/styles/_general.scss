@@ -75,6 +75,10 @@ body {
   font-size: 18px;
   font-style: normal;
   font-weight: 500;
-  line-height: 20px; 
+  line-height: 20px;
   margin-top: 30px;
+}
+
+.swiper-pagination-bullet {
+  background-color: var(--Colors-Primary, #70b32f) !important;
 }

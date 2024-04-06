@@ -36,48 +36,39 @@
   line-height: normal;
   margin-top: 100px;
   position: relative;
+  display: flex;
 
-  &:after {
-    content: "";
-    width: 24px;
-    height: 24px;
-    position: absolute;
-    background-image: url("../../assets/images/icons/arrow-up.svg");
-    background-repeat: no-repeat;
-    background-size: contain;
-    left: 314px;
-    bottom: 6px;
+  .text-arrow {
+    margin-left: 3px;
+    margin-top: 5px;
   }
 
-  @media only screen and (max-width: 375px) {
+  @media only screen and (max-width: 768px) {
+    font-size: 28px;
+  }
+  @media only screen and (max-width: 576px) {
     font-size: 22px;
-
-    &:after {
-      left: 215px;
-      bottom: -1px;
-    }
   }
-
-  @media only screen and (max-width: 265px) {
+  @media only screen and (max-width: 375px) {
     font-size: 18px;
 
-    &:after {
+    .text-arrow {
       width: 18px;
       height: 18px;
-      left: 177px;
-      bottom: 1px;
     }
   }
 }
 
 .order-section {
   display: flex;
-  align-items: stretch;
   margin-top: 21px;
+
+  @media only screen and (max-width: 576px) {
+    flex-direction: column;
+  }
 
   &__left {
     width: 44%;
-    height: 100%;
     border-radius: 25px;
     border: 2px solid var(--Colors-Grey, #f6f6f6);
     margin-right: 24px;
@@ -87,6 +78,17 @@
       width: 100%;
       height: 100%;
       object-fit: cover;
+      padding: 45px;
+    }
+
+    @media only screen and (max-width: 576px) {
+      width: 100%;
+      margin-right: 0px;
+
+      .swiper-slide img {
+        width: 100%;
+        padding: 35px;
+      }
     }
   }
 
@@ -94,11 +96,20 @@
     border-radius: 25px;
     background: var(--Colors-Grey, #f6f6f6);
     width: 55%;
+
+    @media only screen and (max-width: 576px) {
+      width: 100%;
+      margin-top: 30px;
+    }
   }
 
   &__right-top {
     padding: 30px;
     border-bottom: 2px solid #fff;
+
+    @media only screen and (max-width: 992px) {
+      padding: 15px;
+    }
 
     .product-name {
       color: var(--Colors-Dark-green, #0f1e00);
@@ -106,6 +117,14 @@
       font-style: normal;
       font-weight: 500;
       line-height: normal;
+
+      @media only screen and (max-width: 992px) {
+        font-size: 20px;
+      }
+
+      @media only screen and (max-width: 768px) {
+        font-size: 16px;
+      }
     }
   }
 
@@ -113,12 +132,25 @@
     padding: 20px 30px;
     border-bottom: 2px solid #fff;
 
+    @media only screen and (max-width: 992px) {
+      padding: 10px 20px;
+    }
+    @media only screen and (max-width: 768px) {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
     .product-amount {
       color: var(--Colors-Dark-green, #0f1e00);
       font-size: 20px;
       font-style: normal;
       font-weight: 500;
       line-height: normal;
+
+      @media only screen and (max-width: 768px) {
+        font-size: 16px;
+      }
     }
 
     .amount-controller {
@@ -130,6 +162,14 @@
       padding-right: 12px;
       width: 180px;
       margin-top: 8px;
+
+      .counter {
+        width: 24px;
+        height: 24px;
+      }
+
+      @media only screen and (max-width: 768px) {
+      }
     }
 
     .counter-amount {
@@ -151,6 +191,13 @@
   &__right-bottom {
     padding: 30px;
 
+    @media only screen and (max-width: 992px) {
+      padding: 20px;
+    }
+    @media only screen and (max-width: 768px) {
+      padding: 20px;
+    }
+
     .add-tocart {
       border-radius: 35px;
       background: var(--Colors-Primary, #70b32f);
@@ -161,6 +208,13 @@
       width: 100%;
       transition: all ease 0.3s;
       margin-top: 150px;
+
+      @media only screen and (max-width: 992px) {
+        margin-top: 100px;
+      }
+      @media only screen and (max-width: 768px) {
+        margin-top: 50px;
+      }
 
       &:hover {
         opacity: 0.7;
@@ -177,6 +231,42 @@
       font-style: normal;
       font-weight: 400;
       line-height: 22px;
+    }
+  }
+}
+
+.product-info {
+  margin-top: 50px;
+  padding: 30px;
+  border-radius: 25px;
+  border: 2px solid var(--Colors-Grey, #f6f6f6);
+
+  @media only screen and (max-width: 576px) {
+    text-align: center;
+  }
+
+  &__title {
+    color: var(--Colors-Dark-green, #0f1e00);
+    font-weight: 500;
+    font-size: 32px;
+    line-height: 38.72px;
+
+    @media only screen and (max-width: 576px) {
+      font-size: 24px;
+    }
+  }
+
+  &__desc {
+    color: #000;
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 22px;
+    margin-top: 24px;
+    width: 50%;
+
+    @media only screen and (max-width: 576px) {
+      width: 100%;
     }
   }
 }
