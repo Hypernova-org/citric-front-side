@@ -2,9 +2,11 @@ import { AboutImgLaptop } from "assets/images";
 import { Arrow } from "assets/images/icons";
 import { useHooks } from "hooks";
 import React from "react";
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 
 const BlogCard = () => {
+  const location = useLocation()
+  console.log(location)
   const { get, t } = useHooks();
   return (
     <div className="blog_card">
@@ -21,7 +23,7 @@ const BlogCard = () => {
         harum nemo blanditiis esse, voluptates facere laudantium magnam! Unde
         esse aperiam dolorem itaque.
       </p>
-      <Link to="1" className="blog_btn">
+      <Link to={location.pathname === '/blog' ? '1' : '/blog/1'} className="blog_btn">
         <p>{t("Batafsil ko’rish")}</p>
         <Arrow />
       </Link>
