@@ -6,7 +6,6 @@ import { useHooks } from 'hooks'
 import { CatalogCard } from 'components'
 import { products } from 'mock'
 
-
 import { GoBack, PlusIcon, MinusIcon } from 'assets/images/icons'
 import CartIconWhite from 'assets/images/icons/shopping-cart-white.svg'
 import ArrowUp from 'assets/images/icons/arrow-up.svg'
@@ -47,10 +46,17 @@ const ProductInner = () => {
           <div className="order-section__right-mid">
             <p className="product-amount">Miqdori:</p>
             <div className='amount-controller'>
+              {/* <button disabled={count == 0} onClick={() =>
+                updateQuantity(
+                  item.product.id,
+                  Math.max(1, item.quantity - 1)
+                )
+              }> */}
               <button disabled={count == 0} onClick={() => setCount(count - 1)}>
                 <MinusIcon className={count == 0 ? "disabledCount counter" : "counter"} />
               </button>
               <p className="counter-amount">{count}</p>
+              {/* <button onClick={() => updateQuantity(item.product.id, item.quantity + 1)}> */}
               <button onClick={() => setCount(count + 1)}>
                 <PlusIcon className="counter" />
               </button>
