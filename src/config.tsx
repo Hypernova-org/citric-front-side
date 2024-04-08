@@ -14,7 +14,7 @@ interface IConfig {
 }
 
 const config: IConfig = {
-  APP_NAME: "TEST APP",
+  APP_NAME: "CITRIC",
   API_ROOT: process.env.REACT_APP_ROOT_API || "",
   STATIC_FILES_DIR: process.env.REACT_APP_ROOT_STATIC_FILES_DIR || "",
   DEFAULT_LANGUAGE: "uz",
@@ -22,6 +22,7 @@ const config: IConfig = {
     { id: 1, code: "uz", title: "Ўзбекча", short: "ЎЗ" },
     { id: 2, code: "ru", title: "Русский", short: "RU" },
     { id: 3, code: "en", title: "English", short: "EN" },
+    { id: 4, code: "kr", title: "Кирилча", short: "KR" },
   ],
 };
 

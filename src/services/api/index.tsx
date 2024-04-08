@@ -7,6 +7,9 @@ const api = axios.create({
   timeout: 30000, // 30 seconds
 });
 
+api.defaults.params = {};
+api.defaults.params["lang"] = storage.get("i18nextLng") ? storage.get("i18nextLng") : "uz";
+
 api.defaults.headers.common["Accept"] = "application/json";
 // api.defaults.headers.common["Cache-Control"] = "no-cache";
 api.defaults.headers.common["Content-Type"] = "application/json; charset=utf-8";

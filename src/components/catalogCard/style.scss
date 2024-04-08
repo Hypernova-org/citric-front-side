@@ -1,0 +1,102 @@
+.catalog-card {
+  width: 96%;
+  border-radius: 25px;
+  border: 2px solid var(--Colors-Grey, #f6f6f6);
+
+  @media only screen and (max-width: 768px) {
+    width: 80%;
+  }
+
+  &:hover {
+    .catalog-card__name {
+      color: var(--Colors-Primary, #70b32f);
+    }
+
+    .catalog-card__price {
+      color: var(--Colors-Primary, #70b32f);
+    }
+  }
+
+  .swiper {
+    height: 260px !important;
+    @media only screen and (max-width: 768px) {
+      height: 260px !important;
+    }
+    // @media only screen and (max-width: 576px) {
+    //   height: 260px !important;
+    // }
+  }
+
+  .swiper-slide-active {
+    @media only screen and (max-width: 1400px) {
+      margin-left: 1% !important;
+    }
+    @media only screen and (max-width: 992px) {
+      margin-left: 4% !important;
+    }
+    @media only screen and (max-width: 576px) {
+      margin-left: 18% !important;
+    }
+    @media only screen and (max-width: 476px) {
+      margin-left: 14% !important;
+    }
+    @media only screen and (max-width: 406px) {
+      margin-left: 10% !important;
+    }
+    @media only screen and (max-width: 375px) {
+      margin-left: 0% !important;
+    }
+  }
+
+  .swiper-pagination {
+    bottom: 0px;
+  }
+
+  &__images {
+    width: 100%;
+    padding: 30px;
+    padding-top: 30px;
+    padding-bottom: 20px;
+
+    @media only screen and (max-width: 768px) {
+      width: 100%;
+      padding: 20px;
+      padding-top: 20px;
+      padding-bottom: 10px;
+    }
+  }
+
+  &__bottom {
+    padding: 20px;
+    border-top: 1px solid #f6f6f6;
+    cursor: pointer;
+  }
+
+  &__info {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  &__name {
+    color: var(--Colors-Dark-green, #0f1e00);
+    font-size: 20px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+    transition: all ease 0.3s;
+
+    @media only screen and (max-width: 768px) {
+      font-size: 18px;
+    }
+  }
+
+  &__price {
+    color: var(--Colors-Dark-green, #0f1e00);
+    font-size: 24px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: normal;
+    transition: all ease 0.3s;
+  }
+}

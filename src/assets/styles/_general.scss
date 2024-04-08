@@ -2,6 +2,83 @@
 @tailwind components;
 @tailwind utilities;
 
+body {
+  color: #0f1e00;
+}
+
 .ant-layout {
   background-color: #fff !important;
+}
+
+.ant-input {
+  outline: none !important;
+  border: none !important;
+  &:focus {
+    border-color: transparent;
+    box-shadow: none;
+    outline: none;
+  }
+}
+
+.ant-select-selector {
+  border: none !important;
+  outline: none !important;
+  border-radius: 48px !important;
+  border: 1px solid var(--Colors-Grey, #f6f6f6);
+  background: var(--Colors-Grey, #f6f6f6) !important;
+  font-size: 12px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 22px;
+  padding-top: 18px !important;
+  padding-bottom: 23px !important;
+  padding-left: 20px !important;
+
+  @media only screen and (max-width: 375px) {
+    padding-top: 0px !important;
+    padding-bottom: 0px !important;
+  }
+
+  .ant-select-selection-item {
+    margin-right: 10px !important;
+  }
+
+  &:focus {
+    outline: none !important;
+  }
+}
+
+.ant-select-focused .ant-select-selector,
+.ant-select-selector:focus,
+.ant-select-selector:active,
+.ant-select-open .ant-select-selector {
+  box-shadow: none !important;
+}
+
+.ant-select {
+  color: #023047 !important;
+}
+
+.ant-select .ant-select-arrow {
+  margin-top: -7px !important;
+  @media only screen and (max-width: 375px) {
+    margin-top: -6px !important;
+  }
+}
+
+.view-more {
+  text-align: center;
+  padding: 20px 110px;
+  border-radius: 35px;
+  background: var(--Colors-Grey, #f6f6f6);
+  color: var(--Colors-Dark-green, #0f1e00);
+  font-size: 18px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 20px;
+  margin-top: 30px;
+}
+
+.swiper-pagination-bullet {
+  background-color: var(--Colors-Primary, #70b32f) !important;
 }
