@@ -16,7 +16,6 @@ const Catalog = () => {
     _id: "1"
   },)
 
-
   const { isLoading: productsLoading, data: productsData } = useGet({
     name: "products",
     url: "products",

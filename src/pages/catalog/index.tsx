@@ -1,17 +1,55 @@
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Autoplay } from 'swiper/modules';
 import { CatalogCard, CategoryBtns } from 'components';
-import { useHooks } from 'hooks'
-import { categories, products } from 'mock';
+import { useGet, useHooks } from 'hooks'
 
+import '../../components/categoryBtns/style.scss'
 import 'swiper/css';
 import 'swiper/css/free-mode';
 import 'swiper/css/pagination';
 import './style.scss'
 import { uniqueId } from 'lodash';
+import { useState } from 'react';
 
 const Catalog = () => {
   const { t, get } = useHooks()
+
+  const [selectedCategory, setSelectedCategory] = useState({
+    categoryName: "Hammasi",
+    _v: 999,
+    _id: "1"
+  },)
+
+  const { isLoading: productsLoading, data: productsData } = useGet({
+    name: "products",
+    url: "products",
+    params: {
+      extra: {
+        category: get(selectedCategory, "_id") == "1" ? "" : get(selectedCategory, "_id")
+      }
+    },
+    onSuccess: (data) => {
+    },
+    onError: (error) => {
+    },
+  });
+
+  const { isLoading: categoriesLoading, data: categoriesData } = useGet({
+    name: "categories",
+    url: "categories",
+    onSuccess: (data) => {
+    },
+    onError: (error) => {
+    },
+  });
+
+  const products = get(productsData, "data", [])
+  const categories = [
+    {
+      categoryName: "Hammasi",
+      _v: 999,
+      _id: "1"
+    }, ...get(categoriesData, "data", [])]
   return (
     <div className='catalog-page'>
       <div className="catalog-hero">
@@ -50,19 +88,19 @@ const Catalog = () => {
               '700': {
                 slidesPerView: 2,
                 spaceBetween: 10,
-                centeredSlides:true
+                centeredSlides: true
               },
             }}
             modules={[Autoplay]}
             freeMode={true}
             className="mySwiper desktop-carousel"
           >
-            {categories.map((category) => (
-              <SwiperSlide key={category.id}>
+            {get(categoriesData, "data", []).map((category) => (
+              <SwiperSlide key={get(category, "_id")}>
                 <div className='catalog-category__card' key={get(category, "id")}>
-                  <img src={get(category, "img")} alt={get(category, "name")} className="catalog-category__img" />
+                  <img src={get(category, "images[0].large")} alt={get(category, "name")} className="catalog-category__img" />
                   <p className={'category-category__title'} key={get(category, "id")}>
-                    {get(category, "title")}
+                    {get(category, "categoryName")}
                   </p>
                 </div>
               </SwiperSlide>
@@ -80,8 +118,8 @@ const Catalog = () => {
             speed={1200}
             className="mySwiper mobile-carousel"
           >
-            {categories.map((category) => (
-              <SwiperSlide key={category.id}>
+            {get(categoriesData, "data", []).map((category) => (
+              <SwiperSlide key={get(category, "_id")}>
                 <div className='catalog-category__card' key={get(category, "id")}>
                   <img src={get(category, "img")} alt={get(category, "name")} className="catalog-category__img" />
                   <p className={'category-category__title'} key={get(category, "id")}>
@@ -92,11 +130,20 @@ const Catalog = () => {
             ))}
           </Swiper>
         </div>
-
       </div>
       <div className="container catalog-products">
-        <h3 className="catalog-products__title">{t("Barchasi")}</h3>
-        <CategoryBtns />
+        {/* <h3 className="catalog-products__title">{t("Barchasi")}</h3> */}
+        <div className='catalog-categories'>
+          {categories.map((category: any) => (
+            <button
+              className={get(selectedCategory, "_id") == get(category, "_id") ? 'selectedCategory category-btn' : 'category-btn'}
+              onClick={() => setSelectedCategory(category)}
+              key={get(category, "id")}>
+              {get(category, "_v") == 999 ? t(get(category, "categoryName")) : get(category, "categoryName")}
+            </button>
+          ))}
+        </div>
+
         <div className="catalog-list">
           {
             products.map((item) => (
