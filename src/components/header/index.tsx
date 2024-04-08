@@ -1,15 +1,16 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
-import { Select, Input } from "antd";
+import { Select, Input, Modal } from "antd";
 
+import config from "config";
 import { useHooks } from "hooks";
+import { MobileMenu, MobileSearchModal, CartModal } from "./components";
+
 import { Arrow2 } from "assets/images/icons";
 import Logo from "assets/images/icons/logo.png";
 import SearchIcon from "assets/images/icons/search-icon.svg";
 import CartIcon from "assets/images/icons/cart.svg";
 import BurgerIcon from "assets/images/icons/burger.svg";
-import BackIcon from "assets/images/icons/back.svg";
-import CloseIcon from "assets/images/icons/close.svg";
 
 import "./style.scss";
 import "./mobile.scss";
@@ -20,18 +21,19 @@ interface INav {
   title: string;
 }
 
-interface ILang {
-  id: number;
-  name: string;
-  value: string;
-}
-
 const Header = () => {
   const { t, get } = useHooks();
   const { Option } = Select;
   const [navBarState, seacrhBarState] = useState(false);
-  const [mobileSearchModal, showMobileSearchModal] = useState(false);
+  const [mobileSearchModal, showMobileSearchModal] = useState<Boolean>(false);
   const [mobileMenu, showMobileMenu] = useState<Boolean>(false);
+  const [cartModal, showCartModal] = useState<Boolean>(false);
+
+  const openMobileMenu = (open: Boolean) => {
+    const body = document.getElementsByTagName("body")[0];
+    body.classList.toggle("overflow-hidden");
+    showMobileMenu(open);
+  };
 
   const navItems: INav[] = [
     {
@@ -56,86 +58,11 @@ const Header = () => {
     },
   ];
 
-  const langs: ILang[] = [
-    {
-      id: 1,
-      name: "uz",
-      value: "uz",
-    },
-    {
-      id: 2,
-      name: "ru",
-      value: "ru",
-    },
-    {
-      id: 2,
-      name: "kr",
-      value: "kr",
-    },
-  ];
-
-  const openMobileMenu = (ccc: Boolean) => {
-    const body = document.getElementsByTagName("body")[0];
-    body.classList.toggle("overflow-hidden");
-    showMobileMenu(ccc);
-  };
-
   return (
     <div className="header-wrapper container">
-      {mobileSearchModal && (
-        <div className="search-modal">
-          <div className="search-modal__top">
-            <div
-              className="icon-btn back-btn mr-[10px]"
-              onClick={() => showMobileSearchModal(false)}
-            >
-              <img src={BackIcon} alt="burger" className="burger-icon" />
-            </div>
-            <Input
-              autoFocus={mobileSearchModal && true}
-              className="header-searchbar"
-              placeholder={t("Mahsulotlarni izlash")}
-              type="text"
-            />
-          </div>
-          <div className="search-modal__bottom"></div>
-          <div className="search-modal__bottom"></div>
-        </div>
-      )}
-      {mobileMenu && (
-        <div className="mobile-menu">
-          <div className="mobile-menu__top container">
-            <div
-              className="icon-btn close-btn mr-[10px]"
-              onClick={() => showMobileMenu(false)}
-            >
-              <img src={CloseIcon} alt="close" className="close-icon" />
-            </div>
-            <Select
-              suffixIcon={<Arrow2 />}
-              className="lang-select inline-block"
-              defaultValue={"uz"}
-              size={"large"}
-              onChange={(value: any) => {
-                // changeLanguage(value);
-              }}
-            >
-              {langs.map((lang) => (
-                <Option value={get(lang, "value")}>
-                  <p>{t(get(lang, "name"))}</p>
-                </Option>
-              ))}
-            </Select>
-          </div>
-          <ul className="mobile-menu__bottom container">
-            {navItems.map((menu) => (
-              <li className="header-navbar__list-item">
-                <Link onClick={() => openMobileMenu(false)} to={get(menu, "link")}>{t(get(menu, "title"))}</Link>
-              </li>
-            ))}
-          </ul>
-        </div>
-      )}
+      <CartModal {...{ cartModal, showCartModal }} />
+      {mobileSearchModal && (<MobileSearchModal {...{ mobileSearchModal, showMobileSearchModal }} />)}
+      {mobileMenu && (<MobileMenu {...{ openMobileMenu, showMobileMenu }} />)}
 
       <div className="flex items-center">
         <div className="icon-btn burger-btn mr-[16px]">
@@ -188,9 +115,9 @@ const Header = () => {
             // changeLanguage(value);
           }}
         >
-          {langs.map((lang) => (
-            <Option value={get(lang, "value")}>
-              <p>{t(get(lang, "name"))}</p>
+          {config.API_LANGUAGES.map((lang) => (
+            <Option value={get(lang, "code")}>
+              <p>{t(get(lang, "title"))}</p>
             </Option>
           ))}
         </Select>
@@ -198,9 +125,12 @@ const Header = () => {
           className="icon-btn search-btn"
           onClick={() => showMobileSearchModal(true)}
         >
-          <img src={SearchIcon} alt="cart" className="search-icon" />
+          <img src={SearchIcon} alt="search" className="search-icon" />
         </div>
-        <div className="icon-btn cart-btn">
+        <div
+          className="icon-btn cart-btn"
+          onClick={() => showCartModal(true)}
+        >
           <img src={CartIcon} alt="cart" className="cart-icon" />
         </div>
       </div>

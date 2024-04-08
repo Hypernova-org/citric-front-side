@@ -10,7 +10,7 @@ function App() {
     auth: { isLoggedIn },
   } = useStore((state) => state);
 
-  const { isLoading } = useGet({
+  const { isLoading  } = useGet({
     name: "get-me",
     url: "users/get-me/",
     onSuccess: (data) => {
