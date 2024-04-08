@@ -1,11 +1,24 @@
+import { useGet, useHooks } from "hooks";
 import BlogCard from "components/blogCard";
-import React from "react";
 
 const ThreeBlogs = () => {
+  const { t, get } = useHooks()
+
+  const { isLoading, data } = useGet({
+    name: "blogs",
+    url: "blogs",
+    onSuccess: (data) => {
+    },
+    onError: (error) => {
+    },
+  });
+
+  const slicedData = get(data, "data", []).length > 3 ? get(data, "data", []).slice(0, 3) : get(data, "data")
+
   return (
     <div className="three_blogs">
       <div className="three_blogs_title">
-        <p className="">Blogs</p>
+        <p className="">{t("Blogs")}</p>
         <svg
           width="24"
           height="24"
@@ -19,10 +32,11 @@ const ThreeBlogs = () => {
           />
         </svg>
       </div>
+
       <div className="three_blogs_cards">
-        <BlogCard />
-        <BlogCard />
-        <BlogCard />
+        {slicedData?.map((blog: any) => (
+          <BlogCard {...{blog}}/>
+        ))}
       </div>
     </div>
   );

@@ -1,28 +1,62 @@
 import { useState } from 'react'
-import { useHooks } from 'hooks'
+import { useGet, useHooks } from 'hooks'
 import { CatalogCard } from 'components';
-import { categories, products } from 'mock';
 
 import 'swiper/css';
 import 'swiper/css/pagination';
 import './style.scss'
 
 const Catalog = () => {
+  const { t, get } = useHooks()
 
   const [selectedCategory, setSelectedCategory] = useState({
-    id: 1,
-    title: "Antioksidantlar"
+    categoryName: "Hammasi",
+    _v: 999,
+    _id: "1"
   },)
 
-  const { t, get } = useHooks()
+
+  const { isLoading: productsLoading, data: productsData } = useGet({
+    name: "products",
+    url: "products",
+    params: {
+      extra: {
+        category: get(selectedCategory, "_id") == "1" ? "" : get(selectedCategory, "_id")
+      }
+    },
+    onSuccess: (data) => {
+    },
+    onError: (error) => {
+    },
+  });
+
+  const { isLoading: categoriesLoading, data: categoriesData } = useGet({
+    name: "categories",
+    url: "categories",
+    onSuccess: (data) => {
+    },
+    onError: (error) => {
+    },
+  });
+
+  const products = get(productsData, "data", [])
+  const categories = [
+    {
+      categoryName: "Hammasi",
+      _v: 999,
+      _id: "1"
+    }, ...get(categoriesData, "data", [])]
 
   return (
     <div className='catalog-section'>
       <h2 className="catalog-heading">{t("Katalog")}</h2>
       <div className="catalog-categories">
-        {categories.map((category) => (
-          <button className={get(selectedCategory, "id") == get(category, "id") ? 'selectedCategory category-btn' : 'category-btn'} onClick={() => setSelectedCategory(category)} key={get(category, "id")}>
-            {get(category, "title")}
+        {categories.map((category: any) => (
+          <button
+            className={get(selectedCategory, "_id") == get(category, "_id") ? 'selectedCategory category-btn' : 'category-btn'}
+            onClick={() => setSelectedCategory(category)}
+            key={get(category, "id")}>
+            {get(category, "_v") == 999 ? t(get(category, "categoryName")) : get(category, "categoryName")}
           </button>
         ))}
 

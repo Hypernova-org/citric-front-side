@@ -4,6 +4,7 @@ import { useHooks } from 'hooks';
 import useStore from "store";
 
 import CartIcon from 'assets/images/icons/cart.svg'
+import Qop from "assets/images/qop.png"
 
 import 'swiper/css';
 import 'swiper/css/pagination';
@@ -23,25 +24,25 @@ const CatalogCard = ({ item: data, className }: any) => {
   const { get, navigate } = useHooks()
 
   return (
-    <div className={className + ' catalog-card'} key={get(data, "id")} onClick={() => navigate(`/product/${get(data, "id")}`)}>
+    <div className={className + ' catalog-card'} key={get(data, "id")}>
       <div className="catalog-card__images">
         <Swiper
           pagination={{
             dynamicBullets: true,
           }}
           modules={[Pagination]}
-          className="mySwiper"
+          className="mySwiper cursor-grab"
         >
           {get(data, "images", []).map((i: string) => (
             <SwiperSlide>
-              <img src={i} alt={get(data, "name") + "-image"} className="catalog-carousel__images" />
+              <img src={get(i, "large",)} alt={get(data, "name") + "-image"} className="catalog-carousel__images" />
             </SwiperSlide>
           ))}
         </Swiper>
       </div>
-      <div className="catalog-card__bottom">
+      <div className="catalog-card__bottom" onClick={() => navigate(`/product/${get(data, "_id")}`)}>
         <div className="catalog-card__info">
-          <p className="catalog-card__name">{get(data, "name")}</p>
+          <p className="catalog-card__name">{get(data, "productTitle")}</p>
           {/* <p className="catalog-card__price">{get(data, "price")}</p> */}
           <button className='addtocart' onClick={(e) => {
             e.stopPropagation()

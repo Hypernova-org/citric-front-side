@@ -2,7 +2,6 @@
   width: 96%;
   border-radius: 25px;
   border: 2px solid var(--Colors-Grey, #f6f6f6);
-  cursor: pointer;
 
   @media only screen and (max-width: 768px) {
     width: 80%;
@@ -70,6 +69,7 @@
   &__bottom {
     padding: 20px;
     border-top: 1px solid #f6f6f6;
+    cursor: pointer;
   }
 
   &__info {
