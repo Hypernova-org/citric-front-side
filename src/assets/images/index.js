@@ -1,4 +1,9 @@
 export { default as AboutImgLaptop } from "./about-img(laptop).webp";
 export { default as AboutImgTablet } from "./about-img(tablet).webp";
 export { default as AboutImgMobile } from "./about-img(mobile).webp";
+export { default as HeroImgLaptop } from "./hero-img(laptop).webp";
+export { default as HeroImgTablet } from "./hero-img(tablet).webp";
+export { default as HeroImgMobile } from "./hero-img(mobile).webp";
 export { default as WhiteLogo } from "./logo(white).png";
+export { default as AboutSection1 } from "./About-section-img.webp";
+export { default as AboutSection2 } from "./About-section-img2.webp";

@@ -58,7 +58,7 @@ const MobileMenu = ({ showMobileMenu, openMobileMenu }: any) => {
           }}
         >
           {config.API_LANGUAGES.map((lang) => (
-            <Option value={get(lang, "code")}>
+            <Option key={lang.id} value={get(lang, "code")}>
               <p>{t(get(lang, "short"))}</p>
             </Option>
           ))}
@@ -66,7 +66,7 @@ const MobileMenu = ({ showMobileMenu, openMobileMenu }: any) => {
       </div>
       <ul className="mobile-menu__bottom container">
         {navItems.map((menu) => (
-          <li className="header-navbar__list-item">
+          <li key={menu.id} className="header-navbar__list-item">
             <Link onClick={() => openMobileMenu(false)} to={get(menu, "link")}>{t(get(menu, "title"))}</Link>
           </li>
         ))}

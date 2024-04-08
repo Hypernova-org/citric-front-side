@@ -12,7 +12,7 @@ const CategoryBtns = () => {
   return (
     <div className="catalog-categories">
       {categories.map((category) => (
-        <button className={get(selectedCategory, "id") == get(category, "id") ? 'selectedCategory category-btn' : 'category-btn'} onClick={() => setSelectedCategory(category)} key={get(category, "id")}>
+        <button  className={get(selectedCategory, "id") == get(category, "id") ? 'selectedCategory category-btn' : 'category-btn'} onClick={() => setSelectedCategory(category)} key={get(category, "id")}>
           {get(category, "title")}
         </button>
       ))}

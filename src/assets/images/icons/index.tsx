@@ -7,7 +7,7 @@ const Edit = () => {
       fill="none"
       xmlns="http://www.w3.org/2000/svg"
     >
-      <g clip-path="url(#clip0_354_1754)">
+      <g clipPath="url(#clip0_354_1754)">
         <path
           d="M19.4537 10.406C19.0654 10.406 18.7506 10.7208 18.7506 11.1091V21.4219C18.7506 22.0681 18.2249 22.5938 17.5787 22.5938H2.57821C1.93201 22.5938 1.40629 22.0681 1.40629 21.4219V6.42147C1.40629 5.77527 1.93201 5.24956 2.57821 5.24956H12.891C13.2794 5.24956 13.5942 4.93473 13.5942 4.54641C13.5942 4.15808 13.2794 3.84326 12.891 3.84326H2.57821C1.15658 3.84326 0 4.99984 0 6.42147V21.4219C0 22.8436 1.15658 24.0001 2.57821 24.0001H17.5787C19.0003 24.0001 20.1569 22.8436 20.1569 21.4219V11.1091C20.1569 10.7208 19.8421 10.406 19.4537 10.406Z"
           fill="#fff"
@@ -137,26 +137,313 @@ const Instagram = () => {
 };
 const GoBack = ({ className, fill }: any) => {
   return (
-    <svg className={className} width="17" height="17" viewBox="0 0 17 17" xmlns="http://www.w3.org/2000/svg">
+    <svg
+      className={className}
+      width="17"
+      height="17"
+      viewBox="0 0 17 17"
+      xmlns="http://www.w3.org/2000/svg"
+    >
       <path
         // fill={fill}
-        d="M7.67008 8.50001L11.1762 12.006L10.1745 13.0078L5.66663 8.50001L10.1745 3.99219L11.1762 4.99392L7.67008 8.50001Z" />
+        d="M7.67008 8.50001L11.1762 12.006L10.1745 13.0078L5.66663 8.50001L10.1745 3.99219L11.1762 4.99392L7.67008 8.50001Z"
+      />
     </svg>
   );
 };
 const MinusIcon = ({ className, fill }: any) => {
   return (
-    <svg width="24" height="24" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+    <svg
+      width="24"
+      height="24"
+      viewBox="0 0 24 24"
+      xmlns="http://www.w3.org/2000/svg"
+    >
       <path className={className} d="M5 11V13H19V11H5Z" />
     </svg>
   );
 };
 const PlusIcon = ({ className, fill }: any) => {
   return (
-    <svg width="24" height="24" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-      <path className={className} d="M11 11V5H13V11H19V13H13V19H11V13H5V11H11Z" />
+    <svg
+      width="24"
+      height="24"
+      viewBox="0 0 24 24"
+      xmlns="http://www.w3.org/2000/svg"
+    >
+      <path
+        className={className}
+        d="M11 11V5H13V11H19V13H13V19H11V13H5V11H11Z"
+      />
     </svg>
-
+  );
+};
+const HeroIcon1 = ({ className, fill }: any) => {
+  return (
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      width="129"
+      height="129"
+      viewBox="0 0 129 129"
+      fill="none"
+    >
+      <g filter="url(#filter0_d_2099_10156)">
+        <circle cx="64.5" cy="62.5" r="54.5" fill="#FFA800" />
+        <circle cx="64.5" cy="62.5" r="51.5" stroke="white" strokeWidth="6" />
+      </g>
+      <g clipPath="url(#clip0_2099_10156)">
+        <path
+          d="M71.9746 55.0779L85.6443 58.7407C88.0036 59.3728 89.4035 61.7978 88.7714 64.1569L87.5671 68.6515C87.4176 69.2094 87.1602 69.7326 86.8096 70.1918L75.8998 84.4714C75.3558 85.1834 74.4358 85.4966 73.5704 85.2647L37.6237 75.6329C36.4441 75.3168 35.7441 74.1043 36.0601 72.9247L41.7831 51.5664C42.0991 50.3869 43.3116 49.6869 44.4912 50.0029L51.9278 51.9956C52.6218 52.1815 53.3629 52.0187 53.915 51.559L69.9839 38.1792C70.4038 37.8296 71.0161 37.8391 71.4249 38.2016L74.7804 41.1771C76.7255 42.902 77.2058 45.7493 75.9344 48.017L71.9746 55.0779ZM54.2619 56.255L49.4474 74.2227L73.2846 80.6098L83.2954 67.5069L84.4998 63.0123L70.83 59.3495C68.0434 58.6028 66.7064 55.4311 68.1173 52.9148L72.0771 45.8539C72.3314 45.4003 72.2353 44.8309 71.8461 44.4859L70.6233 43.4015L56.7448 54.9575C56.0084 55.5706 55.1601 56.0076 54.2619 56.255ZM49.7541 55.9914L45.4825 54.8468L40.9041 71.9335L45.1758 73.0781L49.7541 55.9914Z"
+          fill="white"
+        />
+      </g>
+      <defs>
+        <filter
+          id="filter0_d_2099_10156"
+          x="0"
+          y="0"
+          width="129"
+          height="129"
+          filterUnits="userSpaceOnUse"
+          colorInterpolationFilters="sRGB"
+        >
+          <feFlood floodOpacity="0" result="BackgroundImageFix" />
+          <feColorMatrix
+            in="SourceAlpha"
+            type="matrix"
+            values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0"
+            result="hardAlpha"
+          />
+          <feOffset dy="2" />
+          <feGaussianBlur stdDeviation="5" />
+          <feComposite in2="hardAlpha" operator="out" />
+          <feColorMatrix
+            type="matrix"
+            values="0 0 0 0 0.168627 0 0 0 0 0.345098 0 0 0 0 0 0 0 0 0.25 0"
+          />
+          <feBlend
+            mode="normal"
+            in2="BackgroundImageFix"
+            result="effect1_dropShadow_2099_10156"
+          />
+          <feBlend
+            mode="normal"
+            in="SourceGraphic"
+            in2="effect1_dropShadow_2099_10156"
+            result="shape"
+          />
+        </filter>
+        <clipPath id="clip0_2099_10156">
+          <rect
+            width="53.0683"
+            height="53.0683"
+            fill="white"
+            transform="translate(45.3704 29.6351) rotate(15)"
+          />
+        </clipPath>
+      </defs>
+    </svg>
+  );
+};
+const HeroIcon2 = ({ className, fill }: any) => {
+  return (
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      width="151"
+      height="151"
+      viewBox="0 0 151 151"
+      fill="none"
+    >
+      <g filter="url(#filter0_d_2099_10166)">
+        <circle cx="75.318" cy="71.318" r="65.318" fill="white" />
+        <circle
+          cx="75.318"
+          cy="71.318"
+          r="62.318"
+          stroke="#70B32F"
+          strokeWidth="6"
+        />
+      </g>
+      <g clipPath="url(#clip0_2099_10166)">
+        <path
+          d="M82.1111 45.5362L83.1281 46.4544C87.073 50.0159 90.067 54.4992 91.8567 59.4644C94.5646 58.9671 97.3624 58.8142 100.189 59.0411L103.396 59.2987L97.8331 80.0585C94.3853 92.9261 81.1587 100.563 68.2909 97.1151C55.4231 93.6672 47.7869 80.4406 51.2347 67.573L56.7974 46.8127L59.7035 48.1932C62.2645 49.4097 64.611 50.9409 66.7073 52.7254C70.7398 49.3204 75.5742 46.9348 80.7713 45.8229L82.1111 45.5362ZM70.498 56.5446C73.084 59.6276 75.0762 63.1753 76.3621 66.993C79.3847 64.3299 82.8844 62.2535 86.6643 60.8766C85.3203 57.3278 83.2338 54.0865 80.5425 51.3903C76.8641 52.3796 73.4364 54.1434 70.498 56.5446ZM72.0771 71.5867C70.9848 66.5394 68.448 61.9002 64.8048 58.2577C63.4383 56.8915 61.9165 55.6659 60.2571 54.6114L56.4123 68.9603C54.1302 77.4772 58.0914 86.1961 65.4903 90.2583C65.5577 87.7825 65.9137 85.2766 66.5818 82.7833C67.7033 78.5978 69.6007 74.8279 72.0771 71.5867ZM70.8613 92.2143C80.4847 94.145 90.0794 88.2854 92.6555 78.6711L96.5002 64.3227C94.5356 64.4062 92.6049 64.7068 90.7384 65.2068C81.7825 67.6055 74.3283 74.5831 71.7593 84.1706C71.0371 86.8661 70.7527 89.5718 70.8613 92.2143Z"
+          fill="#70B32F"
+        />
+      </g>
+      <defs>
+        <filter
+          id="filter0_d_2099_10166"
+          x="0"
+          y="0"
+          width="150.636"
+          height="150.636"
+          filterUnits="userSpaceOnUse"
+          colorInterpolationFilters="sRGB"
+        >
+          <feFlood floodOpacity="0" result="BackgroundImageFix" />
+          <feColorMatrix
+            in="SourceAlpha"
+            type="matrix"
+            values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0"
+            result="hardAlpha"
+          />
+          <feOffset dy="4" />
+          <feGaussianBlur stdDeviation="5" />
+          <feComposite in2="hardAlpha" operator="out" />
+          <feColorMatrix
+            type="matrix"
+            values="0 0 0 0 0.170539 0 0 0 0 0.346325 0 0 0 0 0 0 0 0 0.3 0"
+          />
+          <feBlend
+            mode="normal"
+            in2="BackgroundImageFix"
+            result="effect1_dropShadow_2099_10166"
+          />
+          <feBlend
+            mode="normal"
+            in="SourceGraphic"
+            in2="effect1_dropShadow_2099_10166"
+            result="shape"
+          />
+        </filter>
+        <clipPath id="clip0_2099_10166">
+          <rect
+            width="64.3228"
+            height="64.3228"
+            fill="white"
+            transform="translate(52.4861 31.8378) rotate(15)"
+          />
+        </clipPath>
+      </defs>
+    </svg>
+  );
+};
+const HeroIcon3 = ({ className, fill }: any) => {
+  return (
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      width="158"
+      height="158"
+      viewBox="0 0 158 158"
+      fill="none"
+    >
+      <g filter="url(#filter0_d_2099_10162)">
+        <circle
+          cx="78.8838"
+          cy="78.8838"
+          r="64.4083"
+          transform="rotate(-15 78.8838 78.8838)"
+          fill="#70B32F"
+        />
+        <circle
+          cx="78.8838"
+          cy="78.8838"
+          r="61.4083"
+          transform="rotate(-15 78.8838 78.8838)"
+          stroke="white"
+          strokeWidth="6"
+        />
+      </g>
+      <g clipPath="url(#clip0_2099_10162)">
+        <path
+          d="M50.6901 63.6817C59.6537 58.5065 70.8723 60.7754 77.1877 68.57C78.47 63.8207 81.5608 59.5571 86.1595 56.9021L97.7178 50.2289L101.425 56.6502C106.749 65.8709 103.59 77.661 94.3688 82.9845L87.9476 86.6919L95.3622 99.5344L90.2252 102.5L78.3618 81.9522L73.2249 84.918C63.295 90.651 50.5978 87.2488 44.8648 77.3189L40.416 69.6134L50.6901 63.6817ZM95.5466 58.3318L89.1254 62.0391C82.7421 65.7245 80.5547 73.8871 84.2403 80.2706L84.9817 81.5549L91.403 77.8475C97.7865 74.162 99.9736 65.9996 96.2881 59.6161L95.5466 58.3318ZM53.6559 68.8187L48.5189 71.7846L50.0018 74.3531C54.0968 81.4458 63.1663 83.876 70.259 79.781L75.3959 76.8152L73.913 74.2467C69.818 67.1539 60.7486 64.7237 53.6559 68.8187Z"
+          fill="white"
+        />
+      </g>
+      <defs>
+        <filter
+          id="filter0_d_2099_10162"
+          x="4.45947"
+          y="6.45947"
+          width="148.849"
+          height="148.849"
+          filterUnits="userSpaceOnUse"
+          colorInterpolationFilters="sRGB"
+        >
+          <feFlood floodOpacity="0" result="BackgroundImageFix" />
+          <feColorMatrix
+            in="SourceAlpha"
+            type="matrix"
+            values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0"
+            result="hardAlpha"
+          />
+          <feOffset dy="2" />
+          <feGaussianBlur stdDeviation="5" />
+          <feComposite in2="hardAlpha" operator="out" />
+          <feColorMatrix
+            type="matrix"
+            values="0 0 0 0 0.168627 0 0 0 0 0.345098 0 0 0 0 0 0 0 0 0.15 0"
+          />
+          <feBlend
+            mode="normal"
+            in2="BackgroundImageFix"
+            result="effect1_dropShadow_2099_10162"
+          />
+          <feBlend
+            mode="normal"
+            in="SourceGraphic"
+            in2="effect1_dropShadow_2099_10162"
+            result="shape"
+          />
+        </filter>
+        <clipPath id="clip0_2099_10162">
+          <rect
+            width="71.1806"
+            height="71.1806"
+            fill="white"
+            transform="translate(30.8352 64.8708) rotate(-30)"
+          />
+        </clipPath>
+      </defs>
+    </svg>
+  );
+};
+const AboutIcon2 = ({ className, fill }: any) => {
+  return (
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      width="80"
+      height="80"
+      viewBox="0 0 80 80"
+      fill="none"
+    >
+      <path
+        d="M69.9932 10V16.6667C69.9932 48.758 52.0849 63.3333 29.9934 63.3333L23.6546 63.333C24.3596 53.292 27.4846 47.216 35.6462 39.9963C39.6596 36.446 39.3216 34.3963 37.3429 35.5737C23.7309 43.672 16.9704 54.6207 16.6705 72.1007L16.6601 73.3333H9.99341C9.99341 68.791 10.3791 64.6657 11.1459 60.894C10.3776 56.5803 9.99341 50.7253 9.99341 43.3333C9.99341 24.9238 24.9172 10 43.3266 10C49.9932 10 56.6599 13.3333 69.9932 10Z"
+        fill="white"
+      />
+    </svg>
+  );
+};
+const AboutIcon1 = ({ className, fill }: any) => {
+  return (
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      width="60"
+      height="60"
+      viewBox="0 0 60 60"
+      fill="none"
+    >
+      <path
+        d="M29.9997 5.18945L31.1377 5.77115C35.552 8.02775 39.332 11.3444 42.1432 15.386C44.463 14.2842 46.947 13.471 49.5482 12.9931L52.5 12.451V32.4987C52.5 44.9249 42.4265 54.9992 30 54.9992C17.5736 54.9992 7.5 44.9254 7.5 32.4992L7.5 12.451L10.4516 12.9931C13.0529 13.471 15.5367 14.2841 17.8563 15.3858C20.6676 11.3443 24.4475 8.0277 28.8617 5.77115L29.9997 5.18945ZM22.1939 17.9118C25.2682 20.0653 27.9197 22.7808 30 25.9102C32.0805 22.781 34.7325 20.0652 37.8057 17.9121C35.738 15.039 33.0755 12.6223 29.9997 10.8427C26.9242 12.6222 24.2617 15.0389 22.1939 17.9118ZM27.2482 31.0837C25.0455 26.7997 21.6398 23.2322 17.4778 20.8298C15.9167 19.9288 14.2497 19.1919 12.5 18.6424V32.4992C12.5 40.7239 18.174 47.6234 25.8212 49.4972C25.2842 47.2502 25 44.9064 25 42.4987C25 38.4567 25.7995 34.6019 27.2482 31.0837ZM31.1327 49.9629C40.2697 49.3792 47.5 41.7832 47.5 32.4987V18.6424C45.75 19.1919 44.083 19.9289 42.522 20.83C35.0317 25.1534 30 33.2399 30 42.4987C30 45.1017 30.397 47.6082 31.1327 49.9629Z"
+        fill="white"
+      />
+    </svg>
+  );
+};
+const TitleArrow = ({ className, fill }: any) => {
+  return (
+    <svg
+      width="24"
+      height="24"
+      viewBox="0 0 24 24"
+      fill="none"
+      xmlns="http://www.w3.org/2000/svg"
+    >
+      <path
+        d="M16.0037 9.41421L7.39712 18.0208L5.98291 16.6066L14.5895 8H7.00373V6H18.0037V17H16.0037V9.41421Z"
+        fill="#70B32F"
+      />
+    </svg>
   );
 };
 
@@ -171,5 +458,11 @@ export {
   Telegram,
   GoBack,
   MinusIcon,
-  PlusIcon
+  PlusIcon,
+  HeroIcon1,
+  HeroIcon2,
+  HeroIcon3,
+  AboutIcon1,
+  AboutIcon2,
+  TitleArrow
 };

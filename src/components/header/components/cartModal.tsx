@@ -39,7 +39,7 @@ const CartModal = ({ cartModal, showCartModal }: any) => {
           </div>
           <div className="modal-mid-section">
             {basket.map((item: any) => (
-              <div className="cart-modal__item">
+              <div key={item} className="cart-modal__item">
                 <div className="left-side"><img src={get(item, "img[0]")} alt="cart-item-image" /></div>
                 <div className="right-side">
                   <p>

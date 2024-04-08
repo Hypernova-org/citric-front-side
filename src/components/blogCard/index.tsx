@@ -6,8 +6,7 @@ import { Link, useLocation } from "react-router-dom";
 
 const BlogCard = ({ blog }: any) => {
   const location = useLocation()
-  const { t, get } = useHooks();
-
+  const { get, t } = useHooks();
   return (
     <div className="blog_card">
       <img className="blog_img" src={get(blog, "images[0].large")} alt="blog_img" />

@@ -8,6 +8,7 @@ import 'swiper/css';
 import 'swiper/css/free-mode';
 import 'swiper/css/pagination';
 import './style.scss'
+import { uniqueId } from 'lodash';
 
 const Catalog = () => {
   const { t, get } = useHooks()
@@ -57,7 +58,7 @@ const Catalog = () => {
             className="mySwiper desktop-carousel"
           >
             {categories.map((category) => (
-              <SwiperSlide>
+              <SwiperSlide key={category.id}>
                 <div className='catalog-category__card' key={get(category, "id")}>
                   <img src={get(category, "img")} alt={get(category, "name")} className="catalog-category__img" />
                   <p className={'category-category__title'} key={get(category, "id")}>
@@ -80,7 +81,7 @@ const Catalog = () => {
             className="mySwiper mobile-carousel"
           >
             {categories.map((category) => (
-              <SwiperSlide>
+              <SwiperSlide key={category.id}>
                 <div className='catalog-category__card' key={get(category, "id")}>
                   <img src={get(category, "img")} alt={get(category, "name")} className="catalog-category__img" />
                   <p className={'category-category__title'} key={get(category, "id")}>
@@ -99,7 +100,7 @@ const Catalog = () => {
         <div className="catalog-list">
           {
             products.map((item) => (
-              <CatalogCard {...{ item }} />
+              <CatalogCard key={uniqueId} {...{ item }} />
             ))
           }
         </div>

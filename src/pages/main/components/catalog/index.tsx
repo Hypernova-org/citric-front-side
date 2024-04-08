@@ -2,9 +2,10 @@ import { useState } from 'react'
 import { useGet, useHooks } from 'hooks'
 import { CatalogCard } from 'components';
 
-import 'swiper/css';
-import 'swiper/css/pagination';
-import './style.scss'
+import "swiper/css";
+import "swiper/css/pagination";
+import "./style.scss";
+import { HeroIcon1, HeroIcon2, HeroIcon3 } from "assets/images/icons";
 
 const Catalog = () => {
   const { t, get } = useHooks()
@@ -48,7 +49,7 @@ const Catalog = () => {
     }, ...get(categoriesData, "data", [])]
 
   return (
-    <div className='catalog-section'>
+    <div className="catalog-section">
       <h2 className="catalog-heading">{t("Katalog")}</h2>
       <div className="catalog-categories">
         {categories.map((category: any) => (
@@ -59,20 +60,17 @@ const Catalog = () => {
             {get(category, "_v") == 999 ? t(get(category, "categoryName")) : get(category, "categoryName")}
           </button>
         ))}
-
         <div className="catalog-list">
-          {
-            products.map((item) => (
-              <CatalogCard {...{ item }} />
-            ))
-          }
+          {products.map((item) => (
+            <CatalogCard key={get(item,'id')} {...{ item }} />
+          ))}
         </div>
       </div>
-      <div className='flex justify-center items-center'>
-        <button className='view-more'>{t("Yana ko’rish")}</button>
+      <div className="flex justify-center items-center">
+        <button className="view-more">{t("Yana ko’rish")}</button>
       </div>
     </div>
-  )
-}
+  );
+};
 
-export default Catalog
+export default Catalog;
