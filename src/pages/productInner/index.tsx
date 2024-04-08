@@ -2,9 +2,8 @@ import { useState } from 'react'
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Pagination } from 'swiper/modules';
 
-import { useHooks } from 'hooks'
+import { useGet, useHooks } from 'hooks'
 import { CatalogCard } from 'components'
-import { products } from 'mock'
 
 import { GoBack, PlusIcon, MinusIcon } from 'assets/images/icons'
 import CartIconWhite from 'assets/images/icons/shopping-cart-white.svg'
@@ -16,9 +15,41 @@ import './style.scss'
 import { uniqueId } from 'lodash';
 
 const ProductInner = () => {
-  const { t, get } = useHooks()
+  const { t, get, params } = useHooks()
   const [count, setCount] = useState(0)
-  const slicedData = products.slice(0, 3)
+  const [selectedCategory, setSelectedCategory] = useState({
+    categoryName: "Hammasi",
+    _v: 999,
+    _id: "1"
+  },)
+
+  const { isLoading: productsLoading, data: productsData } = useGet({
+    name: "products",
+    url: "products",
+    params: {
+      extra: {
+        category: get(selectedCategory, "_id") == "1" ? "" : get(selectedCategory, "_id")
+      }
+    },
+    onSuccess: (data) => {
+    },
+    onError: (error) => {
+    },
+  });
+
+  const slicedData = get(productsData, "data", []).length > 3 ? get(productsData, "data", []).slice(0, 3) : get(productsData, "data")
+
+  const { isLoading, data } = useGet({
+    name: `products-${get(params, "id")}`,
+    url: `products/${get(params, "id")}`,
+    onSuccess: (data) => {
+    },
+    onError: (error) => {
+    },
+  });
+
+  const productData = get(data, "data", [])
+
   return (
     <div className='container '>
       <button className='goback-button'>
@@ -33,16 +64,16 @@ const ProductInner = () => {
             modules={[Pagination]}
             className="mySwiper"
           >
-            {get(products[0], "images", []).map((i: string) => (
+            {get(productData, "images", []).map((i: string) => (
               <SwiperSlide key={i}>
-                <img src={i} alt={get(products[0], "name") + "-image"} className="catalog-carousel__images" />
+                <img src={get(i,"large")} alt={get(productData, "name") + "-image"} className="catalog-carousel__images" />
               </SwiperSlide>
             ))}
           </Swiper>
         </div>
         <div className="order-section__right">
           <div className="order-section__right-top">
-            <p className="product-name">Organik xlorella kukuni</p>
+            <p className="product-name">{get(productData, "productTitle")}</p>
           </div>
           <div className="order-section__right-mid">
             <p className="product-amount">Miqdori:</p>
@@ -65,7 +96,7 @@ const ProductInner = () => {
           </div>
           <div className="order-section__right-bottom">
             <p className="product-extract">
-              Organik bug'doy o'ti kukuni energiya va hayotiylikni bir zumda oshiradigan tabiiy, organik superfooddir. U temir, kaltsiy, magniy, kaliy va xlorofill kabi vitaminlar va minerallarga boy.
+            {get(productData, "description")}
             </p>
             <button className='add-tocart'>
               <img src={CartIconWhite} alt="cart" className="cart-icon" />
@@ -75,11 +106,15 @@ const ProductInner = () => {
         </div>
       </div>
       <div className="product-info">
-        <p className="product-info__title">Mahsulot haqida ma’lumotlar</p>
+        <p className="product-info__title">{t("Mahsulot haqida ma’lumotlar")}</p>
         <p className="product-info__desc">
-          Bug'doy o'tida ovqat hazm qilish va immunitetni yaxshilashga yordam beradigan 70 dan ortiq turli xil fermentlar mavjud. Bug'doy o'ti tarkibidagi aminokislotalar charchoq bilan kurashishga yordam beradi, antioksidantlarning yuqori miqdori esa tanadagi erkin radikallarning shikastlanishini kamaytiradi.
-
-          Bug'doy o'ti kukunini smetana yoki sharbatga qo'shish oson; Tez suratga olish uchun uni suv yoki sevimli suyuqlik bilan aralashtiring
+          {get(productData, "about")}
+        </p>
+      </div>
+      <div className="product-info">
+        <p className="product-info__title">{t("Mahsulot afzalliklari")}</p>
+        <p className="product-info__desc">
+          {get(productData, "advantages")}
         </p>
       </div>
       <h2 className="product-heading">{t("O’xshash mahsulotlar")}
@@ -87,7 +122,7 @@ const ProductInner = () => {
       </h2>
       <div className="similar-list">
         {
-          slicedData.map((item) => (
+          slicedData?.map((item) => (
             <CatalogCard key={uniqueId} className="max-w-[324px] mr-[30px] mb-[24px]" {...{ item }} />
           ))
         }

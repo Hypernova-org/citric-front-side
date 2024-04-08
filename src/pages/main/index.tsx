@@ -1,3 +1,5 @@
+import React, { useEffect, useRef } from "react";
+import { Link } from "react-router-dom";
 import ThreeBlogs from "components/threeblogs";
 import Catalog from "./components/catalog";
 import {
@@ -9,8 +11,6 @@ import {
   HeroIcon3,
 } from "assets/images/icons";
 import { AboutSection1, AboutSection2, HeroImgLaptop } from "assets/images";
-import { Link } from "react-router-dom";
-import React, { useEffect, useRef } from "react";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 const Main = () => {

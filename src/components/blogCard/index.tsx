@@ -4,25 +4,19 @@ import { useHooks } from "hooks";
 import React from "react";
 import { Link, useLocation } from "react-router-dom";
 
-const BlogCard = () => {
+const BlogCard = ({ blog }: any) => {
   const location = useLocation()
   const { get, t } = useHooks();
   return (
     <div className="blog_card">
-      <img className="blog_img" src={AboutImgLaptop} alt="blog_img" />
+      <img className="blog_img" src={get(blog, "images[0].large")} alt="blog_img" />
       <p className="blog_title">
-        Natriy pirosulfit (Natriy metabisulfit) (Xitoy) E223
+        {get(blog, "title")}
       </p>
       <p className="blog_desc">
-        Bu oziq-ovqat sanoatida keng qo'llaniladigan konservant bo'lgan bir xil
-        kimyoviy birikmaning ikkita nomidsmodpmd dsm dmk dis moso mos si dsoi
-        dsso ndsio dsnois Lorem ipsum dolor sit amet consectetur adipisicing
-        elit. Quasi autem laboriosam hic fugiat culpa similique cum, perferendis
-        explicabo esse. Aspernatur earum dicta eos eaque totam quibusdam unde
-        harum nemo blanditiis esse, voluptates facere laudantium magnam! Unde
-        esse aperiam dolorem itaque.
+        {get(blog, "description")}
       </p>
-      <Link to={location.pathname === '/blog' ? '1' : '/blog/1'} className="blog_btn">
+      <Link to={`/blog/${get(blog, "_id")}`} className="blog_btn">
         <p>{t("Batafsil ko’rish")}</p>
         <Arrow />
       </Link>

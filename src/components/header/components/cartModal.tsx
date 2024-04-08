@@ -22,14 +22,7 @@ const CartModal = ({ cartModal, showCartModal }: any) => {
     };
   }, [cartModal]);
 
-  const { isLoading, data  } = useGet({
-    name: "products",
-    url: "users/get-me/",
-    onSuccess: (data) => {
-    },
-    onError: (error) => {
-    },
-  });
+
   return (
     <div className="cart-modal">
       <div className={`modal-overlay ${cartModal ? 'show' : ''}`} onClick={() => showCartModal(false)} />
