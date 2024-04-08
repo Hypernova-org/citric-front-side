@@ -3,15 +3,52 @@ import React from "react";
 import "./_about.scss";
 import "./mobile.scss";
 import { Arrow, Comment, Download } from "assets/images/icons";
-import { useHooks } from "hooks";
+import { useGet, useHooks } from "hooks";
 
 interface CommentProps {
-  title: string;
-  img: string;
+  description: string;
   author: string;
+  image: { medium: string }[];
 }
+interface Brand {
+  image: { medium: string }[];
+}
+interface Achievement {
+  image: { medium: string }[];
+}
+
 const About = () => {
   const { t, get } = useHooks();
+  const { isLoading:brandLoading, data:dataBrand } = useGet({
+    name: "brands",
+    url: "brands",
+    onSuccess: (data) => {
+    },
+    onError: (error) => {
+    },
+  });
+  const brands: Brand[] = get(dataBrand, "data", []);
+
+  const { isLoading:achievementLoading, data:dataAchievements } = useGet({
+    name: "achievements",
+    url: "achievements",
+    onSuccess: (data) => {
+    },
+    onError: (error) => {
+    },
+  });
+  const achievements: Achievement[] = get(dataAchievements, "data", []);
+
+  const { isLoading:commentLoading, data:dataComments } = useGet({
+    name: "comments",
+    url: "comments",
+    onSuccess: (data) => {
+    },
+    onError: (error) => {
+    },
+  });
+  const comments: CommentProps[] = get(dataComments, "data", []);
+
   return (
     <div className="about_page container">
       <p className="about_page_title">{t("Kompaniya haqida")}</p>
@@ -27,107 +64,52 @@ const About = () => {
       <div className="about_page_brands">
         <p className="brands_title">{t("Biz ishlagan brendlar")}</p>
         <div className="brands_elements">
-          <picture>
-            <source media="(max-width:450px)" srcSet={AboutImgMobile} />
-            <source media="(max-width:990px)" srcSet={AboutImgTablet} />
-            <img
-              className="brands_elements_element"
-              src={AboutImgLaptop}
-              alt="Hero section img"
-            />
-          </picture>
-          <picture>
-            <source media="(max-width:450px)" srcSet={AboutImgMobile} />
-            <source media="(max-width:990px)" srcSet={AboutImgTablet} />
-            <img
-              className="brands_elements_element"
-              src={AboutImgLaptop}
-              alt="Hero section img"
-            />
-          </picture>
-          <picture>
-            <source media="(max-width:450px)" srcSet={AboutImgMobile} />
-            <source media="(max-width:990px)" srcSet={AboutImgTablet} />
-            <img
-              className="brands_elements_element"
-              src={AboutImgLaptop}
-              alt="Hero section img"
-            />
-          </picture>
-          <picture>
-            <source media="(max-width:450px)" srcSet={AboutImgMobile} />
-            <source media="(max-width:990px)" srcSet={AboutImgTablet} />
-            <img
-              className="brands_elements_element"
-              src={AboutImgLaptop}
-              alt="Hero section img"
-            />
-          </picture>
-          <picture>
-            <source media="(max-width:450px)" srcSet={AboutImgMobile} />
-            <source media="(max-width:990px)" srcSet={AboutImgTablet} />
-            <img
-              className="brands_elements_element"
-              src={AboutImgLaptop}
-              alt="Hero section img"
-            />
-          </picture>
-          <picture>
-            <source media="(max-width:450px)" srcSet={AboutImgMobile} />
-            <source media="(max-width:990px)" srcSet={AboutImgTablet} />
-            <img
-              className="brands_elements_element"
-              src={AboutImgLaptop}
-              alt="Hero section img"
-            />
-          </picture>
-          <picture>
-            <source media="(max-width:450px)" srcSet={AboutImgMobile} />
-            <source media="(max-width:990px)" srcSet={AboutImgTablet} />
-            <img
-              className="brands_elements_element"
-              src={AboutImgLaptop}
-              alt="Hero section img"
-            />
-          </picture>
-          <picture>
-            <source media="(max-width:450px)" srcSet={AboutImgMobile} />
-            <source media="(max-width:990px)" srcSet={AboutImgTablet} />
-            <img
-              className="brands_elements_element"
-              src={AboutImgLaptop}
-              alt="Hero section img"
-            />
-          </picture>
+          {brands.map((brand, index) => (
+            <picture key={index}>
+              <source media="(max-width:450px)" srcSet={brand.image[0].medium} />
+              <source media="(max-width:990px)" srcSet={brand.image[0].medium} />
+              <img
+                className="brands_elements_element"
+                src={brand.image[0].medium}
+                alt="citric.uz"
+              />
+            </picture>
+          ))}
         </div>
       </div>
       <div className="img_gallery">
         <div className="img4">
-          <img src={AboutImgLaptop} alt="" />
+          <img src={AboutImgLaptop} alt="citric.uz" />
         </div>
         <div className="img1">
-          <img src={AboutImgLaptop} alt="" />
+          <img src={AboutImgLaptop} alt="citric.uz" />
         </div>
         <div className="img3">
-          <img src={AboutImgLaptop} alt="" />
+          <img src={AboutImgLaptop} alt="citric.uz" />
         </div>
         <div className="img2">
-          <img src={AboutImgLaptop} alt="" />
+          <img src={AboutImgLaptop} alt="citric.uz" />
         </div>
       </div>
       <p className="comment_title">{t("Sertifikatlar")}</p>
       <div className="certificates">
-        <img src={AboutImgLaptop} alt="" />
-        <img src={AboutImgLaptop} alt="" />
+      {achievements.map((achievement, index) => (
+        <img src={achievement.image[0].medium} alt="citric.uz" 
+        key={index}
+        />
+      ))}
       </div>
       <p className="comment_title">{t("Mijoz fikrlari")}</p>
       <div className="about_page_comments">
+      {comments.map((comment, index) => (
         <CommentCard
-          title="Hello"
-          img="n"
-          author="advndsionivjs vjv sdjvnjsd vsjdvs jvv sjv"
+          key={index}
+          description={comment.description}
+          image={comment.image}
+          author={comment.author}
         />
-      </div>
+      ))}
+    </div>
       <button className="more_comments">{t("Yana ko'rish")}</button>
       <div className="recv_container">
         <p className="recv_text">{t("Kompaniya rekvizitlari")}</p>
@@ -146,16 +128,11 @@ const CommentCard = (props: CommentProps) => {
   return (
     <div className="comment_item">
       <Comment />
-      <p className="comment_desc">
-        3 yillik tajribaga ega Call center orqali sotuvlarni amalga oshiruvchi
-        mutaxassis kerak. Lorem, ipsum dolor sit amet consectetur adipisicing
-        elit. Iure eius eum officia possimus nemo, reiciendis, rerum ipsa
-        deleniti perspiciatis excepturi tempore unde numquam? Aliquam unde ab
-        odio harum dolores nulla? blanditiis vero quod nam illo.{props.title}
+      <p className="comment_desc">{props.description}      
       </p>
       <div className="comment_author">
-        <img className="comment_author__img" src={AboutImgMobile} alt="" />
-        <p className="comment_author__name">Sherzodbek M.</p>
+        <img className="comment_author__img" src={props.image[0].medium} alt="citric.uz" />
+        <p className="comment_author__name">{props.author}</p>
       </div>
     </div>
   );
