@@ -12,19 +12,88 @@ import { AboutSection1, AboutSection2, HeroImgLaptop } from "assets/images";
 import { Link } from "react-router-dom";
 import React, { useEffect, useRef } from "react";
 import { gsap } from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
 const Main = () => {
+  const homeRef = useRef(null);
   const boxRef = useRef(null);
   const product = useRef(null);
   const productText = useRef(null);
   const heroIcon1 = useRef(null);
   const heroIcon2 = useRef(null);
   const heroIcon3 = useRef(null);
+  const left = useRef(null);
+  const right = useRef(null);
+  const rightText = useRef(null);
+  gsap.registerPlugin(ScrollTrigger);
 
   useEffect(() => {
+    gsap.registerPlugin(ScrollTrigger);
     const box = boxRef.current;
     const cycles = document.querySelectorAll(".cycle");
+    const rightCycles = document.querySelectorAll(".right_cycle");
+    const leftCycles = document.querySelectorAll(".left_cycle");
 
-    // Scroll Animation
+    gsap.fromTo(
+      left.current,
+      { opacity: 0, y: 100 }, // From: Initial opacity and y position
+      {
+        opacity: 1,
+        y: 0,
+        duration: 1, // Duration of the animation
+        scrollTrigger: {
+          trigger: box,
+          start: "5%",
+          end: "80%",
+          scrub: 1, // Smoothly animate the timeline as the user scrolls
+        },
+      }
+    );
+
+    gsap.fromTo(
+      right.current,
+      { opacity: 0, y: 100 }, // From: Initial opacity and y position
+      {
+        opacity: 1,
+        y: 0,
+        duration: 1, // Duration of the animation
+        scrollTrigger: {
+          trigger: box,
+          start: "5%",
+          end: "80%",
+          scrub: 1, // Smoothly animate the timeline as the user scrolls
+        },
+      }
+    );
+    gsap.fromTo(
+      rightText.current,
+      { opacity: 0, y: 400 }, // From: Initial opacity and y position
+      {
+        opacity: 1,
+        y: 0,
+        duration: 1, // Duration of the animation
+        scrollTrigger: {
+          trigger: box,
+          start: "5%",
+          end: "80%",
+          scrub: 1, // Smoothly animate the timeline as the user scrolls
+        },
+      }
+    );
+    gsap.fromTo(
+      '.__left_images',
+      { opacity: 0, y: 400 }, // From: Initial opacity and y position
+      {
+        opacity: 1,
+        y: 0,
+        duration: 1, // Duration of the animation
+        scrollTrigger: {
+          trigger: box,
+          start: "5%",
+          end: "80%",
+          scrub: 1, // Smoothly animate the timeline as the user scrolls
+        },
+      }
+    );
     gsap.from(box, {
       duration: 1,
       opacity: 0,
@@ -33,14 +102,19 @@ const Main = () => {
     gsap.from(product.current, {
       duration: 1,
       y: 100,
-      delay: 0.2
+      delay: 0.2,
     });
-    gsap.fromTo(productText.current, {opacity: 0, x: 400},  {
-      duration: 1,
-      opacity: 1,
-      x: 0,
-      delay: 1
-    });
+    gsap.fromTo(
+      productText.current,
+      { opacity: 0, x: 400 },
+      {
+        duration: 1,
+        opacity: 1,
+        x: 0,
+        delay: 1,
+      }
+    );
+
     gsap.from(heroIcon1.current, {
       opacity: 1,
       scale: 0,
@@ -71,10 +145,46 @@ const Main = () => {
         }
       );
     });
+    leftCycles.forEach((circle, index) => {
+      gsap.fromTo(
+        circle,
+        { scale: 0 },
+        {
+          scale: 1,
+          duration: 1, // Duration of the animation
+          ease: "power1.inOut", // Easing function
+          delay: 0.1, // Delay based on the index
+          scrollTrigger: {
+            trigger: box,
+            start: "2%",
+            end: "70%",
+            scrub: true, // Smoothly animate the timeline as the user scrolls
+          },
+        }
+      );
+    });
+    rightCycles.forEach((circle, index) => {
+      gsap.fromTo(
+        circle,
+        { scale: 0 },
+        {
+          scale: 1,
+          duration: 1, // Duration of the animation
+          ease: "power1.inOut", // Easing function
+          delay: 0.1, // Delay based on the index
+          scrollTrigger: {
+            trigger: box,
+            start: "2%",
+            end: "70%",
+            scrub: true, // Smoothly animate the timeline as the user scrolls
+          },
+        }
+      );
+    });
   }, []);
 
   return (
-    <div className="container">
+    <div className="container" ref={homeRef}>
       <div className="hero_section" ref={boxRef}>
         <p className="hero_title" ref={productText}>
           Dextrose Monohydrate
@@ -104,11 +214,11 @@ const Main = () => {
         />
       </div>
       <div className="about_section">
-        <div className="about_section__left">
-          <div className="about_left_circles">
-            <div>
-              <div>
-                <div></div>
+        <div className="about_section__left" ref={left}>
+          <div className="about_left_circles left_cycle">
+            <div className="left_cycle">
+              <div className="left_cycle">
+                <div className="left_cycle"></div>
               </div>
             </div>
           </div>
@@ -118,17 +228,17 @@ const Main = () => {
           </div>
           <AboutIcon1 />
         </div>
-        <div className="about_section__right">
-          <div className="about_right_circles">
-            <div>
-              <div>
-                <div>
+        <div className="about_section__right" ref={right}>
+          <div className="about_right_circles right_cycle">
+            <div className="right_cycle">
+              <div className="right_cycle">
+                <div className="right_cycle">
                   <AboutIcon2 />
                 </div>
               </div>
             </div>
           </div>
-          <div className="about_right_content">
+          <div className="about_right_content" ref={rightText}>
             <h1 className="__right_title">Kompaniya haqida</h1>
             <p>Sitric.uz - yaxshi hayot uchun eng yaxshi ingredientlar!</p>
             <p>

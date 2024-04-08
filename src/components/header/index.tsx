@@ -14,7 +14,6 @@ import BurgerIcon from "assets/images/icons/burger.svg";
 
 import "./style.scss";
 import "./mobile.scss";
-import { uniqueId } from "lodash";
 
 interface INav {
   id: number;
@@ -25,7 +24,7 @@ interface INav {
 const Header = () => {
   const { t, get } = useHooks();
   const { Option } = Select;
-  const [navBarState, seacrhBarState] = useState(false);
+  const [navBarState, searchBarState] = useState(false);
   const [mobileSearchModal, showMobileSearchModal] = useState<Boolean>(false);
   const [mobileMenu, showMobileMenu] = useState<Boolean>(false);
   const [cartModal, showCartModal] = useState<Boolean>(false);
@@ -65,7 +64,7 @@ const Header = () => {
       {mobileSearchModal && (<MobileSearchModal {...{ mobileSearchModal, showMobileSearchModal }} />)}
       {mobileMenu && (<MobileMenu {...{ openMobileMenu, showMobileMenu }} />)}
 
-      <div className="flex items-center">
+      <div className="flex items-center ">
         <div className="icon-btn burger-btn mr-[16px]">
           <img
             src={BurgerIcon}
@@ -99,14 +98,14 @@ const Header = () => {
             />
           )}
           <button
-            onClick={() => seacrhBarState((prev) => !prev)}
+            onClick={() => searchBarState((prev) => !prev)}
             className="header-navbar__search-btn"
           >
             <img src={SearchIcon} alt="lens-icon" className="search-icon" />
           </button>
         </ul>
       </div>
-      <div className="flex">
+      <div className="flex items-center">
         <Select
           suffixIcon={<Arrow2 />}
           className="lang-select"
