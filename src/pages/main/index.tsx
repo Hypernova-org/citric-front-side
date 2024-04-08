@@ -29,12 +29,6 @@ const Main = () => {
       duration: 1,
       opacity: 0,
       y: 100,
-      scrollTrigger: {
-        trigger: box,
-        start: "top 80%",
-        end: "bottom 20%",
-        scrub: true,
-      },
     });
     gsap.from(product.current, {
       duration: 1,

@@ -13,6 +13,7 @@ import ArrowUp from 'assets/images/icons/arrow-up.svg'
 import 'swiper/css/pagination';
 import 'swiper/css';
 import './style.scss'
+import { uniqueId } from 'lodash';
 
 const ProductInner = () => {
   const { t, get } = useHooks()
@@ -33,7 +34,7 @@ const ProductInner = () => {
             className="mySwiper"
           >
             {get(products[0], "images", []).map((i: string) => (
-              <SwiperSlide>
+              <SwiperSlide key={i}>
                 <img src={i} alt={get(products[0], "name") + "-image"} className="catalog-carousel__images" />
               </SwiperSlide>
             ))}
@@ -87,7 +88,7 @@ const ProductInner = () => {
       <div className="similar-list">
         {
           slicedData.map((item) => (
-            <CatalogCard className="max-w-[324px] mr-[30px] mb-[24px]" {...{ item }} />
+            <CatalogCard key={uniqueId} className="max-w-[324px] mr-[30px] mb-[24px]" {...{ item }} />
           ))
         }
       </div>

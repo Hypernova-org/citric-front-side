@@ -34,7 +34,7 @@ const CatalogCard = ({ item: data, className }: any) => {
         >
           {get(data, "images", []).map((i: string) => (
             <SwiperSlide>
-              <img src={i} alt={get(data, "name") + "-image"} className="catalog-carousel__images" />
+              <img  src={i} alt={get(data, "name") + "-image"} className="catalog-carousel__images" />
             </SwiperSlide>
           ))}
         </Swiper>

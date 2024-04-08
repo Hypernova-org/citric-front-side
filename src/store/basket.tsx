@@ -25,7 +25,7 @@ export const basketSlice: StateCreator<IBasketStore, [], []> = (
 
   return {
     // basket:  [],
-    basket: JSON.parse(storage.get("basket") || "") ? JSON.parse(storage.get("basket") || "") : [],
+    basket: JSON.parse(storage.get("basket") || "[]"),
     addToBasket: (product) =>
       set((state) => {
         const existingItem = state.basket.find(

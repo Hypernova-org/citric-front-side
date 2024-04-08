@@ -25,7 +25,6 @@ export const authSlice: StateCreator<IAuthSlice, [], []> = (
       token: storage.get("token") || null,
     },
     signIn: (action: any) => {
-      console.log({action});
       
       return set((state) => {
         storage.set("token", get(action, "token", ""));

@@ -36,7 +36,7 @@ const Catalog = () => {
 
         <div className="catalog-list">
           {products.map((item) => (
-            <CatalogCard {...{ item }} />
+            <CatalogCard key={item.id} {...{ item }} />
           ))}
         </div>
       </div>

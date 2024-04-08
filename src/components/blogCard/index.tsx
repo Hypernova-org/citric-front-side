@@ -6,7 +6,6 @@ import { Link, useLocation } from "react-router-dom";
 
 const BlogCard = () => {
   const location = useLocation()
-  console.log(location)
   const { get, t } = useHooks();
   return (
     <div className="blog_card">

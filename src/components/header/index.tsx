@@ -14,6 +14,7 @@ import BurgerIcon from "assets/images/icons/burger.svg";
 
 import "./style.scss";
 import "./mobile.scss";
+import { uniqueId } from "lodash";
 
 interface INav {
   id: number;
@@ -81,7 +82,7 @@ const Header = () => {
         <ul className="header-navbar__list">
           {!navBarState ? (
             navItems.map((menu) => (
-              <li className="header-navbar__list-item">
+              <li key={menu.id} className="header-navbar__list-item">
                 <Link
                   to={get(menu, "link")}
                 >
