@@ -6,6 +6,7 @@ import "swiper/css";
 import "swiper/css/pagination";
 import "./style.scss";
 import { HeroIcon1, HeroIcon2, HeroIcon3 } from "assets/images/icons";
+import Container from 'modules/container';
 
 const Catalog = () => {
   const { t, get } = useHooks()
@@ -16,19 +17,19 @@ const Catalog = () => {
     _id: "1"
   },)
 
-  const { isLoading: productsLoading, data: productsData } = useGet({
-    name: "products",
-    url: "products",
-    params: {
-      extra: {
-        category: get(selectedCategory, "_id") == "1" ? "" : get(selectedCategory, "_id")
-      }
-    },
-    onSuccess: (data) => {
-    },
-    onError: (error) => {
-    },
-  });
+  // const { isLoading: productsLoading, data: productsData } = useGet({
+  //   name: "products",
+  //   url: "products",
+  //   params: {
+  //     extra: {
+  //       category: get(selectedCategory, "_id") == "1" ? "" : get(selectedCategory, "_id")
+  //     }
+  //   },
+  //   onSuccess: (data) => {
+  //   },
+  //   onError: (error) => {
+  //   },
+  // });
 
   const { isLoading: categoriesLoading, data: categoriesData } = useGet({
     name: "categories",
@@ -39,7 +40,7 @@ const Catalog = () => {
     },
   });
 
-  const products = get(productsData, "data", [])
+  // const products = get(productsData, "data", [])
   const categories = [
     {
       categoryName: "Hammasi",
@@ -60,13 +61,34 @@ const Catalog = () => {
           </button>
         ))}
         <div className="catalog-list">
-          {products.map((item) => (
-            <CatalogCard key={get(item,'id')} {...{ item }} />
-          ))}
+          <Container.Scroll
+            name='products'
+            url='products'
+          >
+            {({ isLoading, items, hasNextPage, fetchNextPage }, ref) => {
+              return (
+                <div className='catalog-list'>
+                  {items?.map((item) => (
+                    <CatalogCard key={get(item, 'id')} {...{ item }} />
+                  ))}
+                  {hasNextPage && (
+                    <div className="flex justify-center items-center">
+                      <button
+                        className="view-more"
+                        ref={ref}
+                        onClick={() => {
+                          fetchNextPage();
+                        }}
+                        disabled={!hasNextPage}
+                      >{t("Yana ko’rish")}</button>
+                    </div>
+                  )}
+                </div>
+              )
+            }}
+
+          </Container.Scroll>
         </div>
-      </div>
-      <div className="flex justify-center items-center">
-        <button className="view-more">{t("Yana ko’rish")}</button>
       </div>
     </div>
   );

@@ -82,3 +82,14 @@ body {
 .swiper-pagination-bullet {
   background-color: var(--Colors-Primary, #70b32f) !important;
 }
+
+::-webkit-scrollbar {
+  width: 6px;
+}
+::-webkit-scrollbar-track {
+  background: #f1f1f1;
+}
+::-webkit-scrollbar-thumb {
+  background: #F09900;
+  border-radius: 10px;
+}

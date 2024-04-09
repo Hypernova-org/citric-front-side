@@ -24,8 +24,6 @@ export const basketSlice: StateCreator<IBasketStore, [], []> = (
 ): IBasketStore => {
 
   return {
-    // basket: JSON.parse(storage.get("basket") || "") ? JSON.parse(storage.get("basket") || "") : [],
-    // basket:  [],
     basket: JSON.parse(storage.get("basket") || "[]"),
     addToBasket: (product) =>
       set((state) => {

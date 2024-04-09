@@ -16,7 +16,7 @@ interface IProps extends FieldProps<any, any> {
 const MyInput = (props: IProps) => {
   const {
     field: { value, name },
-    placeholder = "Basic Input",
+    placeholder = "",
     label,
     form: { setFieldValue, setFieldTouched, touched, errors },
     size = "large",
@@ -30,13 +30,12 @@ const MyInput = (props: IProps) => {
 
   return (
     <div className={rootClassName + " input relative"}>
-      {label ? <p className="text-[#9EA3B5] px-[12px] py-[6px] bg-[#E6ECFE] dark:bg-[#454d70] rounded-[6px] inline-block mb-[12px]">{label}</p> : null}
+      {label ? <p className="payment-input-label">{label}</p> : null}
       <Input
         type={type}
         size={size}
         placeholder={placeholder}
         name={name}
-        // status={!!touched[name] ? "error" : ""}
         status={!obtValue.length && !!touched[name] ? "error" : ""}
         value={value}
         onChange={(e) => {
@@ -47,7 +46,7 @@ const MyInput = (props: IProps) => {
         onBlur={(e) => {
           setFieldTouched(name, !!e.target.value);
         }}
-        className={className + "py-[10px] px-[15px] border-2 rounded-[12px] dark:bg-[#30354E] placeholder-[#9EA3B5] border-[#9EA3B5]"}
+        className={className}
       />
       <p>
         {errors[name] && touched[name] ? (

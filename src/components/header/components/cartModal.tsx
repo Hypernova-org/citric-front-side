@@ -1,17 +1,20 @@
 import { useEffect } from 'react';
-import ReactDOM from 'react-dom';
+import { notification } from 'antd';
 import { DeleteOutlined } from "@ant-design/icons";
-import { useGet, useHooks } from 'hooks';
+import Container from 'modules/container';
+import { useHooks } from 'hooks';
 import useStore from "store";
+import { Field } from 'formik';
+import { Fields } from 'components';
 
 import CloseIcon from "assets/images/icons/close.svg";
-import Tyubik from "assets/images/tyubik.png"
 
 import '../style.scss'
 
 const CartModal = ({ cartModal, showCartModal }: any) => {
   const { basket, removeFromBasket, updateQuantity } = useStore();
   const { t, get } = useHooks()
+
   useEffect(() => {
     if (cartModal) {
       document.body.style.overflow = 'hidden';
@@ -24,19 +27,18 @@ const CartModal = ({ cartModal, showCartModal }: any) => {
     };
   }, [cartModal]);
 
-  // const onSubmit = (values: { [key: string]: any }) => {
-  //   mutate(
-  //     { url, params, method, data: customizeData(values) },
-  //     {
-  //       onSuccess: (data) => {
-  //         onSuccess(data, reset, queryClient);
-  //         if (name) queryClient.invalidateQueries({ queryKey: [name] });
-  //       },
-  //       onError,
-  //       onSettled,
-  //     }
-  //   );
-  // };
+  const basketdata = basket.map((curr) => {
+    return (
+      {
+        id: get(curr, "product._id"),
+        amount: curr["quantity"]
+      }
+    );
+  }, []);
+
+  console.log(basket);
+  
+
   return (
     <div className={`cart-modal`}>
       <div className={`modal-overlay ${cartModal ? 'show' : ''}`} onClick={() => showCartModal(false)} />
@@ -87,13 +89,71 @@ const CartModal = ({ cartModal, showCartModal }: any) => {
             })}
           </div>
           <div className="modal-bottom-section">
-            <form
-            //  onSubmit={handleSubmit(onSubmit)}
+            <Container.Form
+              name="orders"
+              url={"orders"}
+              method={"post"}
+              fields={[
+                {
+                  name: "clientName",
+                  type: "string",
+                },
+                {
+                  name: "clientPhone",
+                  type: "string",
+                },
+                {
+                  name: "products",
+                  type: "array",
+                  value: basketdata,
+                }
+              ]}
+              onSuccess={(data, resetForm, query) => {
+                resetForm()
+                localStorage.removeItem('basket')
+                notification["success"]({
+                  message: data ? "Успешно изменен!" : "Успешно!",
+                  duration: 2,
+                });
+              }}
+              onError={(error) => {
+                notification["error"]({
+                  message: get(error, "errorMessage", "Произошло ошибка!"),
+                  duration: 2,
+                });
+                console.log("Error", error);
+              }}
             >
-              <input type="text" className="payment-input" />
-
-            </form>
-
+              {() => {
+                return (
+                  <div>
+                    <div className='relative'>
+                      <label className='payment-input-label'>{t("Ismingiz")}</label>
+                      <Field
+                        component={Fields.Input}
+                        className="payment-input mb-[12px]"
+                        name="clientName"
+                        type="text"
+                        placeholder={t("Ismingizni yozing")}
+                        size="large"
+                      />
+                    </div>
+                    <div className='relative'>
+                      <label className='payment-input-label'>{t("Telefon raqamingiz")}</label>
+                      <Field
+                        component={Fields.Input}
+                        className="payment-input"
+                        name="clientPhone"
+                        type="text"
+                        placeholder={t("+998 ** **-**-**")}
+                        size="large"
+                      />
+                    </div>
+                    <button type='submit' className='submit-form-btn'>{t("Ariza qoldirish")}</button>
+                  </div>
+                );
+              }}
+            </Container.Form>
           </div>
         </div>
       </div>

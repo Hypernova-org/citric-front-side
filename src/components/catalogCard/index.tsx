@@ -9,6 +9,7 @@ import Qop from "assets/images/qop.png"
 import 'swiper/css';
 import 'swiper/css/pagination';
 import "./style.scss"
+import { notification } from 'antd';
 
 interface ICard {
   id: number,
@@ -46,6 +47,10 @@ const CatalogCard = ({ item: data, className }: any) => {
           {/* <p className="catalog-card__price">{get(data, "price")}</p> */}
           <button className='addtocart' onClick={(e) => {
             e.stopPropagation()
+            notification["success"]({
+              message: "Успешно добавлено!",
+              duration: 2,
+            })
             return (
               addToBasket(data)
             )

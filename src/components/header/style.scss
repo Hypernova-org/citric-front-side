@@ -9,7 +9,7 @@
   padding: 12px 40px 14px 40px;
   background: var(--Colors-Grey, #f6f6f6);
   border-radius: 48px;
-  width: 600px;
+  width: 700px;
   position: relative;
 
   &__list {
@@ -227,31 +227,28 @@
     transition: transform 0.3s ease;
     transform: translateX(120%);
     border-radius: 15px;
-    overflow-y: scroll;
-    &::-webkit-scrollbar {
-      display: none;
-    }
   }
 
   .modal-top-section {
+    padding: 10px 40px;
+    border-bottom: 2px solid #f6f6f6;
     .top-part {
       display: flex;
       justify-content: space-between;
       align-items: center;
     }
-    padding: 30px 40px;
-    border-bottom: 2px solid #f6f6f6;
   }
 
   .modal-mid-section {
-    margin-top: 12px;
-    padding: 0 40px 30px 40px;
+    padding: 12px 40px 12px 40px;
     border-bottom: 2px solid #f6f6f6;
+    height: 50vh;
+    overflow-y: scroll;
   }
 
   &__title {
     color: var(--Colors-Dark-green, #0f1e00);
-    font-size: 32px;
+    font-size: 26px;
     font-style: normal;
     font-weight: 600;
     line-height: normal;
@@ -263,7 +260,7 @@
     font-style: normal;
     font-weight: 400;
     line-height: 26px;
-    margin-top: 12px;
+    margin-top: 8px;
   }
 
   &__item {
@@ -319,18 +316,50 @@
   }
 
   .modal-bottom-section {
-    height: 300px;
-    padding: 30px 40px;
+    padding: 20px 40px;
+    margin-top: auto;
     .payment-input {
       border-radius: 12px;
       background: var(--Colors-Grey, #f6f6f6);
       padding: 12px 16px;
+      padding-top: 25px;
       outline: none;
       border: none;
+      width: 100%;
+      font-size: 14px;
+      font-style: normal;
+      font-weight: 400;
+      line-height: normal;
+    }
+
+    .payment-input-label {
+      position: absolute;
+      left: 15px;
+      top: 6px;
+      color: var(--Colors-Dark-green, #0f1e00);
+      font-size: 12px;
+      font-style: normal;
+      font-weight: 400;
+      line-height: normal;
+      z-index: 99;
+    }
+
+    .submit-form-btn {
+      border-radius: 35px;
+      background: var(--Colors-Primary, #70b32f);
+      padding: 14px 0;
+      width: 100%;
+      color: var(--Colors-White, #fff);
+      font-size: 18px;
+      font-style: normal;
+      font-weight: 500;
+      line-height: 20px;
+      margin-top: 15px;
     }
   }
 
   .close-btn {
+    width: 12px;
     cursor: pointer;
   }
 }

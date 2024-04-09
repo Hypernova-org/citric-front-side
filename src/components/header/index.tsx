@@ -28,7 +28,7 @@ const Header = () => {
   const [navBarState, seacrhBarState] = useState(false);
   const [mobileSearchModal, showMobileSearchModal] = useState<Boolean>(false);
   const [mobileMenu, showMobileMenu] = useState<Boolean>(false);
-  const [cartModal, showCartModal] = useState(true);
+  const [cartModal, showCartModal] = useState(false);
 
   const openMobileMenu = (open: Boolean) => {
     const body = document.getElementsByTagName("body")[0];
@@ -37,6 +37,11 @@ const Header = () => {
   };
 
   const navItems: INav[] = [
+    {
+      id: 0,
+      link: "/",
+      title: "Asosiy sahifa",
+    },
     {
       id: 1,
       link: "/about",

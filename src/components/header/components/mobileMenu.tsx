@@ -31,6 +31,11 @@ const MobileMenu = ({ showMobileMenu, openMobileMenu, mobileMenu }: any) => {
 
   const navItems: INav[] = [
     {
+      id: 0,
+      link: "/",
+      title: "Asosiy sahifa",
+    },
+    {
       id: 1,
       link: "/about",
       title: "Kompaniya haqida",
