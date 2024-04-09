@@ -2,12 +2,8 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
-  margin: 12px 0 0 0 !important;
+  margin-top: 12px !important;
 }
-.logo-wrapper{
-  display: block;
-}
-
 .header-navbar {
   padding: 12px 40px 14px 40px;
   background: var(--Colors-Grey, #f6f6f6);
@@ -183,7 +179,7 @@
   }
 }
 
-.cart-modal {
+.cart-modal { 
   .modal-top-section {
     .top-part {
       display: flex;
