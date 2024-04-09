@@ -1,20 +1,20 @@
 import { StateCreator } from "zustand";
 import { storage } from "services";
 
-export interface IProduct {
-  id: number;
-  name: string;
-  price: number;
-}
+// export interface IProduct {
+//   _id: number;
+//   name: string;
+//   price: number;
+// }
 
 export interface IBasketItem {
-  product: IProduct;
+  product: any;
   quantity: number;
 }
 
 export interface IBasketStore {
   basket: IBasketItem[];
-  addToBasket: (product: IProduct) => void;
+  addToBasket: (product: any) => void;
   removeFromBasket: (productId: number) => void;
   updateQuantity: (productId: number, quantity: number) => void;
 }
@@ -30,7 +30,7 @@ export const basketSlice: StateCreator<IBasketStore, [], []> = (
     addToBasket: (product) =>
       set((state) => {
         const existingItem = state.basket.find(
-          (item) => item.product.id === product.id
+          (item) => item.product._id === product._id
         );
         if (existingItem) {
           existingItem.quantity += 1;
@@ -42,16 +42,16 @@ export const basketSlice: StateCreator<IBasketStore, [], []> = (
       }),
     removeFromBasket: (productId) => {
       const basketInStorage = JSON.parse(storage.get('basket') || "")
-      const updatedBasketInStorage = JSON.stringify(basketInStorage.filter((item: any) => item.product.id !== productId))
+      const updatedBasketInStorage = JSON.stringify(basketInStorage.filter((item: any) => item.product._id !== productId))
       storage.set('basket', updatedBasketInStorage)
       set((state) => ({
-        basket: state.basket.filter((item) => item.product.id !== productId),
+        basket: state.basket.filter((item) => item.product._id !== productId),
       }))
     },
     updateQuantity: (productId, quantity) =>
       set((state) => {
         const updatedBasket = state.basket.map((item) =>
-          item.product.id === productId ? { ...item, quantity } : item
+          item.product._id === productId ? { ...item, quantity } : item
         );
         storage.set("basket", JSON.stringify(updatedBasket))
         return { basket: updatedBasket };
