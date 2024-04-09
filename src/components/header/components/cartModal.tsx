@@ -54,7 +54,6 @@ const CartModal = ({ cartModal, showCartModal }: any) => {
           <div className="modal-mid-section">
             {basket.map((item: any) => {
               const product = get(item, "product")
-              console.log(get(product, "_id"));
 
               return (
                 <div key={get(product, "_id")} className="cart-modal__item">

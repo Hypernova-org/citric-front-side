@@ -5,6 +5,7 @@ import { useHooks } from "hooks";
 import { Arrow2 } from "assets/images/icons";
 import CloseIcon from "assets/images/icons/close.svg";
 import { Link } from "react-router-dom";
+import { useEffect } from "react";
 
 interface INav {
   id: number;
@@ -12,9 +13,21 @@ interface INav {
   title: string;
 }
 
-const MobileMenu = ({ showMobileMenu, openMobileMenu }: any) => {
+const MobileMenu = ({ showMobileMenu, openMobileMenu, mobileMenu }: any) => {
   const { t, get } = useHooks();
   const { Option } = Select;
+
+  useEffect(() => {
+    if (mobileMenu) {
+      document.body.style.overflow = 'hidden';
+    } else {
+      document.body.style.overflow = 'auto';
+    }
+
+    return () => {
+      document.body.style.overflow = 'auto';
+    };
+  }, [mobileMenu]);
 
   const navItems: INav[] = [
     {
@@ -40,7 +53,7 @@ const MobileMenu = ({ showMobileMenu, openMobileMenu }: any) => {
   ];
 
   return (
-    <div className="mobile-menu">
+    <div className={`mobile-menu ${mobileMenu ? 'show' : ''}`}>
       <div className="mobile-menu__top container">
         <div
           className="icon-btn close-btn mr-[10px]"

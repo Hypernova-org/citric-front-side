@@ -62,7 +62,7 @@ const Header = () => {
   return (
     <div className="header-wrapper container">
       {mobileSearchModal && (<MobileSearchModal {...{ mobileSearchModal, showMobileSearchModal }} />)}
-      {mobileMenu && (<MobileMenu {...{ openMobileMenu, showMobileMenu }} />)}
+      <MobileMenu {...{ openMobileMenu, showMobileMenu, mobileMenu }} />
       <CartModal {...{ cartModal, showCartModal }} />
 
       <div className="flex items-center">
