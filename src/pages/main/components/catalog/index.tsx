@@ -10,26 +10,13 @@ import Container from 'modules/container';
 
 const Catalog = () => {
   const { t, get } = useHooks()
+  const [page, setPage] = useState(1);
 
   const [selectedCategory, setSelectedCategory] = useState({
     categoryName: "Hammasi",
     _v: 999,
     _id: "1"
   },)
-
-  // const { isLoading: productsLoading, data: productsData } = useGet({
-  //   name: "products",
-  //   url: "products",
-  //   params: {
-  //     extra: {
-  //       category: get(selectedCategory, "_id") == "1" ? "" : get(selectedCategory, "_id")
-  //     }
-  //   },
-  //   onSuccess: (data) => {
-  //   },
-  //   onError: (error) => {
-  //   },
-  // });
 
   const { isLoading: categoriesLoading, data: categoriesData } = useGet({
     name: "categories",
@@ -40,7 +27,6 @@ const Catalog = () => {
     },
   });
 
-  // const products = get(productsData, "data", [])
   const categories = [
     {
       categoryName: "Hammasi",
@@ -61,33 +47,38 @@ const Catalog = () => {
           </button>
         ))}
         <div className="catalog-list">
-          <Container.Scroll
+          <Container.All
             name='products'
             url='products'
+            params={{
+              limit: 6,
+              page
+            }}
           >
-            {({ isLoading, items, hasNextPage, fetchNextPage }, ref) => {
+            {({ isLoading, items, meta }) => {
               return (
-                <div className='catalog-list'>
-                  {items?.map((item) => (
-                    <CatalogCard key={get(item, 'id')} {...{ item }} />
-                  ))}
-                  {hasNextPage && (
-                    <div className="flex justify-center items-center">
-                      <button
-                        className="view-more"
-                        ref={ref}
-                        onClick={() => {
-                          fetchNextPage();
-                        }}
-                        disabled={!hasNextPage}
-                      >{t("Yana ko’rish")}</button>
+                <div>
+                  <div className='catalog-list'>
+                    {items?.map((item) => (
+                      <CatalogCard key={get(item, 'id')} {...{ item }} />
+                    ))}
+                  </div>
+                  {meta && meta.perPage && (
+                    <div className="mt-[-20px] flex justify-center">
+                      <div className='flex justify-center items-center'>
+                        <button className='view-more'
+                          onClick={() => {
+                            setPage(page + 1);
+                          }}>{t("Yana ko’rish")}</button>
+                      </div>
                     </div>
                   )}
                 </div>
+
               )
             }}
 
-          </Container.Scroll>
+          </Container.All>
         </div>
       </div>
     </div>

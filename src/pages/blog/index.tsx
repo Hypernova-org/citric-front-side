@@ -2,22 +2,12 @@ import { useState } from "react";
 import { Pagination } from 'antd';
 import BlogCard from "components/blogCard";
 import Container from "modules/container";
-import { useGet, useHooks } from "hooks";
+import { useHooks } from "hooks";
 
 const Blog = () => {
-  const { get, t } = useHooks();
+  const { t } = useHooks();
   const [page, setPage] = useState();
 
-  // const { isLoading, data } = useGet({
-  //   name: "blogs",
-  //   url: "blogs",
-  //   onSuccess: (data) => {
-  //   },
-  //   onError: (error) => {
-  //   },
-  // });
-
-  // const blogData = get(data, "data", [])
   return (
     <div className="blog_page container">
       <p className="blog_page_title">{t("Blog")}</p>
@@ -39,7 +29,7 @@ const Blog = () => {
                 ))}
               </div>
               {meta && meta.perPage && (
-                <div className="p-[15px] flex justify-end">
+                <div className="mt-[-20px] flex justify-end">
                   <Pagination
                     current={meta.currentPage}
                     pageSize={meta.perPage}
@@ -55,7 +45,6 @@ const Blog = () => {
                   />
                 </div>
               )}
-              {/* <Pagination defaultCurrent={get(meta, "currentPage")} total={get(meta, "totalCount")} /> */}
             </div>
           )
         }}
