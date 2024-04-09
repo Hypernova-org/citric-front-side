@@ -1,4 +1,6 @@
 import { useEffect } from 'react';
+import ReactDOM from 'react-dom';
+import { DeleteOutlined } from "@ant-design/icons";
 import { useGet, useHooks } from 'hooks';
 import useStore from "store";
 
@@ -22,9 +24,21 @@ const CartModal = ({ cartModal, showCartModal }: any) => {
     };
   }, [cartModal]);
 
-
+  // const onSubmit = (values: { [key: string]: any }) => {
+  //   mutate(
+  //     { url, params, method, data: customizeData(values) },
+  //     {
+  //       onSuccess: (data) => {
+  //         onSuccess(data, reset, queryClient);
+  //         if (name) queryClient.invalidateQueries({ queryKey: [name] });
+  //       },
+  //       onError,
+  //       onSettled,
+  //     }
+  //   );
+  // };
   return (
-    <div className="cart-modal">
+    <div className={`cart-modal`}>
       <div className={`modal-overlay ${cartModal ? 'show' : ''}`} onClick={() => showCartModal(false)} />
       <div className={`modal-container ${cartModal ? 'show' : ''}`}>
         <div className="modal-content">
@@ -38,23 +52,48 @@ const CartModal = ({ cartModal, showCartModal }: any) => {
             <p className='cart-modal__subtitle'>{t(`Mahsulotni sotib olish uchun ma’lumotlaringizni qoldiring tez siz bilan bog’lanamiz`)}</p>
           </div>
           <div className="modal-mid-section">
-            {basket.map((item: any) => (
-              <div key={item} className="cart-modal__item">
-                <div className="left-side"><img src={get(item, "img[0]")} alt="cart-item-image" /></div>
-                <div className="right-side">
-                  <p>
-                    {get(item, "name")}
-                  </p>
-                  <div className='cart-amount-controller'>
-                    <span className='minus-amount'>-</span>
-                    <p className='counter-amount'>{get(item, "amount")}</p>
-                    <span className='plus-amount'>+</span>
+            {basket.map((item: any) => {
+              const product = get(item, "product")
+              console.log(get(product, "_id"));
+
+              return (
+                <div key={get(product, "_id")} className="cart-modal__item">
+                  <div className='flex'>
+                    <div className="left-side"><img className='object-cover' src={get(product, "images[0].small")} alt="cart-item-image" /></div>
+                    <div className="right-side">
+                      <p>
+                        {get(product, "productTitle")}
+                      </p>
+                      <div className='cart-amount-controller'>
+                        <span className='minus-amount'
+                          onClick={() => {
+                            updateQuantity(
+                              get(product, "_id"),
+                              Math.max(1, item.quantity - 1)
+                            )
+                          }}
+                        >-</span>
+                        <p className='counter-amount'>{get(item, "quantity")}</p>
+                        <span className='plus-amount'
+                          onClick={() =>
+                            updateQuantity(get(product, "_id"), item.quantity + 1)
+                          }
+                        >+</span>
+                      </div>
+                    </div>
                   </div>
+                  <div className='delete-icon' onClick={() => removeFromBasket(get(product, "_id"))}><DeleteOutlined /></div>
                 </div>
-              </div>
-            ))}
+              )
+            })}
           </div>
           <div className="modal-bottom-section">
+            <form
+            //  onSubmit={handleSubmit(onSubmit)}
+            >
+              <input type="text" className="payment-input" />
+
+            </form>
 
           </div>
         </div>

@@ -28,7 +28,7 @@ const Header = () => {
   const [navBarState, seacrhBarState] = useState(false);
   const [mobileSearchModal, showMobileSearchModal] = useState<Boolean>(false);
   const [mobileMenu, showMobileMenu] = useState<Boolean>(false);
-  const [cartModal, showCartModal] = useState<Boolean>(false);
+  const [cartModal, showCartModal] = useState(true);
 
   const openMobileMenu = (open: Boolean) => {
     const body = document.getElementsByTagName("body")[0];
@@ -61,9 +61,9 @@ const Header = () => {
 
   return (
     <div className="header-wrapper container">
-      <CartModal {...{ cartModal, showCartModal }} />
       {mobileSearchModal && (<MobileSearchModal {...{ mobileSearchModal, showMobileSearchModal }} />)}
       {mobileMenu && (<MobileMenu {...{ openMobileMenu, showMobileMenu }} />)}
+      <CartModal {...{ cartModal, showCartModal }} />
 
       <div className="flex items-center">
         <div className="icon-btn burger-btn mr-[16px]">

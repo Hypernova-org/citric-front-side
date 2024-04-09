@@ -4,6 +4,7 @@ import { Pagination } from 'swiper/modules';
 
 import { useGet, useHooks } from 'hooks'
 import { CatalogCard } from 'components'
+import useStore from "store";
 
 import { GoBack, PlusIcon, MinusIcon } from 'assets/images/icons'
 import CartIconWhite from 'assets/images/icons/shopping-cart-white.svg'
@@ -17,6 +18,8 @@ import { uniqueId } from 'lodash';
 const ProductInner = () => {
   const { t, get, params } = useHooks()
   const [count, setCount] = useState(0)
+  const { addToBasket } = useStore();
+
   const [selectedCategory, setSelectedCategory] = useState({
     categoryName: "Hammasi",
     _v: 999,
@@ -98,7 +101,9 @@ const ProductInner = () => {
             <p className="product-extract">
             {get(productData, "description")}
             </p>
-            <button className='add-tocart'>
+            <button className='add-tocart'
+             onClick={() => addToBasket(productData)}
+             >
               <img src={CartIconWhite} alt="cart" className="cart-icon" />
               <p>{t("Savatchaga qo'shish")}</p>
             </button>
