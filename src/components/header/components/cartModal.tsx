@@ -48,7 +48,7 @@ const CartModal = ({ cartModal, showCartModal }: any) => {
             <div className="top-part">
               <p className="cart-modal__title">{t("Sotib olish")}</p>
               <span className="close-btn" onClick={() => showCartModal(false)}>
-                <img src={CloseIcon} alt="close" className="close-icon" />
+                <img src={CloseIcon} alt="citric.uz" className="close-icon" />
               </span>
             </div>
             <p className='cart-modal__subtitle'>{t(`Mahsulotni sotib olish uchun ma’lumotlaringizni qoldiring tez siz bilan bog’lanamiz`)}</p>
@@ -60,7 +60,7 @@ const CartModal = ({ cartModal, showCartModal }: any) => {
               return (
                 <div key={get(product, "_id")} className="cart-modal__item">
                   <div className='flex'>
-                    <div className="left-side"><img className='object-cover' src={get(product, "images[0].small")} alt="cart-item-image" /></div>
+                    <div className="left-side"><img className='object-cover' src={get(product, "images[0].small")} alt="citric.uz" /></div>
                     <div className="right-side">
                       <p>
                         {get(product, "productTitle")}

@@ -9,7 +9,7 @@ const BlogCard = ({ blog }: any) => {
   const { get, t } = useHooks();
   return (
     <div className="blog_card">
-      <img className="blog_img" src={get(blog, "images[0].large")} alt="blog_img" />
+      <img className="blog_img" src={get(blog, "images[0].large")} alt="citric.uz" />
       <p className="blog_title">
         {get(blog, "title")}
       </p>

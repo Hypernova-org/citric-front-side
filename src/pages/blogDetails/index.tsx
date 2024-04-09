@@ -30,7 +30,7 @@ const BlogDetails = () => {
         <p className="details_body__name">
           Natriy pirosulfit (Natriy metabisulfit) (Xitoy) E223
         </p>
-        <img className="details_body__img" src={AboutImgLaptop} alt="" />'
+        <img className="details_body__img" src={AboutImgLaptop} alt="citric.uz" />'
         <p className="details_body__desc">
           These are two names for the same chemical compound, a preservative
           commonly used in the food industry These are two names for the same
@@ -50,8 +50,8 @@ const BlogDetails = () => {
           industry
         </p>
         <div className="details_images">
-          <img src={AboutImgLaptop} alt="" />
-          <img src={AboutImgLaptop} alt="" />
+          <img src={AboutImgLaptop} alt="citric.uz" />
+          <img src={AboutImgLaptop} alt="citric.uz" />
         </div>
       </div>
       <ThreeBlogs/>

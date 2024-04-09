@@ -41,7 +41,7 @@ const Footer = () => {
           </div>
         </div>
         <div className="left_bottom">
-          <img src={WhiteLogo} alt="logo" />
+          <img src={WhiteLogo} alt="citric.uz" />
           <p>{t("Sitric.uz - yaxshi hayot uchun eng yaxshi ingredientlar!")}</p>
         </div>
       </div>
