@@ -10,29 +10,18 @@ import 'swiper/css/pagination';
 import './style.scss'
 import { uniqueId } from 'lodash';
 import { useState } from 'react';
+import Container from 'modules/container';
 
 const Catalog = () => {
   const { t, get } = useHooks()
+  const [page, setPage] = useState(1);
+  const [allData, setAllData]:any = useState([]);
 
   const [selectedCategory, setSelectedCategory] = useState({
     categoryName: "Hammasi",
     _v: 999,
     _id: "1"
   },)
-
-  const { isLoading: productsLoading, data: productsData } = useGet({
-    name: "products",
-    url: "products",
-    params: {
-      extra: {
-        category: get(selectedCategory, "_id") == "1" ? "" : get(selectedCategory, "_id")
-      }
-    },
-    onSuccess: (data) => {
-    },
-    onError: (error) => {
-    },
-  });
 
   const { isLoading: categoriesLoading, data: categoriesData } = useGet({
     name: "categories",
@@ -43,13 +32,13 @@ const Catalog = () => {
     },
   });
 
-  const products = get(productsData, "data", [])
   const categories = [
     {
       categoryName: "Hammasi",
       _v: 999,
       _id: "1"
     }, ...get(categoriesData, "data", [])]
+
   return (
     <div className='catalog-page'>
       <div className="catalog-hero">
@@ -144,16 +133,41 @@ const Catalog = () => {
           ))}
         </div>
 
-        <div className="catalog-list">
-          {
-            products.map((item) => (
-              <CatalogCard key={uniqueId} {...{ item }} />
-            ))
-          }
+        <div>
+          <Container.All
+            name='products'
+            url='products'
+            params={{
+              limit: 6,
+              page
+            }}
+          >
+            {({ isLoading, items, meta }) => {
+              return (
+                <div>
+                  <div className='catalog-list'>
+                    {[...allData, ...items].map((item: any) => (
+                      <CatalogCard key={get(item, 'id')} {...{ item }} />
+                    ))}
+                  </div>
+                  {meta && meta.perPage && (
+                    <div className="mt-[-20px] flex justify-center">
+                      <div className='flex justify-center items-center'>
+                        <button className='view-more'
+                          onClick={() => {
+                            setPage(page + 1);
+                            setAllData([...allData, ...items])
+                          }}>{t("Yana ko’rish")}</button>
+                      </div>
+                    </div>
+                  )}
+                </div>
+
+              )
+            }}
+
+          </Container.All>
         </div>
-      </div>
-      <div className='flex justify-center items-center'>
-        <button className='view-more'>{t("Yana ko’rish")}</button>
       </div>
     </div>
   )

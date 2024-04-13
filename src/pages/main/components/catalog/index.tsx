@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import { useGet, useHooks } from 'hooks'
 import { CatalogCard } from 'components';
 
@@ -11,6 +11,7 @@ import Container from 'modules/container';
 const Catalog = () => {
   const { t, get } = useHooks()
   const [page, setPage] = useState(1);
+  const [allData, setAllData]: any = useState([]);
 
   const [selectedCategory, setSelectedCategory] = useState({
     categoryName: "Hammasi",
@@ -34,6 +35,7 @@ const Catalog = () => {
       _id: "1"
     }, ...get(categoriesData, "data", [])]
 
+
   return (
     <div className="catalog-section">
       <h2 className="catalog-heading">{t("Katalog")}</h2>
@@ -46,7 +48,7 @@ const Catalog = () => {
             {get(category, "_v") == 999 ? t(get(category, "categoryName")) : get(category, "categoryName")}
           </button>
         ))}
-        <div className="catalog-list">
+        <div>
           <Container.All
             name='products'
             url='products'
@@ -59,7 +61,7 @@ const Catalog = () => {
               return (
                 <div>
                   <div className='catalog-list'>
-                    {items?.map((item) => (
+                    {[...allData, ...items].map((item: any) => (
                       <CatalogCard key={get(item, 'id')} {...{ item }} />
                     ))}
                   </div>
@@ -69,12 +71,12 @@ const Catalog = () => {
                         <button className='view-more'
                           onClick={() => {
                             setPage(page + 1);
+                            setAllData([...allData, ...items])
                           }}>{t("Yana ko’rish")}</button>
                       </div>
                     </div>
                   )}
                 </div>
-
               )
             }}
 

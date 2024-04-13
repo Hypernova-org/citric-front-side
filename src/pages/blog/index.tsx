@@ -29,7 +29,7 @@ const Blog = () => {
                 ))}
               </div>
               {meta && meta.perPage && (
-                <div className="mt-[-20px] flex justify-end">
+                <div className="mt-[-20px] flex justify-center">
                   <Pagination
                     current={meta.currentPage}
                     pageSize={meta.perPage}
