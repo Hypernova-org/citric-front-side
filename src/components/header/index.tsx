@@ -3,8 +3,8 @@ import { Link } from "react-router-dom";
 import { Select, Input, Modal } from "antd";
 
 import config from "config";
-import { useHooks } from "hooks";
-import { MobileMenu, MobileSearchModal, CartModal } from "./components";
+import { useHooks, useDebounce } from "hooks";
+import { MobileMenu, MobileSearchModal, CartModal, SearchedItems } from "./components";
 
 import { Arrow2 } from "assets/images/icons";
 import Logo from "assets/images/icons/logo.png";
@@ -28,6 +28,8 @@ const Header = () => {
   const [mobileSearchModal, showMobileSearchModal] = useState<Boolean>(false);
   const [mobileMenu, showMobileMenu] = useState<Boolean>(false);
   const [cartModal, showCartModal] = useState(false);
+  const [searchName, setSearchName] = useState("");
+  const searchNameDebounced = useDebounce(searchName, 600);
 
   const openMobileMenu = (open: Boolean) => {
     const body = document.getElementsByTagName("body")[0];
@@ -63,11 +65,19 @@ const Header = () => {
     },
   ];
 
+  const searchIconClick = () => {
+    searchBarState((prev) => !prev)
+    if(navBarState) {
+      setSearchName("")
+    }
+  }
+
   return (
     <div className="header-wrapper container">
       {mobileSearchModal && (<MobileSearchModal {...{ mobileSearchModal, showMobileSearchModal }} />)}
       <MobileMenu {...{ openMobileMenu, showMobileMenu, mobileMenu }} />
       <CartModal {...{ cartModal, showCartModal }} />
+      <SearchedItems {...{navBarState,searchNameDebounced}}/>
 
       <div className="flex items-center ">
         <div className="icon-btn burger-btn mr-[16px]">
@@ -100,10 +110,11 @@ const Header = () => {
               className="header-searchbar"
               placeholder={t("Mahsulotlarni izlash")}
               type="text"
+              onChange={(i) => setSearchName(get(i,"target.value"))}
             />
           )}
           <button
-            onClick={() => searchBarState((prev) => !prev)}
+            onClick={() => searchIconClick()}
             className="header-navbar__search-btn"
           >
             <img src={SearchIcon} alt="citric.uz" className="search-icon" />
