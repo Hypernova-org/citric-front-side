@@ -101,7 +101,7 @@ const App = (props: Props) => {
         footer={null}
         onCancel={handleCancel}
       >
-        <img alt="example" style={{ width: "100%" }} src={previewImage} />
+        <img alt="citric.uz" style={{ width: "100%" }} src={previewImage} />
       </Modal>
     </>
   );

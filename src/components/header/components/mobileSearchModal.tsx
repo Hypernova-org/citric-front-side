@@ -14,7 +14,7 @@ const MobileSearchModal = ({showMobileSearchModal,mobileSearchModal}:any) => {
           className="icon-btn back-btn mr-[10px]"
           onClick={() => showMobileSearchModal(false)}
         >
-          <img src={BackIcon} alt="burger" className="burger-icon" />
+          <img src={BackIcon} alt="citric.uz" className="burger-icon" />
         </div>
         <Input
           autoFocus={mobileSearchModal && true}

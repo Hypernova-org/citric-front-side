@@ -64,7 +64,7 @@ const MobileMenu = ({ showMobileMenu, openMobileMenu, mobileMenu }: any) => {
           className="icon-btn close-btn mr-[10px]"
           onClick={() => showMobileMenu(false)}
         >
-          <img src={CloseIcon} alt="close" className="close-icon" />
+          <img src={CloseIcon} alt="citric.uz" className="close-icon" />
         </div>
         <Select
           suffixIcon={<Arrow2 />}

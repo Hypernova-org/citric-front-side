@@ -210,7 +210,7 @@ const Main = () => {
           ref={product}
           className="hero_img"
           src={HeroImgLaptop}
-          alt="Hero section img"
+          alt="citric.uz"
         />
       </div>
       <div className="about_section">
@@ -223,8 +223,8 @@ const Main = () => {
             </div>
           </div>
           <div className="__left_images">
-            <img className="about__secondImg" src={AboutSection2} alt="" />
-            <img className="about__firstImg" src={AboutSection1} alt="" />
+            <img className="about__secondImg" src={AboutSection2} alt="citric.uz" />
+            <img className="about__firstImg" src={AboutSection1} alt="citric.uz" />
           </div>
           <AboutIcon1 />
         </div>

@@ -102,9 +102,9 @@ const ProductInner = () => {
             {get(productData, "description")}
             </p>
             <button className='add-tocart'
-             onClick={() => addToBasket(productData)}
-             >
-              <img src={CartIconWhite} alt="cart" className="cart-icon" />
+              onClick={() => addToBasket(productData)}
+            >
+              <img src={CartIconWhite} alt="citric.uz" className="cart-icon" />
               <p>{t("Savatchaga qo'shish")}</p>
             </button>
           </div>
@@ -123,7 +123,7 @@ const ProductInner = () => {
         </p>
       </div>
       <h2 className="product-heading">{t("O’xshash mahsulotlar")}
-        <img src={ArrowUp} alt="arrow-up" className="text-arrow" />
+        <img src={ArrowUp} alt="citric.uz" className="text-arrow" />
       </h2>
       <div className="similar-list">
         {

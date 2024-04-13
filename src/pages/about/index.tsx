@@ -58,7 +58,7 @@ const About = () => {
         <img
           className="about_page_img"
           src={AboutImgLaptop}
-          alt="Hero section img"
+          alt="citric.uz"
         />
       </picture>
       <div className="about_page_brands">

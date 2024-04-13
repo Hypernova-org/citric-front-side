@@ -55,7 +55,7 @@ const CatalogCard = ({ item: data, className }: any) => {
               addToBasket(data)
             )
           }}>
-            <img src={CartIcon} alt="cart-image" className="cart-images" />
+            <img src={CartIcon} alt="citric.uz" className="cart-images" />
           </button>
         </div>
       </div>

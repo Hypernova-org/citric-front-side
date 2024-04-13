@@ -73,7 +73,7 @@ const Header = () => {
         <div className="icon-btn burger-btn mr-[16px]">
           <img
             src={BurgerIcon}
-            alt="burger"
+            alt="citric.uz"
             className="burger-icon"
             onClick={() => openMobileMenu(true)}
           />
@@ -106,7 +106,7 @@ const Header = () => {
             onClick={() => searchBarState((prev) => !prev)}
             className="header-navbar__search-btn"
           >
-            <img src={SearchIcon} alt="lens-icon" className="search-icon" />
+            <img src={SearchIcon} alt="citric.uz" className="search-icon" />
           </button>
         </ul>
       </div>
@@ -130,13 +130,13 @@ const Header = () => {
           className="icon-btn search-btn"
           onClick={() => showMobileSearchModal(true)}
         >
-          <img src={SearchIcon} alt="search" className="search-icon" />
+          <img src={SearchIcon} alt="citric.uz" className="search-icon" />
         </div>
         <div
           className="icon-btn cart-btn"
           onClick={() => showCartModal(true)}
         >
-          <img src={CartIcon} alt="cart" className="cart-icon" />
+          <img src={CartIcon} alt="citric.uz" className="cart-icon" />
         </div>
       </div>
     </div>
