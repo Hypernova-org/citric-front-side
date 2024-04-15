@@ -16,6 +16,7 @@ export interface IBasketStore {
   basket: IBasketItem[];
   addToBasket: (product: any) => void;
   removeFromBasket: (productId: number) => void;
+  clearBasket: any;
   updateQuantity: (productId: number, quantity: number) => void;
 }
 
@@ -44,6 +45,12 @@ export const basketSlice: StateCreator<IBasketStore, [], []> = (
       storage.set('basket', updatedBasketInStorage)
       set((state) => ({
         basket: state.basket.filter((item) => item.product._id !== productId),
+      }))
+    },
+    clearBasket: () => {
+      storage.set('basket', "[]")
+      set((state) => ({
+        basket: [],
       }))
     },
     updateQuantity: (productId, quantity) =>

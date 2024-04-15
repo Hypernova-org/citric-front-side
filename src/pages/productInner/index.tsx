@@ -92,8 +92,8 @@ const ProductInner = () => {
                   Math.max(1, item.quantity - 1)
                 )
               }> */}
-              <button disabled={count == 0} onClick={() => setCount(count - 1)}>
-                <MinusIcon className={count == 0 ? "disabledCount counter" : "counter"} />
+              <button disabled={count == 1} onClick={() => setCount(count - 1)}>
+                <MinusIcon className={count == 1 ? "disabledCount counter" : "counter"} />
               </button>
               <p className="counter-amount">{count}</p>
               {/* <button onClick={() => updateQuantity(item.product.id, item.quantity + 1)}> */}

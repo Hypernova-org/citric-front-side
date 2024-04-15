@@ -12,7 +12,7 @@ import CloseIcon from "assets/images/icons/close.svg";
 import '../style.scss'
 
 const CartModal = ({ cartModal, showCartModal }: any) => {
-  const { basket, removeFromBasket, updateQuantity } = useStore();
+  const { basket, removeFromBasket, updateQuantity, clearBasket } = useStore();
   const { t, get } = useHooks()
 
   useEffect(() => {
@@ -107,6 +107,7 @@ const CartModal = ({ cartModal, showCartModal }: any) => {
               ]}
               onSuccess={(data, resetForm, query) => {
                 resetForm()
+                clearBasket()
                 localStorage.removeItem('basket')
                 notification["success"]({
                   message: data ? "Успешно изменен!" : "Успешно!",
