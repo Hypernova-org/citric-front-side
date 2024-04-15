@@ -1,4 +1,3 @@
-import { AboutImgLaptop } from "assets/images";
 import { Arrow } from "assets/images/icons";
 import { useHooks } from "hooks";
 import React from "react";

@@ -1,6 +1,7 @@
-export { default as AboutImgLaptop } from "./about-img(laptop).webp";
-export { default as AboutImgTablet } from "./about-img(tablet).webp";
-export { default as AboutImgMobile } from "./about-img(mobile).webp";
+export { default as AboutImg1 } from "./AboutImg.png";
+export { default as AboutImg2 } from "./AboutImg2.png";
+export { default as AboutImg3 } from "./AboutImg3.png";
+export { default as AboutImg4 } from "./AboutImg4.png";
 export { default as HeroImgLaptop } from "./hero-img(laptop).webp";
 export { default as HeroImgTablet } from "./hero-img(tablet).webp";
 export { default as HeroImgMobile } from "./hero-img(mobile).webp";

@@ -1,4 +1,3 @@
-import { AboutImgLaptop } from "assets/images";
 import ThreeBlogs from "components/threeblogs";
 import { useHooks } from "hooks";
 import React from "react";
@@ -30,7 +29,7 @@ const BlogDetails = () => {
         <p className="details_body__name">
           Natriy pirosulfit (Natriy metabisulfit) (Xitoy) E223
         </p>
-        <img className="details_body__img" src={AboutImgLaptop} alt="citric.uz" />'
+        <img className="details_body__img" src={""} alt="citric.uz" />'
         <p className="details_body__desc">
           These are two names for the same chemical compound, a preservative
           commonly used in the food industry These are two names for the same
@@ -50,8 +49,8 @@ const BlogDetails = () => {
           industry
         </p>
         <div className="details_images">
-          <img src={AboutImgLaptop} alt="citric.uz" />
-          <img src={AboutImgLaptop} alt="citric.uz" />
+          <img src={""} alt="citric.uz" />
+          <img src={""} alt="citric.uz" />
         </div>
       </div>
       <ThreeBlogs/>

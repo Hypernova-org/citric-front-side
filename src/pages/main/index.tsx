@@ -13,7 +13,9 @@ import {
 import { AboutSection1, AboutSection2, HeroImgLaptop } from "assets/images";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
+import { useHooks } from "hooks";
 const Main = () => {
+  const { t, get } = useHooks();
   const homeRef = useRef(null);
   const boxRef = useRef(null);
   const product = useRef(null);
@@ -240,22 +242,15 @@ const Main = () => {
           </div>
           <div className="about_right_content" ref={rightText}>
             <h1 className="__right_title">Kompaniya haqida</h1>
-            <p>Sitric.uz - yaxshi hayot uchun eng yaxshi ingredientlar!</p>
+            <p>{t("Citric.uz - yaxshi hayot uchun eng yaxshi ingredientlar!")}</p>
             <p>
-              Sitric.uz – O‘zbekiston bozorida 2013-yildan buyon faoliyat
-              yurituvchi global texnologik kompaniya. Kompaniya oziq-ovqat
-              ingrediyentlarini ishlab chiqarish bo‘yicha jahon yetakchilarini
-              ifodalaydi.
+              {t("Citric.uz – O‘zbekiston bozorida 2013-yildan buyon faoliyat yurituvchi global texnologik kompaniya. Kompaniya oziq-ovqat ingrediyentlarini ishlab chiqarish bo‘yicha jahon yetakchilarini ifodalaydi.")}
             </p>
             <p>
-              Rivojlangan tarqatish tarmog'i, yaxshi ishlaydigan logistika,
-              konsolidatsiya omborlari Yevropa, Xitoy va MDH mamlakatlarida
-              joylashgan bo'lib, ularning sa'y-harakatlari oziq-ovqat ishlab
-              chiqaruvchilarni yuqori sifatli ingredientlar va xomashyo bilan
-              uzluksiz ta'minlashga qaratilgan.
+              {t("Rivojlangan tarqatish tarmog'i, yaxshi ishlaydigan logistika, konsolidatsiya omborlari Yevropa, Xitoy va MDH mamlakatlarida joylashgan bo'lib, ularning sa'y-harakatlari oziq-ovqat ishlab chiqaruvchilarni yuqori sifatli ingredientlar va xomashyo bilan uzluksiz ta'minlashga qaratilgan.")}
             </p>
             <Link to={"/about"}>
-              <p>Batafsil ma'lumot</p>
+              <p>{t("Batafsil ma'lumot")}</p>
               <Arrow />
             </Link>
           </div>

@@ -1,4 +1,4 @@
-import { AboutImgLaptop, AboutImgMobile, AboutImgTablet } from "assets/images";
+import { AboutImg1, AboutImg2, AboutImg3, AboutImg4 } from "assets/images";
 import React from "react";
 import "./_about.scss";
 import "./mobile.scss";
@@ -14,10 +14,26 @@ interface Brand {
   image: { medium: string }[];
 }
 interface Achievement {
-  image: { medium: string }[];
-}
+  image: { medium: string }[];}
 
 const About = () => {
+  const handleDownload = () => {
+    const fileName = 'rekvizit.pdf'; // Specify the file name
+    const url = '';
+    fetch(url)
+      .then(response => response.blob())
+      .then(blob => {
+        const url = window.URL.createObjectURL(new Blob([blob]));
+        const link = document.createElement('a');
+        link.href = url;
+        link.setAttribute('download', fileName);
+        document.body.appendChild(link);
+        link.click();
+        if (link.parentNode) {
+          link.parentNode.removeChild(link);
+        }
+      });
+  };
   const { t, get } = useHooks();
   const { isLoading:brandLoading, data:dataBrand } = useGet({
     name: "brands",
@@ -52,15 +68,7 @@ const About = () => {
   return (
     <div className="about_page container">
       <p className="about_page_title">{t("Kompaniya haqida")}</p>
-      <picture>
-        <source media="(max-width:450px)" srcSet={AboutImgMobile} />
-        <source media="(max-width:990px)" srcSet={AboutImgTablet} />
-        <img
-          className="about_page_img"
-          src={AboutImgLaptop}
-          alt="citric.uz"
-        />
-      </picture>
+      
       <div className="about_page_brands">
         <p className="brands_title">{t("Biz ishlagan brendlar")}</p>
         <div className="brands_elements">
@@ -79,16 +87,16 @@ const About = () => {
       </div>
       <div className="img_gallery">
         <div className="img4">
-          <img src={AboutImgLaptop} alt="citric.uz" />
+          <img src={AboutImg4} alt="citric.uz" />
         </div>
         <div className="img1">
-          <img src={AboutImgLaptop} alt="citric.uz" />
+          <img src={AboutImg1} alt="citric.uz" />
         </div>
         <div className="img3">
-          <img src={AboutImgLaptop} alt="citric.uz" />
+          <img src={AboutImg3} alt="citric.uz" />
         </div>
         <div className="img2">
-          <img src={AboutImgLaptop} alt="citric.uz" />
+          <img src={AboutImg2} alt="citric.uz" />
         </div>
       </div>
       <p className="comment_title">{t("Sertifikatlar")}</p>
@@ -113,7 +121,7 @@ const About = () => {
       <button className="more_comments">{t("Yana ko'rish")}</button>
       <div className="recv_container">
         <p className="recv_text">{t("Kompaniya rekvizitlari")}</p>
-        <button className="recv_btn">
+        <button className="recv_btn" onClick={handleDownload}>
           <p>{t("PDF shaklda yuklab olish")}</p>
           <Download />
         </button>
