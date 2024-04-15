@@ -1,15 +1,15 @@
-import { AboutImg1, AboutImg2, AboutImg3, AboutImg4 } from "assets/images";
-import React from "react";
-import "./_about.scss";
-import "./mobile.scss";
-import { Arrow, Comment, Download } from "assets/images/icons";
-import { useGet, useHooks } from "hooks";
+import React, { useState } from "react";
+import { Modal } from "antd";
 
-interface CommentProps {
-  description: string;
-  author: string;
-  image: { medium: string }[];
-}
+import { useGet, useHooks } from "hooks";
+import Container from "modules/container";
+import { CommentCard } from "components";
+
+import { AboutImg1, AboutImg2, AboutImg3, AboutImg4 } from "assets/images";
+import { Arrow, Comment, Download } from "assets/images/icons";
+
+import "./mobile.scss";
+import "./_about.scss";
 interface Brand {
   image: { medium: string }[];
 }
@@ -21,6 +21,12 @@ interface Video {
 }
 
 const About = () => {
+  const { t, get } = useHooks();
+  const [page, setPage] = useState(1);
+  const [allData, setAllData]: any = useState([]);
+  const [moreModal, showMoreModal]: any = useState({ open: false, data: {} });
+
+  const commentData = get(moreModal, "data.comment")
   
   const handleDownload = () => {
     const fileName = "rekvizit.pdf"; // Specify the file name
@@ -39,12 +45,11 @@ const About = () => {
         }
       });
   };
-  const { t, get } = useHooks();
   const { isLoading: brandLoading, data: dataBrand } = useGet({
     name: "brands",
     url: "brands",
-    onSuccess: (data) => {},
-    onError: (error) => {},
+    onSuccess: (data) => { },
+    onError: (error) => { },
   });
   const brands: Brand[] = get(dataBrand, "data", []);
   const { isLoading: categoriesLoading, data: dataVideo } = useGet({
@@ -59,23 +64,39 @@ const About = () => {
   const { isLoading: achievementLoading, data: dataAchievements } = useGet({
     name: "achievements",
     url: "achievements",
-    onSuccess: (data) => {},
-    onError: (error) => {},
+    onSuccess: (data) => { },
+    onError: (error) => { },
   });
   const achievements: Achievement[] = get(dataAchievements, "data", []);
+console.log(get(commentData, "author"));
 
-  const { isLoading: commentLoading, data: dataComments } = useGet({
-    name: "comments",
-    url: "comments",
-    onSuccess: (data) => {},
-    onError: (error) => {},
-  });
-  const comments: CommentProps[] = get(dataComments, "data", []);
   return (
     <div className="about_page container">
+      <Modal
+        open={moreModal.open}
+        onOk={() => showMoreModal({ open: true, data: {} })}
+        onCancel={() => showMoreModal({ open: false, data: {} })}
+        footer={null}
+        centered
+        width={500}
+        destroyOnClose
+      >
+        <div className="p-[20px]">
+          <p className="text-[22px] font-bold mb-[10px]">{t("Mijoz fikri")}</p>
+          <p className="">{commentData?.description}</p>
+          <div className="comment_author">
+            <img
+              className="comment_author__img"
+              src={get(commentData, "image[0].medium")}
+              alt="citric.uz"
+            />
+            <p className="comment_author__name">{get(commentData, "author")}</p>
+          </div>
+        </div>
+      </Modal>
       <p className="about_page_title">{t("Kompaniya haqida")}</p>
       <iframe
-      className="about_video"
+        className="about_video"
         width="100%"
         height=""
         src={video[0]?.url.replace("youtu.be/", "www.youtube.com/embed/")}
@@ -128,16 +149,45 @@ const About = () => {
       </div>
       <p className="comment_title">{t("Mijoz fikrlari")}</p>
       <div className="about_page_comments">
-        {comments.map((comment, index) => (
-          <CommentCard
-            key={index}
-            description={comment.description}
-            image={comment.image}
-            author={comment.author}
-          />
-        ))}
+        <Container.All
+          name='comments'
+          url='comments'
+          params={{
+            limit: 6,
+            page,
+          }}
+        >
+          {({ isLoading, items, meta }) => {
+            return (
+              <div>
+                <div className='catalog-list'>
+                  {[...allData, ...items].map((comment, index) => (
+                    <CommentCard
+                      onClick={() => showMoreModal({ open: true, data: { comment } })}
+                      key={index}
+                      description={comment.description}
+                      image={comment.image}
+                      author={comment.author}
+                    />
+                  ))}
+                </div>
+                {meta && page < meta.totalCount && items.length > 6 && (
+                  <div className="mt-[-20px] flex justify-center">
+                    <div className='flex justify-center items-center'>
+                      <button className='view-more'
+                        onClick={() => {
+                          setPage(page + 1);
+                          setAllData([...allData, ...items])
+                        }}>{t("Yana ko’rish")}</button>
+                    </div>
+                  </div>
+                )}
+              </div>
+
+            )
+          }}
+        </Container.All>
       </div>
-      <button className="more_comments">{t("Yana ko'rish")}</button>
       <div className="recv_container">
         <p className="recv_text">{t("Kompaniya rekvizitlari")}</p>
         <button className="recv_btn" onClick={handleDownload}>
@@ -150,20 +200,3 @@ const About = () => {
 };
 
 export default About;
-
-const CommentCard = (props: CommentProps) => {
-  return (
-    <div className="comment_item">
-      <Comment />
-      <p className="comment_desc">{props.description}</p>
-      <div className="comment_author">
-        <img
-          className="comment_author__img"
-          src={props.image[0].medium}
-          alt="citric.uz"
-        />
-        <p className="comment_author__name">{props.author}</p>
-      </div>
-    </div>
-  );
-};

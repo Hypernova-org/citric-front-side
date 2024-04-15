@@ -5,6 +5,7 @@ import Modal from "./modal";
 import Button from "./button";
 import CatalogCard from "./catalogCard";
 import CategoryBtns from "./categoryBtns";
+import CommentCard from "./commentCard";
 import Img from "./img";
 
-export { Layout, Fields, Table, Modal, Img, Button, CatalogCard, CategoryBtns };
+export { Layout, Fields, Table, Modal, Img, Button, CatalogCard, CategoryBtns, CommentCard };
