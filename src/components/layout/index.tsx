@@ -9,15 +9,22 @@ const { Content } = Layout;
 
 const App: React.FC = () => {
   const location = useLocation();
+  const showHeaderFooter =
+    location.pathname === "/" ||
+    location.pathname === "/about" ||
+    location.pathname === "/catalog" ||
+    location.pathname === "/contact" ||
+    location.pathname.startsWith("/blog") ||
+    location.pathname.startsWith("/product");
   return (
     <Layout className="h-full">
+      {!showHeaderFooter ? <></> : <Header />}
       <Layout>
-      <Header />
         <Content className="bg-[#fff]">
           <Outlet />
         </Content>
       </Layout>
-      {location.pathname === "/contact" ? <div></div> : <Footer />}
+      {!showHeaderFooter ? <></> : <Footer />}
     </Layout>
   );
 };
