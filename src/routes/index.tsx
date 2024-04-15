@@ -7,6 +7,7 @@ import PrivateRoute from "./privateRoute";
 import PublicRoute from "./publicRoute";
 import NotFound from "pages/notFound";
 import useStore from "store";
+import Loading from "components/loading";
 
 const RoutesWrapper = () => {
   const { get } = useHooks();
@@ -29,7 +30,7 @@ const RoutesWrapper = () => {
                     <Suspense
                       fallback={
                         <div className="flex justify-center items-center mt-10">
-                          Spinning
+                          <Loading/>
                         </div>
                       }
                     >
@@ -45,7 +46,7 @@ const RoutesWrapper = () => {
                         <Suspense
                           fallback={
                             <div className="flex justify-center items-center mt-10">
-                              Spinning
+                              <Loading/>
                             </div>
                           }
                         >
@@ -69,7 +70,7 @@ const RoutesWrapper = () => {
                     <Suspense
                       fallback={
                         <div className="flex justify-center items-center mt-10">
-                          Spinning
+                          <Loading/>
                         </div>
                       }
                     >
@@ -85,7 +86,7 @@ const RoutesWrapper = () => {
                         <Suspense
                           fallback={
                             <div className="flex justify-center items-center mt-10">
-                              Spinning
+                            <Loading/>
                             </div>
                           }
                         >
@@ -104,7 +105,7 @@ const RoutesWrapper = () => {
             <Suspense
               fallback={
                 <div className="flex justify-center items-center mt-10">
-                  Spinning
+                  <Loading/>
                 </div>
               }
             >
@@ -118,7 +119,7 @@ const RoutesWrapper = () => {
             <Suspense
               fallback={
                 <div className="flex justify-center items-center mt-10">
-                  Spinning
+                  <Loading/>
                 </div>
               }
             >

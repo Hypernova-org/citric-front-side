@@ -4,6 +4,7 @@ import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 // import { I18nextProvider } from "react-i18next";
 import ReactDOM from "react-dom/client";
 import App from "./App";
+import Loading from "components/loading";
 // import "services/i18n";
 
 const queryClient = new QueryClient({
@@ -24,7 +25,7 @@ const root = ReactDOM.createRoot(
 root.render(
   // <React.StrictMode>
   <QueryClientProvider client={queryClient}>
-    <React.Suspense fallback='loading'>
+    <React.Suspense fallback={<Loading/>}>
       <BrowserRouter children={<App />} />
     </React.Suspense>
   </QueryClientProvider>

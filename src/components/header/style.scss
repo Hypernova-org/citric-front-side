@@ -182,6 +182,8 @@
 
   .header-navbar__list-item {
     margin-bottom: 30px;
+    width: fit-content;
+    text-wrap: nowrap;
   }
 }
 
@@ -380,6 +382,7 @@
 
   .show {
     display: block;
+    overflow-y:  scroll !important;
     transform: translateX(0);
   }
 
@@ -401,6 +404,7 @@
     top: 70px;
     width: 100vw;
     height: fit-content;
+    overflow-y:  scroll !important;    
     background-color: white;
     transition: transform 0.3s ease;
     // transform: translate(-50%,-200%);
