@@ -2,14 +2,10 @@ import React, { useEffect, useRef } from "react";
 import { Link } from "react-router-dom";
 import ThreeBlogs from "components/threeblogs";
 import Catalog from "./components/catalog";
-import {
-  AboutIcon1,
-  AboutIcon2,
-  Arrow,
-  HeroIcon1,
-  HeroIcon2,
-  HeroIcon3,
-} from "assets/images/icons";
+import { AboutIcon1, AboutIcon2, Arrow } from "assets/images/icons";
+import HeroIcon1 from "../../assets/images/icons/HeroIcon1.png";
+import HeroIcon2 from "../../assets/images/icons/HeroIcon2.png";
+import HeroIcon3 from "../../assets/images/icons/HeroIcon3.png";
 import { AboutSection1, AboutSection2, HeroImgLaptop } from "assets/images";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
@@ -82,7 +78,7 @@ const Main = () => {
       }
     );
     gsap.fromTo(
-      '.__left_images',
+      ".__left_images",
       { opacity: 0, y: 400 }, // From: Initial opacity and y position
       {
         opacity: 1,
@@ -189,7 +185,7 @@ const Main = () => {
     <div className="container" ref={homeRef}>
       <div className="hero_section" ref={boxRef}>
         <p className="hero_title" ref={productText}>
-          Dextrose Monohydrate
+          {t("Dextrose Monohydrate")}
         </p>
         <div className="hero_circles cycle">
           <div className="cycle">
@@ -199,13 +195,13 @@ const Main = () => {
           </div>
         </div>
         <div ref={heroIcon1} className="icon-1">
-          <HeroIcon1 />
+          <img src={HeroIcon1} alt="hero icon" />
         </div>
         <div ref={heroIcon2} className="icon-2">
-          <HeroIcon2 />
+          <img src={HeroIcon2} alt="hero icon" />
         </div>
         <div ref={heroIcon3} className="icon-3">
-          <HeroIcon3 />
+          <img src={HeroIcon3} alt="hero icon" />
         </div>
 
         <img
@@ -225,8 +221,16 @@ const Main = () => {
             </div>
           </div>
           <div className="__left_images">
-            <img className="about__secondImg" src={AboutSection2} alt="citric.uz" />
-            <img className="about__firstImg" src={AboutSection1} alt="citric.uz" />
+            <img
+              className="about__secondImg"
+              src={AboutSection2}
+              alt="citric.uz"
+            />
+            <img
+              className="about__firstImg"
+              src={AboutSection1}
+              alt="citric.uz"
+            />
           </div>
           <AboutIcon1 />
         </div>
@@ -242,12 +246,18 @@ const Main = () => {
           </div>
           <div className="about_right_content" ref={rightText}>
             <h1 className="__right_title">Kompaniya haqida</h1>
-            <p>{t("Citric.uz - yaxshi hayot uchun eng yaxshi ingredientlar!")}</p>
             <p>
-              {t("Citric.uz – O‘zbekiston bozorida 2013-yildan buyon faoliyat yurituvchi global texnologik kompaniya. Kompaniya oziq-ovqat ingrediyentlarini ishlab chiqarish bo‘yicha jahon yetakchilarini ifodalaydi.")}
+              {t("Citric.uz - yaxshi hayot uchun eng yaxshi ingredientlar!")}
             </p>
             <p>
-              {t("Rivojlangan tarqatish tarmog'i, yaxshi ishlaydigan logistika, konsolidatsiya omborlari Yevropa, Xitoy va MDH mamlakatlarida joylashgan bo'lib, ularning sa'y-harakatlari oziq-ovqat ishlab chiqaruvchilarni yuqori sifatli ingredientlar va xomashyo bilan uzluksiz ta'minlashga qaratilgan.")}
+              {t(
+                "Citric.uz – O‘zbekiston bozorida 2013-yildan buyon faoliyat yurituvchi global texnologik kompaniya. Kompaniya oziq-ovqat ingrediyentlarini ishlab chiqarish bo‘yicha jahon yetakchilarini ifodalaydi."
+              )}
+            </p>
+            <p>
+              {t(
+                "Rivojlangan tarqatish tarmog'i, yaxshi ishlaydigan logistika, konsolidatsiya omborlari Yevropa, Xitoy va MDH mamlakatlarida joylashgan bo'lib, ularning sa'y-harakatlari oziq-ovqat ishlab chiqaruvchilarni yuqori sifatli ingredientlar va xomashyo bilan uzluksiz ta'minlashga qaratilgan."
+              )}
             </p>
             <Link to={"/about"}>
               <p>{t("Batafsil ma'lumot")}</p>

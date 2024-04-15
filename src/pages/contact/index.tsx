@@ -12,11 +12,11 @@ const Contact = () => {
       <div className="contact_map">
         <iframe
           title="Citric uz"
-          src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2994.597807367512!2d69.25384058495027!3d41.361094897310565!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x38ae8d9e466d1bc9%3A0x61fe770dd2699c56!2sCITRIC.UZ!5e0!3m2!1sru!2s!4v1712206559015!5m2!1sru!2s"
+          src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d5988.9402594666635!2d69.23395809357909!3d41.36386950000002!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x38ae8d9c37224a6f%3A0x9dd78134369a3788!2sCitric.uz!5e0!3m2!1sru!2s!4v1713166258314!5m2!1sru!2s"
           allowFullScreen={true}
           loading="lazy"
         ></iframe>
-        <p>{t("Toshkent shahri, Olmazor tumani, ko'ch. Jeymi, 299")}</p>
+        <p>{t("Ibrohim Ota mahalla, 100095, Toshkent Shahri")}</p>
       </div>
       <div className="contact_links">
         <span>
@@ -25,7 +25,7 @@ const Contact = () => {
         </span>
         <span>
           <p>Qo'ng'iroqlar markazi</p>
-          <a href="tel:+998977714969">+998 909706500</a>
+          <a href="tel:+998974224969">+99897-422-49-69</a>
         </span>
         <span>
           <p>Savollar uchun</p>
@@ -34,13 +34,13 @@ const Contact = () => {
         <span>
           <p>Ijtimoiy tarmoqlar</p>
           <div className="footer_links">
-            <a href="citric.uz">
+            <a href="https://www.instagram.com/citric_uz?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw==" rel="noreferrer" target="_blank">
               <Instagram />
             </a>
-            <a href="citric.uz">
+            <a href="/">
               <Facebook />
             </a>
-            <a href="citric.uz">
+            <a href="/">
               <Telegram />
             </a>
           </div>

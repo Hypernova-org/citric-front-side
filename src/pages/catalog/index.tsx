@@ -77,7 +77,7 @@ const Catalog = () => {
               '700': {
                 slidesPerView: 2,
                 spaceBetween: 10,
-                centeredSlides: true
+                // centeredSlides: true
               },
             }}
             modules={[Autoplay]}
@@ -110,7 +110,7 @@ const Catalog = () => {
             {get(categoriesData, "data", []).map((category) => (
               <SwiperSlide key={get(category, "_id")}>
                 <div className='catalog-category__card' key={get(category, "id")}>
-                  <img src={get(category, "img")} alt={get(category, "name")} className="catalog-category__img" />
+                  <img src={get(category, "images[0].medium")} alt={get(category, "name")} className="catalog-category__img" />
                   <p className={'category-category__title'} key={get(category, "id")}>
                     {get(category, "title")}
                   </p>
