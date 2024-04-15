@@ -193,6 +193,8 @@
   -webkit-box-orient: vertical;
   overflow: hidden;
   text-overflow: ellipsis;
+  max-height: 500px;
+  overflow-y: auto;
 }
 .more_comments {
   color: var(--Colors-Dark-green, #0f1e00);
