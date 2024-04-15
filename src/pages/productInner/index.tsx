@@ -18,7 +18,7 @@ import { Link } from "react-router-dom";
 
 const ProductInner = () => {
   const { t, get, params } = useHooks();
-  const [count, setCount] = useState(0);
+  const [count, setCount] = useState(1);
   const { addToBasket } = useStore();
   const [error, setError] = useState(false);
 
@@ -39,9 +39,7 @@ const ProductInner = () => {
             : get(selectedCategory, "_id"),
       },
     },
-    onSuccess: (data) => {
-      
-    },
+    onSuccess: (data) => {},
     onError: (error) => {
       setError(true);
     },
@@ -63,7 +61,6 @@ const ProductInner = () => {
     },
   });
 
-  
   const productData = get(data, "data", []);
 
   return (
@@ -85,15 +82,27 @@ const ProductInner = () => {
                 modules={[Pagination]}
                 className="mySwiper"
               >
-                {get(productData, "images", []).map((i: string) => (
-                  <SwiperSlide key={i}>
-                    <img
-                      src={get(i, "large")}
-                      alt={get(productData, "name") + "-image"}
-                      className="catalog-carousel__images"
-                    />
-                  </SwiperSlide>
-                ))}
+                <SwiperSlide>
+                  <img
+                    src={get(productData, "image1[0].large")}
+                    alt={get(productData, "name") + "-image"}
+                    className="catalog-carousel__images"
+                  />
+                </SwiperSlide>
+                <SwiperSlide>
+                  <img
+                    src={get(productData, "image2[0].large")}
+                    alt={get(productData, "name") + "-image"}
+                    className="catalog-carousel__images"
+                  />
+                </SwiperSlide>
+                <SwiperSlide>
+                  <img
+                    src={get(productData, "image3[0].large")}
+                    alt={get(productData, "name") + "-image"}
+                    className="catalog-carousel__images"
+                  />
+                </SwiperSlide>
               </Swiper>
             </div>
             <div className="order-section__right">

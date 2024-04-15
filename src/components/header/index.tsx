@@ -1,10 +1,12 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
-import { Select, Input, Modal } from "antd";
+import { Select, Input } from "antd";
+import i18next from "i18next";
 
 import config from "config";
 import { useHooks, useDebounce } from "hooks";
 import { MobileMenu, MobileSearchModal, CartModal, SearchedItems } from "./components";
+import useStore from "store";
 
 import { Arrow2 } from "assets/images/icons";
 import Logo from "assets/images/icons/logo.png";
@@ -30,6 +32,8 @@ const Header = () => {
   const [cartModal, showCartModal] = useState(false);
   const [searchName, setSearchName] = useState("");
   const searchNameDebounced = useDebounce(searchName, 600);
+  const { system } = useStore();
+
 
   const openMobileMenu = (open: Boolean) => {
     const body = document.getElementsByTagName("body")[0];
@@ -72,9 +76,15 @@ const Header = () => {
     }
   }
 
+  const changeLang = (langCode: string) => {    
+    i18next.changeLanguage(langCode);
+    window.location.reload();
+    // changeLang(langCode)
+  };
+
   return (
     <div className="header-wrapper container">
-      {mobileSearchModal && (<MobileSearchModal {...{ mobileSearchModal, showMobileSearchModal }} />)}
+      {mobileSearchModal && (<MobileSearchModal {...{ mobileSearchModal, showMobileSearchModal, searchNameDebounced, setSearchName }} />)}
       <MobileMenu {...{ openMobileMenu, showMobileMenu, mobileMenu }} />
       <CartModal {...{ cartModal, showCartModal }} />
       <SearchedItems {...{navBarState,searchNameDebounced}}/>
@@ -125,10 +135,10 @@ const Header = () => {
         <Select
           suffixIcon={<Arrow2 />}
           className="lang-select"
-          defaultValue={"uz"}
+          defaultValue={system?.lang}
           size={"large"}
           onChange={(value: any) => {
-            // changeLanguage(value);
+            changeLang(value);
           }}
         >
           {config.API_LANGUAGES.map((lang) => (

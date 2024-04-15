@@ -1,10 +1,12 @@
+import { useEffect } from "react";
 import CatalogCard from "components/catalogCard";
 import Container from "modules/container";
 import { useHooks } from "hooks";
-import { useEffect } from "react";
+
+import Nodata from "assets/images/icons/nodata.svg"
 
 const SearchedItems = ({ navBarState, searchNameDebounced }: any) => {
-  const { get } = useHooks()
+  const { get, t } = useHooks()
 
   useEffect(() => {
     if (navBarState) {
@@ -17,8 +19,6 @@ const SearchedItems = ({ navBarState, searchNameDebounced }: any) => {
       document.body.style.overflow = 'auto';
     };
   }, [navBarState]);
-
-  
 
   return (
     <div className="searched-items-wrapper">
@@ -35,12 +35,15 @@ const SearchedItems = ({ navBarState, searchNameDebounced }: any) => {
                   {items?.map((item) => (
                     <CatalogCard key={get(item, 'id')} {...{ item }} />
                   ))}
-                </div> : <></>}
+                </div>
+                  :
+                  <div className="nodata flex justify-center items-center flex-col">
+                    <img src={Nodata} alt="no-data-icon" />
+                    <p className="mt-[10px] text-center">{t("Hech qanday ma’lumot topilmadi")}</p>
+                  </div>}
               </div>
-
             )
           }}
-
         </Container.All>
       </div>
     </div>

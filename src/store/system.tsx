@@ -1,15 +1,16 @@
 import { StateCreator } from "zustand";
 import get from "lodash/get";
+import { storage } from "services";
 
 export type TTheme = "dark" | "light";
 
 export interface ISystemInitialState {
-  lang: string;
+  lang: any;
   theme: TTheme;
 }
 
 export const SystemInitialState: ISystemInitialState = {
-  lang: "uz",
+  lang: storage.get("i18nextLng"),
   theme: "light",
 };
 

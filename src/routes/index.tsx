@@ -30,7 +30,7 @@ const RoutesWrapper = () => {
                     <Suspense
                       fallback={
                         <div className="flex justify-center items-center mt-10">
-                          <Loading/>
+                          <Loading />
                         </div>
                       }
                     >
@@ -46,7 +46,7 @@ const RoutesWrapper = () => {
                         <Suspense
                           fallback={
                             <div className="flex justify-center items-center mt-10">
-                              <Loading/>
+                              <Loading />
                             </div>
                           }
                         >
@@ -70,7 +70,7 @@ const RoutesWrapper = () => {
                     <Suspense
                       fallback={
                         <div className="flex justify-center items-center mt-10">
-                          <Loading/>
+                          <Loading />
                         </div>
                       }
                     >
@@ -86,7 +86,7 @@ const RoutesWrapper = () => {
                         <Suspense
                           fallback={
                             <div className="flex justify-center items-center mt-10">
-                            <Loading/>
+                              <Loading />
                             </div>
                           }
                         >
@@ -105,7 +105,7 @@ const RoutesWrapper = () => {
             <Suspense
               fallback={
                 <div className="flex justify-center items-center mt-10">
-                  <Loading/>
+                  <Loading />
                 </div>
               }
             >
@@ -119,15 +119,15 @@ const RoutesWrapper = () => {
             <Suspense
               fallback={
                 <div className="flex justify-center items-center mt-10">
-                  <Loading/>
+                  <Loading />
                 </div>
               }
             >
               <PrivateRoute
                 children={
                   <>
-                    {" "}
-                    <NotFound />{" "}
+                    {/* <NotFound />{" "} */}
+                    "jinni qo'y"
                   </>
                 }
               />
