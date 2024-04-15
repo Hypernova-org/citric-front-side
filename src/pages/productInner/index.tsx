@@ -17,7 +17,7 @@ import { uniqueId } from 'lodash';
 
 const ProductInner = () => {
   const { t, get, params } = useHooks()
-  const [count, setCount] = useState(0)
+  const [count, setCount] = useState(1)
   const { addToBasket } = useStore();
 
   const [selectedCategory, setSelectedCategory] = useState({
@@ -67,11 +67,12 @@ const ProductInner = () => {
             modules={[Pagination]}
             className="mySwiper"
           >
-            {get(productData, "images", []).map((i: string) => (
-              <SwiperSlide key={i}>
-                <img src={get(i,"large")} alt={get(productData, "name") + "-image"} className="catalog-carousel__images" />
-              </SwiperSlide>
-            ))}
+            <SwiperSlide>
+              <img src={get(productData, "image1[0].large")} alt={get(productData, "name") + "-image"} className="catalog-carousel__images" />
+            </SwiperSlide>
+            <SwiperSlide>
+              <img src={get(productData, "image1[0].large")} alt={get(productData, "name") + "-image"} className="catalog-carousel__images" />
+            </SwiperSlide>
           </Swiper>
         </div>
         <div className="order-section__right">
@@ -99,7 +100,7 @@ const ProductInner = () => {
           </div>
           <div className="order-section__right-bottom">
             <p className="product-extract">
-            {get(productData, "description")}
+              {get(productData, "description")}
             </p>
             <button className='add-tocart'
               onClick={() => addToBasket(productData)}
@@ -110,18 +111,18 @@ const ProductInner = () => {
           </div>
         </div>
       </div>
-      <div className="product-info">
+      {get(productData, "about") && <div className="product-info">
         <p className="product-info__title">{t("Mahsulot haqida ma’lumotlar")}</p>
         <p className="product-info__desc">
           {get(productData, "about")}
         </p>
-      </div>
-      <div className="product-info">
+      </div>}
+      {get(productData, "advantages") && <div className="product-info">
         <p className="product-info__title">{t("Mahsulot afzalliklari")}</p>
         <p className="product-info__desc">
           {get(productData, "advantages")}
         </p>
-      </div>
+      </div>}
       <h2 className="product-heading">{t("O’xshash mahsulotlar")}
         <img src={ArrowUp} alt="citric.uz" className="text-arrow" />
       </h2>

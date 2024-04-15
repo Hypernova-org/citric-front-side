@@ -37,13 +37,12 @@ const Catalog = () => {
   ]
 
   console.log(selectedCategory?._id);
-  
+
   return (
     <div className="catalog-section">
       <h2 className="catalog-heading">{t("Katalog")}</h2>
       <div className="catalog-categories">
         {categories.map((category: any) => (
-          
           <button
             className={get(selectedCategory, "_id") == get(category, "_id") ? 'selectedCategory category-btn' : 'category-btn'}
             onClick={() => setSelectedCategory(category)}

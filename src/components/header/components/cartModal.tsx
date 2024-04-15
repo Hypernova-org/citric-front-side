@@ -57,7 +57,7 @@ const CartModal = ({ cartModal, showCartModal }: any) => {
               return (
                 <div key={get(product, "_id")} className="cart-modal__item">
                   <div className='flex'>
-                    <div className="left-side"><img className='object-cover' src={get(product, "images[0].small")} alt="citric.uz" /></div>
+                    <div className="left-side"><img className='object-cover' src={get(product, "image1[0].small")} alt="citric.uz" /></div>
                     <div className="right-side">
                       <p>
                         {get(product, "productTitle")}
