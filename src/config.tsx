@@ -22,7 +22,7 @@ const config: IConfig = {
     { id: 1, code: "uz", title: "O'zbekcha", short: "UZ" },
     { id: 2, code: "ru", title: "Русский", short: "RU" },
     { id: 3, code: "en", title: "English", short: "EN" },
-    { id: 4, code: "kr", title: "Кирилча", short: "KR" },
+    { id: 4, code: "kr", title: "中国", short: "CHN" },
   ],
 };
 

@@ -1,21 +1,23 @@
 import ThreeBlogs from "components/threeblogs";
 import { useGet, useHooks } from "hooks";
-import React from "react";
+import React, { useState } from "react";
 import { Link } from "react-router-dom";
 
 const BlogDetails = () => {
   const { get, t, params } = useHooks();
-
+  const [error, setError] = useState(false);
   const { isLoading, data } = useGet({
     name: `blogs-${get(params, "id")}`,
     url: `blogs/${get(params, "id")}`,
     onSuccess: (data) => {
+      setError(false);
     },
     onError: (error) => {
+      setError(true);
     },
   });
 
-  const blogData = get(data, "data")
+  const blogData = get(data, "data");
 
   return (
     <div className="details_page container">
@@ -35,22 +37,29 @@ const BlogDetails = () => {
           </svg>
           <p>{t("Orqaga")}</p>
         </Link>
-        <p className="details_date">{(get(blogData, "createdAt", "")).slice(0,10).replaceAll("-",".")}
+        <p className="details_date">
+          {get(blogData, "createdAt", "")
+            .slice(0, 10)
+            .replaceAll("-", ".")}
         </p>
       </div>
-      <div className="details_body">
-        <p className="details_body__name">
-          {get(blogData, "title")}
-        </p>
-        <img className="details_body__img" src={get(blogData, "images[0].large")} alt="citric.uz" />
-        <p className="details_body__desc">
-          {get(blogData, "description")}
-        </p>
-        {/* <div className="details_images">
-          <img src={get(blogData, "images[1].large")} alt="citric.uz" />
-          <img src={get(blogData, "images[2].large")} alt="citric.uz" />
-        </div> */}
-      </div>
+      {!error ? (
+        <div className="details_body">
+          <p className="details_body__name">{get(blogData, "title")}</p>
+          <img
+            className="details_body__img"
+            src={get(blogData, "images[0].large")}
+            alt="citric.uz"
+          />
+          <p className="details_body__desc">{get(blogData, "description")}</p>
+          {/* <div className="details_images">
+        <img src={get(blogData, "images[1].large")} alt="citric.uz" />
+        <img src={get(blogData, "images[2].large")} alt="citric.uz" />
+      </div> */}
+        </div>
+      ) : (
+        <p>{t("Bu blog mavjud emas")}</p>
+      )}
       <ThreeBlogs />
     </div>
   );

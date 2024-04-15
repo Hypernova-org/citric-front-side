@@ -60,7 +60,7 @@ const publicRoutes: IRoute[] = [
   },
   {
     path: "*",
-    title: "",
+    title: "Not found",
     element: <NotFound />,
   },
 ];
