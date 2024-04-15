@@ -15,7 +15,7 @@ import Container from 'modules/container';
 const Catalog = () => {
   const { t, get } = useHooks()
   const [page, setPage] = useState(1);
-  const [allData, setAllData]:any = useState([]);
+  const [allData, setAllData]: any = useState([]);
 
   const [selectedCategory, setSelectedCategory] = useState({
     categoryName: "Hammasi",
@@ -139,7 +139,10 @@ const Catalog = () => {
             url='products'
             params={{
               limit: 6,
-              page
+              page,
+              extra: {
+                category: selectedCategory?._id == "1" ? "" : selectedCategory?._id
+              }
             }}
           >
             {({ isLoading, items, meta }) => {
@@ -150,7 +153,7 @@ const Catalog = () => {
                       <CatalogCard key={get(item, 'id')} {...{ item }} />
                     ))}
                   </div>
-                  {meta && meta.perPage && (
+                  {meta && page < meta.totalCount && items.length > 6 && (
                     <div className="mt-[-20px] flex justify-center">
                       <div className='flex justify-center items-center'>
                         <button className='view-more'

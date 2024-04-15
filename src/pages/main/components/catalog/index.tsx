@@ -33,18 +33,21 @@ const Catalog = () => {
       categoryName: "Hammasi",
       _v: 999,
       _id: "1"
-    }, ...get(categoriesData, "data", [])]
+    }, ...get(categoriesData, "data", [])
+  ]
 
-
+  console.log(selectedCategory?._id);
+  
   return (
     <div className="catalog-section">
       <h2 className="catalog-heading">{t("Katalog")}</h2>
       <div className="catalog-categories">
         {categories.map((category: any) => (
+          
           <button
             className={get(selectedCategory, "_id") == get(category, "_id") ? 'selectedCategory category-btn' : 'category-btn'}
             onClick={() => setSelectedCategory(category)}
-            key={get(category, "id")}>
+            key={get(category, "_id")}>
             {get(category, "_v") == 999 ? t(get(category, "categoryName")) : get(category, "categoryName")}
           </button>
         ))}
@@ -54,10 +57,13 @@ const Catalog = () => {
             url='products'
             params={{
               limit: 6,
-              page
+              page,
+              extra: {
+                category: selectedCategory?._id == "1" ? "" : selectedCategory?._id
+              }
             }}
           >
-            {({ isLoading, items, meta }) => {
+            {({ items, meta }) => {
               return (
                 <div>
                   <div className='catalog-list'>
@@ -65,7 +71,7 @@ const Catalog = () => {
                       <CatalogCard key={get(item, 'id')} {...{ item }} />
                     ))}
                   </div>
-                  {meta && meta.perPage && (
+                  {meta && page < meta.totalCount && items.length > 6 && (
                     <div className="mt-[-20px] flex justify-center">
                       <div className='flex justify-center items-center'>
                         <button className='view-more'
