@@ -82,7 +82,7 @@ console.log(get(commentData, "author"));
         destroyOnClose
       >
         <div className="p-[20px]">
-          <p className="text-[22px] font-bold mb-[10px]">{t("Mijoz fikri")}</p>
+          <p className="text-[22px] font-bold mb-[10px]">{t("Mijozimiz fikri")}</p>
           <p className="">{commentData?.description}</p>
           <div className="comment_author">
             <img
