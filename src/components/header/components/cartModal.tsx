@@ -13,8 +13,8 @@ import "../style.scss";
 import { MinusIcon, PlusIcon } from "assets/images/icons";
 
 const CartModal = ({ cartModal, showCartModal }: any) => {
-  const { basket, removeFromBasket, updateQuantity } = useStore();
-  const { t, get } = useHooks();
+  const { basket, removeFromBasket, updateQuantity, clearBasket } = useStore();
+  const { t, get } = useHooks()
 
   useEffect(() => {
     if (cartModal) {
@@ -126,8 +126,9 @@ const CartModal = ({ cartModal, showCartModal }: any) => {
                 },
               ]}
               onSuccess={(data, resetForm, query) => {
-                resetForm();
-                localStorage.removeItem("basket");
+                resetForm()
+                clearBasket()
+                localStorage.removeItem('basket')
                 notification["success"]({
                   message: data ? "Успешно изменен!" : "Успешно!",
                   duration: 2,

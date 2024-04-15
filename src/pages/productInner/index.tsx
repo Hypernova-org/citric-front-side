@@ -121,12 +121,12 @@ const ProductInner = () => {
                   )
                 }> */}
                   <button
-                    disabled={count == 0}
+                    disabled={count == 1}
                     onClick={() => setCount(count - 1)}
                   >
                     <MinusIcon
                       className={
-                        count == 0 ? "disabledCount counter" : "counter"
+                        count == 1 ? "disabledCount counter" : "counter"
                       }
                     />
                   </button>
