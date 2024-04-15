@@ -74,7 +74,7 @@ const Header = () => {
 
   return (
     <div className="header-wrapper container">
-      {mobileSearchModal && (<MobileSearchModal {...{ mobileSearchModal, showMobileSearchModal }} />)}
+      {mobileSearchModal && (<MobileSearchModal {...{ mobileSearchModal, showMobileSearchModal, searchNameDebounced, setSearchName }} />)}
       <MobileMenu {...{ openMobileMenu, showMobileMenu, mobileMenu }} />
       <CartModal {...{ cartModal, showCartModal }} />
       <SearchedItems {...{navBarState,searchNameDebounced}}/>
