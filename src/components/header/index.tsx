@@ -34,8 +34,6 @@ const Header = () => {
   const searchNameDebounced = useDebounce(searchName, 600);
   const { system } = useStore();
 
-  console.log({system});
-  
 
   const openMobileMenu = (open: Boolean) => {
     const body = document.getElementsByTagName("body")[0];

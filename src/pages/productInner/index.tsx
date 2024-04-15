@@ -57,7 +57,8 @@ const ProductInner = () => {
     <div className='container '>
       <button className='goback-button'>
         <GoBack />
-        <p>{t("Orqaga")}</p></button>
+        <p>{t("Orqaga")}</p>
+      </button>
       <div className="order-section">
         <div className="order-section__left">
           <Swiper
@@ -71,7 +72,10 @@ const ProductInner = () => {
               <img src={get(productData, "image1[0].large")} alt={get(productData, "name") + "-image"} className="catalog-carousel__images" />
             </SwiperSlide>
             <SwiperSlide>
-              <img src={get(productData, "image1[0].large")} alt={get(productData, "name") + "-image"} className="catalog-carousel__images" />
+              <img src={get(productData, "image2[0].large")} alt={get(productData, "name") + "-image"} className="catalog-carousel__images" />
+            </SwiperSlide>
+            <SwiperSlide>
+              <img src={get(productData, "image3[0].large")} alt={get(productData, "name") + "-image"} className="catalog-carousel__images" />
             </SwiperSlide>
           </Swiper>
         </div>

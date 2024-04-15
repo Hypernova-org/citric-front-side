@@ -1,11 +1,15 @@
+import { useEffect } from "react";
 import { Select } from "antd";
+import i18next from "i18next";
 import config from "config";
 import { useHooks } from "hooks";
 
 import { Arrow2 } from "assets/images/icons";
 import CloseIcon from "assets/images/icons/close.svg";
 import { Link } from "react-router-dom";
-import { useEffect } from "react";
+import useStore from "store";
+
+
 
 interface INav {
   id: number;
@@ -16,6 +20,7 @@ interface INav {
 const MobileMenu = ({ showMobileMenu, openMobileMenu, mobileMenu }: any) => {
   const { t, get } = useHooks();
   const { Option } = Select;
+  const { system } = useStore();
 
   useEffect(() => {
     if (mobileMenu) {
@@ -57,6 +62,12 @@ const MobileMenu = ({ showMobileMenu, openMobileMenu, mobileMenu }: any) => {
     },
   ];
 
+  const changeLang = (langCode: string) => {    
+    i18next.changeLanguage(langCode);
+    window.location.reload();
+    // changeLang(langCode)
+  };
+
   return (
     <div className={`mobile-menu ${mobileMenu ? 'show' : ''}`}>
       <div className="mobile-menu__top container">
@@ -69,10 +80,10 @@ const MobileMenu = ({ showMobileMenu, openMobileMenu, mobileMenu }: any) => {
         <Select
           suffixIcon={<Arrow2 />}
           className="lang-select inline-block"
-          defaultValue={"uz"}
+          defaultValue={system?.lang}
           size={"large"}
           onChange={(value: any) => {
-            // changeLanguage(value);
+            changeLang(value);
           }}
         >
           {config.API_LANGUAGES.map((lang) => (
