@@ -4,8 +4,8 @@ import { useHooks } from "hooks";
 const NotFound = () => {
   const { navigate } = useHooks();
   return (
-    <div className="">
-
+    <div className="w-full">
+        "no found"
     </div>
   );
 };

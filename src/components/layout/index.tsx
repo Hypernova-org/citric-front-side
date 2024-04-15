@@ -11,8 +11,8 @@ const App: React.FC = () => {
   const location = useLocation();
   return (
     <Layout className="h-full">
-      <Header />
       <Layout>
+      <Header />
         <Content className="bg-[#fff]">
           <Outlet />
         </Content>
