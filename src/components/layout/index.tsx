@@ -24,7 +24,7 @@ const App: React.FC = () => {
           <Outlet />
         </Content>
       </Layout>
-      {!showHeaderFooter ? <></> : <Footer />}
+      {location.pathname === "/contact" || !showHeaderFooter ?  <></> : <Footer />}
     </Layout>
   );
 };
