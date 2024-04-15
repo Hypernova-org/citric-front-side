@@ -33,13 +33,10 @@ const ProductInner = () => {
     url: "products",
     params: {
       extra: {
-        category:
-          get(selectedCategory, "_id") == "1"
-            ? ""
-            : get(selectedCategory, "_id"),
+        category: get(selectedCategory, "_id") == "1" ? "" : get(selectedCategory, "_id"),
       },
     },
-    onSuccess: (data) => {},
+    onSuccess: (data) => { },
     onError: (error) => {
       setError(true);
     },

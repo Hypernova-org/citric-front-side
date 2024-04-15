@@ -24,9 +24,6 @@ const CatalogCard = ({ item: data, className }: any) => {
   const { addToBasket } = useStore()
   const { get, navigate } = useHooks()
 
-  console.log(get(data, "image1[0].large"));
-  
-
   return (
     <div className={className + ' catalog-card'} key={get(data, "id")}>
       <div className="catalog-card__images">
@@ -38,19 +35,26 @@ const CatalogCard = ({ item: data, className }: any) => {
           className="mySwiper cursor-grab"
         >
           {/* {get(data, "images", []).map((i: string) => ( */}
-            <SwiperSlide>
-              <img src={get(data, "image1[0].large")} alt={get(data, "name") + "-image"} className="catalog-carousel__images" />
-            </SwiperSlide>
-            <SwiperSlide>
-              <img src={get(data, "image2[0].large")} alt={get(data, "name") + "-image"} className="catalog-carousel__images" />
-            </SwiperSlide>
-            <SwiperSlide>
-              <img src={get(data, "image3[0].large")} alt={get(data, "name") + "-image"} className="catalog-carousel__images" />
-            </SwiperSlide>
+          <SwiperSlide>
+            <img src={get(data, "image1[0].large")} alt={get(data, "name") + "-image"} className="catalog-carousel__images" />
+          </SwiperSlide>
+          <SwiperSlide>
+            <img src={get(data, "image2[0].large")} alt={get(data, "name") + "-image"} className="catalog-carousel__images" />
+          </SwiperSlide>
+          <SwiperSlide>
+            <img src={get(data, "image3[0].large")} alt={get(data, "name") + "-image"} className="catalog-carousel__images" />
+          </SwiperSlide>
           {/* ))} */}
         </Swiper>
       </div>
-      <div className="catalog-card__bottom" onClick={() => navigate(`/product/${get(data, "_id")}`)}>
+      <div className="catalog-card__bottom" onClick={() => (
+        navigate(`/product/${get(data, "_id")}`),
+        window.scrollTo({
+          behavior: "smooth",
+          top: 0,
+          left: 0
+        })
+      )}>
         <div className="catalog-card__info">
           <p className="catalog-card__name">{get(data, "productTitle")}</p>
           {/* <p className="catalog-card__price">{get(data, "price")}</p> */}
