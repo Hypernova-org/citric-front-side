@@ -1,10 +1,22 @@
 import ThreeBlogs from "components/threeblogs";
-import { useHooks } from "hooks";
+import { useGet, useHooks } from "hooks";
 import React from "react";
 import { Link } from "react-router-dom";
 
 const BlogDetails = () => {
-  const { get, t } = useHooks();
+  const { get, t, params } = useHooks();
+
+  const { isLoading, data } = useGet({
+    name: `blogs-${get(params, "id")}`,
+    url: `blogs/${get(params, "id")}`,
+    onSuccess: (data) => {
+    },
+    onError: (error) => {
+    },
+  });
+
+  const blogData = get(data, "data")
+
   return (
     <div className="details_page container">
       <div className="details_top">
@@ -23,37 +35,23 @@ const BlogDetails = () => {
           </svg>
           <p>{t("Orqaga")}</p>
         </Link>
-        <p className="details_date">20.03.2024</p>
+        <p className="details_date">{(get(blogData, "createdAt", "")).slice(0,10).replaceAll("-",".")}
+        </p>
       </div>
       <div className="details_body">
         <p className="details_body__name">
-          Natriy pirosulfit (Natriy metabisulfit) (Xitoy) E223
+          {get(blogData, "title")}
         </p>
-        <img className="details_body__img" src={""} alt="citric.uz" />'
+        <img className="details_body__img" src={get(blogData, "images[0].large")} alt="citric.uz" />
         <p className="details_body__desc">
-          These are two names for the same chemical compound, a preservative
-          commonly used in the food industry These are two names for the same
-          chemical compound, a preservative commonly used in the food
-          industryThese are two names for the same chemical compound, a
-          preservative commonly used in the food industryThese are two names for
-          the same chemical compound, a preservative commonly used in the food
-          industryThese are two names for the same chemical compound, a
-          preservative commonly used in the food industry. These are two names
-          for the same chemical compound, a preservative commonly used in the
-          food industry These are two names for the same chemical compound, a
-          preservative commonly used in the food industryThese are two names for
-          the same chemical compound, a preservative commonly used in the food
-          industryThese are two names for the same chemical compound, a
-          preservative commonly used in the food industryThese are two names for
-          the same chemical compound, a preservative commonly used in the food
-          industry
+          {get(blogData, "description")}
         </p>
-        <div className="details_images">
-          <img src={""} alt="citric.uz" />
-          <img src={""} alt="citric.uz" />
-        </div>
+        {/* <div className="details_images">
+          <img src={get(blogData, "images[1].large")} alt="citric.uz" />
+          <img src={get(blogData, "images[2].large")} alt="citric.uz" />
+        </div> */}
       </div>
-      <ThreeBlogs/>
+      <ThreeBlogs />
     </div>
   );
 };
