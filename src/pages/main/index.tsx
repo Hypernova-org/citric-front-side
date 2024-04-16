@@ -245,7 +245,7 @@ const Main = () => {
             </div>
           </div>
           <div className="about_right_content" ref={rightText}>
-            <h1 className="__right_title">Kompaniya haqida</h1>
+            <h1 className="__right_title">{t("Kompaniya haqida")}</h1>
             <p>
               {t("Citric.uz - yaxshi hayot uchun eng yaxshi ingredientlar!")}
             </p>

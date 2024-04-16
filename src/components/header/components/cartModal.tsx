@@ -130,13 +130,13 @@ const CartModal = ({ cartModal, showCartModal }: any) => {
                 clearBasket()
                 localStorage.removeItem('basket')
                 notification["success"]({
-                  message: data ? "Успешно изменен!" : "Успешно!",
+                  message: data ? t("Успешно изменен!") : t("Успешно!"),
                   duration: 2,
                 });
               }}
               onError={(error) => {
                 notification["error"]({
-                  message: get(error, "errorMessage", "Произошло ошибка!"),
+                  message: get(error, "errorMessage", t("Произошло ошибка!")),
                   duration: 2,
                 });
                 console.log("Error", error);

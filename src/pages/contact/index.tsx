@@ -24,15 +24,15 @@ const Contact = () => {
           <a href="mailto:citricuz@gmail.com">sales@citric.uz</a>
         </span>
         <span>
-          <p>Qo'ng'iroqlar markazi</p>
+          <p>{t("Qo'ng'iroqlar markazi")}</p>
           <a href="tel:+998974224969">+99897-422-49-69</a>
         </span>
         <span>
-          <p>Savollar uchun</p>
+          <p>{t("Savollar uchun")}</p>
           <a href="mailto:help@citric.uz">help@citric.uz</a>
         </span>
         <span>
-          <p>Ijtimoiy tarmoqlar</p>
+          <p>{t("Ijtimoiy tarmoqlar")}</p>
           <div className="footer_links">
             <a href="https://www.instagram.com/citric_uz?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw==" rel="noreferrer" target="_blank">
               <Instagram />

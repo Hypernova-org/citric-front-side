@@ -19,7 +19,7 @@ const ThreeBlogs = () => {
   return (
     <div className="three_blogs">
       <div className="three_blogs_title">
-        <p className="">Blogs</p>
+        <p className="">{t("Blogs")}</p>
         <TitleArrow/>
       </div>
 
