@@ -109,26 +109,15 @@ const ProductInner = () => {
                 </p>
               </div>
               <div className="order-section__right-mid">
-                <p className="product-amount">Miqdori:</p>
+                <p className="product-amount">{t("Miqdori")}:</p>
                 <div className="amount-controller">
-                  {/* <button disabled={count == 0} onClick={() =>
-                  updateQuantity(
-                    item.product.id,
-                    Math.max(1, item.quantity - 1)
-                  )
-                }> */}
                   <button
                     disabled={count == 1}
                     onClick={() => setCount(count - 1)}
                   >
-                    <MinusIcon
-                      className={
-                        count == 1 ? "disabledCount counter" : "counter"
-                      }
-                    />
+                    <MinusIcon className={count == 1 ? "disabledCount counter" : "counter"} />
                   </button>
                   <p className="counter-amount">{count}</p>
-                  {/* <button onClick={() => updateQuantity(item.product.id, item.quantity + 1)}> */}
                   <button onClick={() => setCount(count + 1)}>
                     <PlusIcon className="counter" />
                   </button>

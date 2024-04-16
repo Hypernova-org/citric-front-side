@@ -259,7 +259,13 @@ const Main = () => {
                 "Rivojlangan tarqatish tarmog'i, yaxshi ishlaydigan logistika, konsolidatsiya omborlari Yevropa, Xitoy va MDH mamlakatlarida joylashgan bo'lib, ularning sa'y-harakatlari oziq-ovqat ishlab chiqaruvchilarni yuqori sifatli ingredientlar va xomashyo bilan uzluksiz ta'minlashga qaratilgan."
               )}
             </p>
-            <Link to={"/about"}>
+            <Link onClick={() => (
+              window.scrollTo({
+                behavior: "smooth",
+                top: 0,
+                left: 0
+              })
+            )} to={"/about"}>
               <p>{t("Batafsil ma'lumot")}</p>
               <Arrow />
             </Link>

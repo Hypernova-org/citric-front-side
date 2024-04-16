@@ -143,7 +143,7 @@ const Header = () => {
         >
           {config.API_LANGUAGES.map((lang) => (
             <Option value={get(lang, "code")}>
-              <p>{t(get(lang, "title"))}</p>
+              <p>{get(lang, "title")}</p>
             </Option>
           ))}
         </Select>
