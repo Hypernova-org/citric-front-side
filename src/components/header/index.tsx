@@ -71,12 +71,12 @@ const Header = () => {
 
   const searchIconClick = () => {
     searchBarState((prev) => !prev)
-    if(navBarState) {
+    if (navBarState) {
       setSearchName("")
     }
   }
 
-  const changeLang = (langCode: string) => {    
+  const changeLang = (langCode: string) => {
     i18next.changeLanguage(langCode);
     window.location.reload();
     // changeLang(langCode)
@@ -87,7 +87,7 @@ const Header = () => {
       {mobileSearchModal && (<MobileSearchModal {...{ mobileSearchModal, showMobileSearchModal, searchNameDebounced, setSearchName }} />)}
       <MobileMenu {...{ openMobileMenu, showMobileMenu, mobileMenu }} />
       <CartModal {...{ cartModal, showCartModal }} />
-      <SearchedItems {...{navBarState,searchNameDebounced}}/>
+      <SearchedItems {...{ navBarState, searchNameDebounced, searchBarState, setSearchName }} />
 
       <div className="flex items-center ">
         <div className="icon-btn burger-btn mr-[16px]">
@@ -120,7 +120,7 @@ const Header = () => {
               className="header-searchbar"
               placeholder={t("Mahsulotlarni izlash")}
               type="text"
-              onChange={(i) => setSearchName(get(i,"target.value"))}
+              onChange={(i) => setSearchName(get(i, "target.value"))}
             />
           )}
           <button
