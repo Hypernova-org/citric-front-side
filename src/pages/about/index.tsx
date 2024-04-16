@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Modal } from "antd";
+import { Modal } from "antd"; 
 
 import { useGet, useHooks } from "hooks";
 import Container from "modules/container";
@@ -144,7 +144,7 @@ console.log(get(commentData, "author"));
       <p className="comment_title">{t("Sertifikatlar")}</p>
       <div className="certificates">
         {achievements.map((achievement, index) => (
-          <img src={achievement.image[0].medium} alt="citric.uz" key={index} />
+          <img onContextMenu={(e)=> e.preventDefault()} src={achievement.image[0].medium} alt="citric.uz" key={index} />
         ))}
       </div>
       <p className="comment_title">{t("Mijoz fikrlari")}</p>
