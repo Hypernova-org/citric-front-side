@@ -5,7 +5,7 @@ import { useHooks } from "hooks";
 
 import Nodata from "assets/images/icons/nodata.svg"
 
-const SearchedItems = ({ navBarState, searchNameDebounced }: any) => {
+const SearchedItems = ({ navBarState, searchNameDebounced, searchBarState, setSearchName }: any) => {
   const { get, t } = useHooks()
 
   useEffect(() => {
@@ -20,9 +20,16 @@ const SearchedItems = ({ navBarState, searchNameDebounced }: any) => {
     };
   }, [navBarState]);
 
+  const searchIconClick = () => {
+    searchBarState((prev: any) => !prev)
+    if(navBarState) {
+      setSearchName("")
+    }
+  }
+
   return (
     <div className="searched-items-wrapper">
-      <div className={`searched-items-overlay ${navBarState ? 'show' : ''}`} />
+      <div className={`searched-items-overlay ${navBarState ? 'show' : ''}`} onClick={() => searchIconClick()}/>
       <div className={`searched-items-container ${navBarState ? 'show' : ''}`}>
         <Container.All
           name='searched-products'

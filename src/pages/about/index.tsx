@@ -68,7 +68,6 @@ const About = () => {
     onError: (error) => { },
   });
   const achievements: Achievement[] = get(dataAchievements, "data", []);
-console.log(get(commentData, "author"));
 
   return (
     <div className="about_page container">
@@ -83,7 +82,7 @@ console.log(get(commentData, "author"));
       >
         <div className="p-[20px]">
           <p className="text-[22px] font-bold mb-[10px]">{t("Mijozimiz fikri")}</p>
-          <p className="">{commentData?.description}</p>
+          <p className="overflow-y-auto h-[60vh]">{commentData?.description}</p>
           <div className="comment_author">
             <img
               className="comment_author__img"
