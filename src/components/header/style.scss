@@ -12,12 +12,17 @@
   padding: 12px 40px 14px 40px;
   background: var(--Colors-Grey, #f6f6f6);
   border-radius: 48px;
-  width: 700px;
+  width: fit-content;
+  justify-content: center;
   position: relative;
 
   &__list {
+    margin: 0 15px;
     display: flex;
     align-items: center;
+    place-self: center;
+    place-content: center;
+
 
     // .ant-input {
     //   outline: none !important;

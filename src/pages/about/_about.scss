@@ -194,11 +194,16 @@
   line-height: 32px; /* 177.778% */
   margin-top: 45px;
   display: -webkit-box;
+  height: 350px;
   max-width: 100%;
   -webkit-line-clamp: 6;
   -webkit-box-orient: vertical;
   overflow: hidden;
   text-overflow: ellipsis;
+}
+.comment_more{
+  color: #70b32f;
+  font-size: 15px;
 }
 .more_comments {
   color: var(--Colors-Dark-green, #0f1e00);

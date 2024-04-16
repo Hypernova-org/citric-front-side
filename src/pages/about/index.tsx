@@ -1,5 +1,7 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Modal } from "antd";
+import { gsap } from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
 
 import { useGet, useHooks } from "hooks";
 import Container from "modules/container";
@@ -10,6 +12,7 @@ import { Arrow, Comment, Download } from "assets/images/icons";
 
 import "./mobile.scss";
 import "./_about.scss";
+import Loading from "components/loading";
 interface Brand {
   image: { medium: string }[];
 }
@@ -21,13 +24,121 @@ interface Video {
 }
 
 const About = () => {
+  let mm = gsap.matchMedia();
   const { t, get } = useHooks();
   const [page, setPage] = useState(1);
   const [allData, setAllData]: any = useState([]);
   const [moreModal, showMoreModal]: any = useState({ open: false, data: {} });
 
-  const commentData = get(moreModal, "data.comment")
-  
+  useEffect(() => {
+    gsap.registerPlugin(ScrollTrigger);
+    const title = document.querySelectorAll(".about_page_title");
+    const video = document.querySelectorAll(".about_video");
+    const brands = document.querySelectorAll(".about_page_brands");
+    console.log(brands);
+    const about = document.querySelectorAll(".about_page");
+    const brandsTitle = document.querySelectorAll(".about_page");
+    const img1 = document.querySelectorAll(".img1");
+    const img2 = document.querySelectorAll(".img2");
+    const img3 = document.querySelectorAll(".img3");
+    const img4 = document.querySelectorAll(".img4");
+    const gallery = document.querySelectorAll(".img_gallery");
+    mm.add("(min-width: 800px)", () => {
+      gsap.from(title, {
+        duration: 1,
+        opacity: 0,
+        y: 50,
+      });
+      gsap.from(video, {
+        duration: 1,
+        delay: 1,
+        opacity: 0,
+        y: 40,
+      });
+      gsap.fromTo(
+        brands,
+        { opacity: 0, y: 100 }, // From: Initial opacity and y position
+        {
+          opacity: 1,
+          y: 0,
+          duration: 1, // Duration of the animation
+          scrollTrigger: {
+            trigger: video,
+            start: "bottom 90%",
+            end: "90%",
+            scrub: 1, // Smoothly animate the timeline as the user scrolls
+          },
+        }
+      );
+      gsap.fromTo(
+        img1,
+        { opacity: 0, x: -100 }, // From: Initial opacity and y position
+        {
+          opacity: 1,
+          x: 0,
+          duration: 1, // Duration of the animation
+          scrollTrigger: {
+            trigger: brands,
+            // markers: true,
+            start: "bottom 70%",
+            end: "100%",
+            scrub: 2, // Smoothly animate the timeline as the user scrolls
+          },
+        }
+      );
+      gsap.fromTo(
+        img2,
+        { opacity: 0, x: 100 }, // From: Initial opacity and y position
+        {
+          opacity: 1,
+          x: 0,
+          duration: 1, // Duration of the animation
+          scrollTrigger: {
+            trigger: brands,
+            // markers: true,
+            start: "bottom 70%",
+            end: "100%",
+            scrub: 2, // Smoothly animate the timeline as the user scrolls
+          },
+        }
+      );
+      gsap.fromTo(
+        img3,
+        { opacity: 0, x: -100 }, // From: Initial opacity and y position
+        {
+          opacity: 1,
+          x: 0,
+          duration: 1, // Duration of the animation
+          scrollTrigger: {
+            trigger: gallery,
+            // markers: true,
+            start: "middle 25%",
+            end: "35%",
+            scrub: 1, // Smoothly animate the timeline as the user scrolls
+          },
+        }
+      );
+      gsap.fromTo(
+        img4,
+        { opacity: 0, x: 100 }, // From: Initial opacity and y position
+        {
+          opacity: 1,
+          x: 0,
+          duration: 1, // Duration of the animation
+          scrollTrigger: {
+            trigger: gallery,
+            // markers: true,
+            start: "middle 25%",
+            end: "35%",
+            scrub: 1, // Smoothly animate the timeline as the user scrolls
+          },
+        }
+      );
+    });
+  }, []);
+
+  const commentData = get(moreModal, "data.comment");
+
   const handleDownload = () => {
     const fileName = "rekvizit.pdf"; // Specify the file name
     const url = "https://api.citric.uz/rekvizit";
@@ -48,29 +159,27 @@ const About = () => {
   const { isLoading: brandLoading, data: dataBrand } = useGet({
     name: "brands",
     url: "brands",
-    onSuccess: (data) => { },
-    onError: (error) => { },
+    onSuccess: (data) => {},
+    onError: (error) => {},
   });
   const brands: Brand[] = get(dataBrand, "data", []);
   const { isLoading: categoriesLoading, data: dataVideo } = useGet({
     name: "video",
     url: "video",
-    onSuccess: (data) => {
-    },
-    onError: (error) => {
-    },
+    onSuccess: (data) => {},
+    onError: (error) => {},
   });
   const video: Video[] = get(dataVideo, "data", []);
   const { isLoading: achievementLoading, data: dataAchievements } = useGet({
     name: "achievements",
     url: "achievements",
-    onSuccess: (data) => { },
-    onError: (error) => { },
+    onSuccess: (data) => {},
+    onError: (error) => {},
   });
   const achievements: Achievement[] = get(dataAchievements, "data", []);
 
   return (
-    <div className="about_page container">
+    <div className="about_page container overflow-x-clip">
       <Modal
         open={moreModal.open}
         onOk={() => showMoreModal({ open: true, data: {} })}
@@ -81,7 +190,9 @@ const About = () => {
         destroyOnClose
       >
         <div className="p-[20px]">
-          <p className="text-[22px] font-bold mb-[10px]">{t("Mijozimiz fikri")}</p>
+          <p className="text-[22px] font-bold mb-[10px]">
+            {t("Mijozimiz fikri")}
+          </p>
           <p className="overflow-y-auto h-[60vh]">{commentData?.description}</p>
           <div className="comment_author">
             <img
@@ -98,6 +209,7 @@ const About = () => {
         className="about_video"
         width="100%"
         height=""
+        loading="eager"
         src={video[0]?.url.replace("youtu.be/", "www.youtube.com/embed/")}
         title="YouTube video player"
         allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
@@ -143,14 +255,19 @@ const About = () => {
       <p className="comment_title">{t("Sertifikatlar")}</p>
       <div className="certificates">
         {achievements.map((achievement, index) => (
-          <img src={achievement.image[0].medium} alt="citric.uz" key={index} />
+          <img
+            onContextMenu={(e) => e.preventDefault()}
+            src={achievement.image[0].medium}
+            alt="citric.uz"
+            key={index}
+          />
         ))}
       </div>
       <p className="comment_title">{t("Mijoz fikrlari")}</p>
       <div className="about_page_comments">
         <Container.All
-          name='comments'
-          url='comments'
+          name="comments"
+          url="comments"
           params={{
             limit: 6,
             page,
@@ -159,10 +276,12 @@ const About = () => {
           {({ isLoading, items, meta }) => {
             return (
               <div>
-                <div className='catalog-list'>
+                <div className="catalog-list">
                   {[...allData, ...items].map((comment, index) => (
                     <CommentCard
-                      onClick={() => showMoreModal({ open: true, data: { comment } })}
+                      onClick={() =>
+                        showMoreModal({ open: true, data: { comment } })
+                      }
                       key={index}
                       description={comment.description}
                       image={comment.image}
@@ -172,18 +291,21 @@ const About = () => {
                 </div>
                 {meta && page < meta.totalCount && items.length > 6 && (
                   <div className="mt-[-20px] flex justify-center">
-                    <div className='flex justify-center items-center'>
-                      <button className='view-more'
+                    <div className="flex justify-center items-center">
+                      <button
+                        className="view-more"
                         onClick={() => {
                           setPage(page + 1);
-                          setAllData([...allData, ...items])
-                        }}>{t("Yana ko’rish")}</button>
+                          setAllData([...allData, ...items]);
+                        }}
+                      >
+                        {t("Yana ko’rish")}
+                      </button>
                     </div>
                   </div>
                 )}
               </div>
-
-            )
+            );
           }}
         </Container.All>
       </div>
