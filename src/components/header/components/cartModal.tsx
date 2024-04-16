@@ -166,7 +166,7 @@ const CartModal = ({ cartModal, showCartModal }: any) => {
                         component={Fields.Input}
                         className="payment-input"
                         name="clientPhone"
-                        type="text"
+                        type="number"
                         placeholder={t("+998 ** **-**-**")}
                         size="large"
                       />
