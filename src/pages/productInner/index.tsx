@@ -15,11 +15,12 @@ import "swiper/css";
 import "./style.scss";
 import { uniqueId } from "lodash";
 import { Link } from "react-router-dom";
+import { notification } from "antd";
 
 const ProductInner = () => {
   const { t, get, params } = useHooks();
   const [count, setCount] = useState(1);
-  const { addToBasket } = useStore();
+  const { addToBasket, updateQuantity } = useStore();
   const [error, setError] = useState(false);
 
   const [selectedCategory, setSelectedCategory] = useState({
@@ -129,7 +130,17 @@ const ProductInner = () => {
                 </p>
                 <button
                   className="add-tocart"
-                  onClick={() => addToBasket(productData)}
+                  onClick={() => (
+                    notification["success"]({
+                      message: data ? "Успешно изменен!" : "Успешно!",
+                      duration: 2,
+                    }),
+                    addToBasket(productData),
+                    updateQuantity(
+                      get(productData, "_id",0),
+                      count
+                    )
+                  )}
                 >
                   <img
                     src={CartIconWhite}
