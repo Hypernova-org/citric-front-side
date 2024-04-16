@@ -10,8 +10,9 @@ i18next
   .use(LanguageDetector)
   .use(HttpBackend)
   .init({
-    fallbackLng: storage.get("i18nextLng") ?? "uz",
-    supportedLngs: ["uz","kr","ru","en"],
+    fallbackLng: storage.get("i18nextLng") || "uz",
+    lng: storage.get("i18nextLng") || "uz",
+    supportedLngs: ["kr", "ru", "uz", "en"],
     saveMissing: true,
     interpolation: {
       escapeValue: false,

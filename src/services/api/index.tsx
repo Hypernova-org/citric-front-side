@@ -8,7 +8,7 @@ const api = axios.create({
 });
 
 api.defaults.params = {};
-api.defaults.params["lang"] = storage.get("i18nextLng") ? storage.get("i18nextLng") : "uz";
+api.defaults.params["lang"] = storage.get("i18nextLng") || "uz";
 
 api.defaults.headers.common["Accept"] = "application/json";
 // api.defaults.headers.common["Cache-Control"] = "no-cache";
