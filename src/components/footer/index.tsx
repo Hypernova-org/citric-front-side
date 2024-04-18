@@ -22,7 +22,7 @@ const Footer = () => {
           <div className="left_top_wrappers">
             <span>
               <p>{t("Savollar uchun")}</p>
-              <a href="mailto:help@citric.uz">help@citric.uz</a>
+              <a href="https://t.me/Citric_422" target="_blank">{t("Call markaz")}</a>
             </span>
             <span>
               <p>{t("Ijtimoiy tarmoqlar")}</p>
@@ -37,7 +37,7 @@ const Footer = () => {
                 <a href="/">
                   <Facebook />
                 </a>
-                <a href="/">
+                <a href="https://t.me/Citric_422" target="_blank">
                   <Telegram />
                 </a>
               </div>

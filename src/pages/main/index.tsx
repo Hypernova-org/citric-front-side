@@ -46,7 +46,6 @@ const Main = () => {
         },
       }
     );
-
     gsap.fromTo(
       right.current,
       { opacity: 0, y: 100 }, // From: Initial opacity and y position
@@ -112,7 +111,6 @@ const Main = () => {
         delay: 1,
       }
     );
-
     gsap.from(heroIcon1.current, {
       opacity: 1,
       scale: 0,
@@ -273,7 +271,7 @@ const Main = () => {
         </div>
       </div>
       <Catalog />
-      <ThreeBlogs />
+      {/* <ThreeBlogs /> */}
     </div>
   );
 };
