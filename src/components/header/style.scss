@@ -23,7 +23,6 @@
     place-self: center;
     place-content: center;
 
-
     // .ant-input {
     //   outline: none !important;
     //   border: none !important;
@@ -350,6 +349,12 @@
   .modal-bottom-section {
     padding: 20px 40px;
     margin-top: auto;
+
+    input[type="number"]::-webkit-inner-spin-button,
+    input[type="number"]::-webkit-outer-spin-button {
+      -webkit-appearance: none;
+      margin: 0;
+    }
     .payment-input {
       border-radius: 12px;
       background: var(--Colors-Grey, #f6f6f6);
@@ -417,7 +422,7 @@
 
   .show {
     display: block;
-    overflow-y:  scroll !important;
+    overflow-y: scroll !important;
     transform: translateX(0);
   }
 

@@ -10,7 +10,7 @@ export interface ISystemInitialState {
 }
 
 export const SystemInitialState: ISystemInitialState = {
-  lang: storage.get("i18nextLng"),
+  lang: storage.get("i18nextLng") || "uz",
   theme: "light",
 };
 
@@ -28,7 +28,7 @@ export const systemSlice: StateCreator<ISystem, [], []> = (set): ISystem => {
         return {
           system: {
             ...get(state, "system"),
-            lang: "ru",
+            lang: "uz",
           },
         };
       });

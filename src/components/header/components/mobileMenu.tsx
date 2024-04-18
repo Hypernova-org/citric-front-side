@@ -9,8 +9,6 @@ import CloseIcon from "assets/images/icons/close.svg";
 import { Link } from "react-router-dom";
 import useStore from "store";
 
-
-
 interface INav {
   id: number;
   link: string;
@@ -19,8 +17,8 @@ interface INav {
 
 const MobileMenu = ({ showMobileMenu, openMobileMenu, mobileMenu }: any) => {
   const { t, get } = useHooks();
-  const { Option } = Select;
   const { system } = useStore();
+  const { Option } = Select;
 
   useEffect(() => {
     if (mobileMenu) {

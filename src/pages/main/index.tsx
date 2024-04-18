@@ -46,7 +46,6 @@ const Main = () => {
         },
       }
     );
-
     gsap.fromTo(
       right.current,
       { opacity: 0, y: 100 }, // From: Initial opacity and y position
@@ -112,7 +111,6 @@ const Main = () => {
         delay: 1,
       }
     );
-
     gsap.from(heroIcon1.current, {
       opacity: 1,
       scale: 0,
@@ -245,7 +243,7 @@ const Main = () => {
             </div>
           </div>
           <div className="about_right_content" ref={rightText}>
-            <h1 className="__right_title">Kompaniya haqida</h1>
+            <h1 className="__right_title">{t("Kompaniya haqida")}</h1>
             <p>
               {t("Citric.uz - yaxshi hayot uchun eng yaxshi ingredientlar!")}
             </p>
@@ -273,7 +271,7 @@ const Main = () => {
         </div>
       </div>
       <Catalog />
-      <ThreeBlogs />
+      {/* <ThreeBlogs /> */}
     </div>
   );
 };

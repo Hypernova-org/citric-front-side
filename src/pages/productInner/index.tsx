@@ -132,7 +132,7 @@ const ProductInner = () => {
                   className="add-tocart"
                   onClick={() => (
                     notification["success"]({
-                      message: data ? "Успешно изменен!" : "Успешно!",
+                      message: t("Успешно добавлено!"),
                       duration: 2,
                     }),
                     addToBasket(productData),

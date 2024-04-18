@@ -1,16 +1,17 @@
 import { useEffect } from "react";
 import { notification } from "antd";
+import { Field } from "formik";
 import { DeleteOutlined } from "@ant-design/icons";
+
 import Container from "modules/container";
+import { Fields } from "components";
 import { useHooks } from "hooks";
 import useStore from "store";
-import { Field } from "formik";
-import { Fields } from "components";
 
 import CloseIcon from "assets/images/icons/close.svg";
+import { MinusIcon, PlusIcon } from "assets/images/icons";
 
 import "../style.scss";
-import { MinusIcon, PlusIcon } from "assets/images/icons";
 
 const CartModal = ({ cartModal, showCartModal }: any) => {
   const { basket, removeFromBasket, updateQuantity, clearBasket } = useStore();
@@ -130,13 +131,13 @@ const CartModal = ({ cartModal, showCartModal }: any) => {
                 clearBasket()
                 localStorage.removeItem('basket')
                 notification["success"]({
-                  message: data ? "Успешно изменен!" : "Успешно!",
+                  message: data ? t("Успешно изменен!") : t("Успешно!"),
                   duration: 2,
                 });
               }}
               onError={(error) => {
                 notification["error"]({
-                  message: get(error, "errorMessage", "Произошло ошибка!"),
+                  message: get(error, "errorMessage", t("Произошло ошибка!")),
                   duration: 2,
                 });
                 console.log("Error", error);
@@ -166,7 +167,7 @@ const CartModal = ({ cartModal, showCartModal }: any) => {
                         component={Fields.Input}
                         className="payment-input"
                         name="clientPhone"
-                        type="text"
+                        type="number"
                         placeholder={t("+998 ** **-**-**")}
                         size="large"
                       />

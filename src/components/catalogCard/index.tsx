@@ -22,7 +22,7 @@ interface ICard {
 
 const CatalogCard = ({ item: data, className }: any) => {
   const { addToBasket } = useStore()
-  const { get, navigate } = useHooks()
+  const { get, navigate, t } = useHooks()
 
   return (
     <div className={className + ' catalog-card'} key={get(data, "id")}>
@@ -61,7 +61,7 @@ const CatalogCard = ({ item: data, className }: any) => {
           <button className='addtocart' onClick={(e) => {
             e.stopPropagation()
             notification["success"]({
-              message: "Успешно добавлено!",
+              message: t("Успешно добавлено!"),
               duration: 2,
             })
             return (
