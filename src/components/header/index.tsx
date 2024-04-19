@@ -97,7 +97,7 @@ const Header = () => {
             onClick={() => openMobileMenu(true)}
           />
         </div>
-        <Link to="/" className="logo-wrapper mb-[7px]">
+        <Link onClick={() => setSelectedMenu("/")} to="/" className="logo-wrapper mb-[7px]">
           <img src={Logo} alt="citric.uz" className="logo-image" />
         </Link>
       </div>
@@ -105,8 +105,9 @@ const Header = () => {
         <ul className="header-navbar__list">
           {!navBarState ? (
             navItems.map((menu) => (
-              <li key={menu.id} className={selectedmenu == menu.link ? `header-navbar__list-item selectedMenu` : "header-navbar__list-item"} onClick={() => setSelectedMenu(menu.link)}>
+              <li key={menu.id} className={selectedmenu == menu.link ? `header-navbar__list-item selectedMenu` : "header-navbar__list-item"} >
                 <Link
+                onClick={() => setSelectedMenu(menu.link)}
                   to={get(menu, "link")}
                 >
                   {t(get(menu, "title"))}

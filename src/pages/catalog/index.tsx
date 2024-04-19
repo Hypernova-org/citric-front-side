@@ -2,6 +2,7 @@ import { Swiper, SwiperSlide } from 'swiper/react';
 import { Autoplay } from 'swiper/modules';
 import { CatalogCard, CategoryBtns } from 'components';
 import { useGet, useHooks } from 'hooks'
+import Nodata from "assets/images/icons/nodata.svg"
 
 import '../../components/categoryBtns/style.scss'
 import 'swiper/css';
@@ -48,6 +49,7 @@ const Catalog = () => {
             slidesPerView={1}
             initialSlide={2}
             spaceBetween={10}
+            centeredSlides={true}
             loop
             autoplay={{
               delay: 1600
@@ -148,11 +150,14 @@ const Catalog = () => {
             {({ isLoading, items, meta }) => {
               return (
                 <div>
-                  <div className='catalog-list'>
+                  {items.length ? (<div className='catalog-list'>
                     {[...allData, ...items].map((item: any) => (
-                      <CatalogCard key={get(item, 'id')} {...{ item }} />
+                       <CatalogCard key={get(item, 'id')} {...{ item }} /> 
                     ))}
-                  </div>
+                  </div>) : ( <div className="nodata flex justify-center items-center flex-col mt-20">
+                    <img src={Nodata} alt="no-data-icon" />
+                    <p className="mt-[10px] text-center">{t("Hech qanday ma’lumot topilmadi")}</p>
+                  </div>)}
                   {meta && page < meta.totalCount && items.length > 6 && (
                     <div className="mt-[-20px] flex justify-center">
                       <div className='flex justify-center items-center'>

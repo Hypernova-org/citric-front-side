@@ -6,6 +6,10 @@
   .about_video {
     height: 200px !important;
   }
+  .poster{
+    height: 200px !important;
+    object-fit: contain;
+  }
   .about_page_img {
     width: 100% !important;
     height: 300px !important;

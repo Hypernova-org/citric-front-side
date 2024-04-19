@@ -2,29 +2,43 @@
 @tailwind components;
 @tailwind utilities;
 /* HTML: <div class="loader"></div> */
-.loader_wrapper{
+.loader_wrapper {
   position: relative;
   width: 100vw;
   height: 100vh;
   display: flex;
   justify-content: center;
   align-items: center;
-
 }
 .loader {
   position: absolute;
-  width: 50px;
-  aspect-ratio: 1;
-  --_c:no-repeat radial-gradient(farthest-side,#66A925 92%,#0000);
-  background: 
-    var(--_c) top,
-    var(--_c) left,
-    var(--_c) right,
-    var(--_c) bottom;
-  background-size: 12px 12px;
-  animation: l7 1s infinite;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  
+  svg {
+    width: 100px;
+    animation: l7 infinite;
+    -webkit-animation: l7 infinite 1s;
+  }
 }
-@keyframes l7 {to{transform: rotate(.5turn)}}
+@keyframes l7 {
+  0% {
+    transform: rotate(0);
+    -webkit-transform: rotate(0);
+    -moz-transform: rotate(0);
+    -ms-transform: rotate(0);
+    -o-transform: rotate(0);
+}
+100%{
+  transform: rotate(360deg);
+  -webkit-transform: rotate(360deg);
+  -moz-transform: rotate(360deg);
+  -ms-transform: rotate(360deg);
+  -o-transform: rotate(360deg);
+}
+}
 body {
   color: #0f1e00;
 }
@@ -103,7 +117,7 @@ body {
   transition: all ease 0.3s;
 
   &:hover {
-    background-color: #70B32F;
+    background-color: #70b32f;
     color: #fff;
   }
 }
@@ -119,6 +133,6 @@ body {
   background: #f1f1f1;
 }
 ::-webkit-scrollbar-thumb {
-  background: #F09900;
+  background: #f09900;
   border-radius: 10px;
-} 
+}

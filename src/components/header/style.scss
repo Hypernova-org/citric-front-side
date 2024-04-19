@@ -52,6 +52,7 @@
     // margin-right: 50px;
     transition: all ease 0.3s;
     padding: 12px 25px 14px 25px;
+    border-bottom: 2px solid transparent;
 
     &:last-child {
       margin-right: 0px;
@@ -70,6 +71,7 @@
       color: #70b32f;
     }
     border-bottom: 2px solid #70b32f;
+
   }
 
   &__search-btn {
@@ -87,7 +89,7 @@
   }
 
   &__search-btn-mobile {
-    padding: 0;
+    padding: 0 25px;
     // border-left: 2px solid #dfe0dd;
   }
 }
@@ -97,7 +99,7 @@
   border: none;
   outline: none;
   background: var(--Colors-Grey, #f6f6f6);
-  padding: 0 12px;
+  padding: 12px 12px;
   width: 100%;
   position: relative;
   

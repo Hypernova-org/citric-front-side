@@ -6,6 +6,7 @@ import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { useGet, useHooks } from "hooks";
 import Container from "modules/container";
 import { CommentCard } from "components";
+import Poster from "../../assets/images/poster.png";
 
 import { AboutImg1, AboutImg2, AboutImg3, AboutImg4 } from "assets/images";
 import { Arrow, Comment, Download } from "assets/images/icons";
@@ -29,11 +30,12 @@ const About = () => {
   const [page, setPage] = useState(1);
   const [allData, setAllData]: any = useState([]);
   const [moreModal, showMoreModal]: any = useState({ open: false, data: {} });
+  const [showVideo, setShowVideo] = useState(false);
 
   useEffect(() => {
     gsap.registerPlugin(ScrollTrigger);
     const title = document.querySelectorAll(".about_page_title");
-    const video = document.querySelectorAll(".about_video");
+    const video = document.querySelectorAll(".video");
     const brands = document.querySelectorAll(".about_page_brands");
     console.log(brands);
     const about = document.querySelectorAll(".about_page");
@@ -140,7 +142,7 @@ const About = () => {
   const commentData = get(moreModal, "data.comment");
 
   const handleDownload = () => {
-    const fileName = "rekvizit.pdf"; // Specify the file name
+    let fileName = "ООО «FOODS IMPEX GROUP».pdf"; // Specify the file name
     const url = "https://api.citric.uz/rekvizit";
     fetch(url)
       .then((response) => response.blob())
@@ -148,6 +150,7 @@ const About = () => {
         const url = window.URL.createObjectURL(new Blob([blob]));
         const link = document.createElement("a");
         link.href = url;
+
         link.setAttribute("download", fileName);
         document.body.appendChild(link);
         link.click();
@@ -177,6 +180,9 @@ const About = () => {
     onError: (error) => {},
   });
   const achievements: Achievement[] = get(dataAchievements, "data", []);
+  const handleClick = () => {
+    setShowVideo(true);
+  };
 
   return (
     <div className="about_page container overflow-x-clip">
@@ -205,36 +211,42 @@ const About = () => {
         </div>
       </Modal>
       <p className="about_page_title">{t("Kompaniya haqida")}</p>
-      <iframe
-        className="about_video"
-        width="100%"
-        height=""
-        loading="eager"
-        src={video[0]?.url.replace("youtu.be/", "www.youtube.com/embed/")}
-        title="YouTube video player"
-        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-        referrerPolicy="strict-origin-when-cross-origin"
-        allowFullScreen={true}
-      ></iframe>
+
+      <div className="video">
+        {!showVideo && (
+          <img
+            src={Poster}
+            className="poster"
+            alt="Poster"
+            onClick={handleClick}
+            style={{ cursor: "pointer" }}
+          />
+        )}
+        {showVideo && (
+          <iframe
+            className="about_video"
+            width="100%"
+            height=""
+            loading="eager"
+            src={video[0]?.url.replace("youtu.be/", "www.youtube.com/embed/")}
+            title="YouTube video player"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+            referrerPolicy="strict-origin-when-cross-origin"
+            allowFullScreen={true}
+          ></iframe>
+        )}
+      </div>
       <div className="about_page_brands">
         <p className="brands_title">{t("Biz ishlagan brendlar")}</p>
         <div className="brands_elements">
           {brands.map((brand, index) => (
-            <picture key={index}>
-              <source
-                media="(max-width:450px)"
-                srcSet={brand.image[0].medium}
-              />
-              <source
-                media="(max-width:990px)"
-                srcSet={brand.image[0].medium}
-              />
+            <div className="brands_elements_element" key={index}>
               <img
-                className="brands_elements_element"
+                
                 src={brand.image[0].medium}
                 alt="citric.uz"
               />
-            </picture>
+            </div>
           ))}
         </div>
       </div>

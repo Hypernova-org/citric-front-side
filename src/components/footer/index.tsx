@@ -1,5 +1,5 @@
 import { WhiteLogo } from "assets/images";
-import { Facebook, Instagram, Telegram } from "assets/images/icons";
+import { Arrow, Arrow2, Instagram, Telegram, Youtube } from "assets/images/icons";
 import "./footer.scss";
 import "./mobile.scss";
 import { useHooks } from "hooks";
@@ -7,6 +7,15 @@ const Footer = () => {
   const { t, get } = useHooks();
   return (
     <div>
+      <button onClick={() => (
+        window.scrollTo({
+          behavior: "smooth",
+          top: 0,
+          left: 0
+        })
+      )} className="to-top container">
+         <Arrow2/>
+      </button>
       <div className="footer container">
       <div className="footer__left">
         <div className="left_top">
@@ -35,11 +44,11 @@ const Footer = () => {
                 >
                   <Instagram />
                 </a>
-                <a href="/">
-                  <Facebook />
-                </a>
                 <a href="https://t.me/Citric_422" target="_blank">
                   <Telegram />
+                </a>
+                <a href="https://www.youtube.com/channel/UCwR2Moa-YBqvMULTp6nnrkw" target="_blank">
+                  <Youtube />
                 </a>
               </div>
             </span>
@@ -52,7 +61,7 @@ const Footer = () => {
       </div>
       <iframe
         title="map"
-        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d5988.9402594666635!2d69.23395809357909!3d41.36386950000002!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x38ae8d9c37224a6f%3A0x9dd78134369a3788!2sCitric.uz!5e0!3m2!1sru!2s!4v1713166258314!5m2!1sru!2s"
+        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2994.467643690251!2d69.23859789022798!3d41.36392352346688!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x38ae8d9c37224a6f%3A0x9dd78134369a3788!2sCITRIC.UZ!5e0!3m2!1sru!2s!4v1713507987496!5m2!1sru!2s"
         allowFullScreen={true}
         loading="lazy"
         height="100%"
