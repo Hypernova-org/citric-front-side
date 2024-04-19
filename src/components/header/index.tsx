@@ -24,16 +24,16 @@ interface INav {
 }
 
 const Header = () => {
-  const { t, get } = useHooks();
+  const { t, get, location } = useHooks();
   const { Option } = Select;
   const [navBarState, searchBarState] = useState(false);
   const [mobileSearchModal, showMobileSearchModal] = useState<Boolean>(false);
   const [mobileMenu, showMobileMenu] = useState<Boolean>(false);
   const [cartModal, showCartModal] = useState(false);
   const [searchName, setSearchName] = useState("");
+  const [selectedmenu, setSelectedMenu] = useState(get(location, "pathname"));
   const searchNameDebounced = useDebounce(searchName, 600);
   const { system } = useStore();
-
 
   const openMobileMenu = (open: Boolean) => {
     const body = document.getElementsByTagName("body")[0];
@@ -79,7 +79,6 @@ const Header = () => {
   const changeLang = (langCode: string) => {
     i18next.changeLanguage(langCode);
     window.location.reload();
-    // changeLang(langCode)
   };
 
   return (
@@ -106,7 +105,7 @@ const Header = () => {
         <ul className="header-navbar__list">
           {!navBarState ? (
             navItems.map((menu) => (
-              <li key={menu.id} className="header-navbar__list-item">
+              <li key={menu.id} className={selectedmenu == menu.link ? `header-navbar__list-item selectedMenu` : "header-navbar__list-item"} onClick={() => setSelectedMenu(menu.link)}>
                 <Link
                   to={get(menu, "link")}
                 >
@@ -123,9 +122,10 @@ const Header = () => {
               onChange={(i) => setSearchName(get(i, "target.value"))}
             />
           )}
+          
           <button
             onClick={() => searchIconClick()}
-            className="header-navbar__search-btn"
+            className={!navBarState ? "header-navbar__search-btn" : "header-navbar__search-btn-mobile"}
           >
             <img src={SearchIcon} alt="citric.uz" className="search-icon" />
           </button>
