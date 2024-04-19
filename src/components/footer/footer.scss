@@ -4,6 +4,20 @@
   justify-content: space-between;
   margin-top: 100px !important;
 }
+.footer-bottom{
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 15px !important;
+  font-size: 15px;
+  font-weight: 550;
+  color: #0f1e00;
+}
+.footer-bottom a{
+  text-decoration: underline; 
+  &:hover{
+    color: #800080;
+  }
+}
 .footer__left {
   width: 50%;
   display: flex;
@@ -53,7 +67,7 @@
   }
 }
 .left_bottom {
-  margin: 0 0 50px 0 !important;
+  margin: 0 0 25px 0 !important;
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -73,7 +87,7 @@
   width: 50%;
 }
 .footer iframe {
-  margin: 0 0 50px 0 !important;
+  margin: 0 0 25px 0 !important;
   width: 45% !important;
   object-fit: cover;
   height: 420px;

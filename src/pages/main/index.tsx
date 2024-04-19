@@ -10,6 +10,14 @@ import { AboutSection1, AboutSection2, HeroImgLaptop } from "assets/images";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { useHooks } from "hooks";
+import { Swiper, SwiperSlide } from "swiper/react";
+
+// Import Swiper styles
+import "swiper/css";
+import "swiper/css/pagination";
+
+// import required modules
+import { Pagination } from "swiper/modules";
 const Main = () => {
   const { t, get } = useHooks();
   const homeRef = useRef(null);
@@ -181,7 +189,81 @@ const Main = () => {
 
   return (
     <div className="container" ref={homeRef}>
-      <div className="hero_section" ref={boxRef}>
+      <div ref={boxRef}>
+      <Swiper
+      spaceBetween={40}
+        pagination={{
+          dynamicBullets: true,
+        }}
+        modules={[Pagination]}
+        className="mySwiper"
+      >
+        <SwiperSlide >
+          {" "}
+          <div className="hero_section" >
+            <p className="hero_title" ref={productText}>
+              {t("Dextrose Monohydrate")}
+            </p>
+            <div className="hero_circles cycle">
+              <div className="cycle">
+                <div className="cycle">
+                  <div className="cycle"></div>
+                </div>
+              </div>
+            </div>
+            <div ref={heroIcon1} className="icon-1">
+              <img src={HeroIcon1} alt="hero icon" />
+            </div>
+            <div ref={heroIcon2} className="icon-2">
+              <img src={HeroIcon2} alt="hero icon" />
+            </div>
+            <div ref={heroIcon3} className="icon-3">
+              <img src={HeroIcon3} alt="hero icon" />
+            </div>
+
+            <img
+              ref={product}
+              className="hero_img"
+              src={HeroImgLaptop}
+              alt="citric.uz"
+            />
+          </div>
+        </SwiperSlide>
+        <SwiperSlide>
+          {" "}
+          <div className="hero_section" >
+            <p className="hero_title" ref={productText}>
+              {t("Dextrose Monohydrate")}
+            </p>
+            <div className="hero_circles cycle">
+              <div className="cycle">
+                <div className="cycle">
+                  <div className="cycle"></div>
+                </div>
+              </div>
+            </div>
+            <div ref={heroIcon1} className="icon-1">
+              <img src={HeroIcon1} alt="hero icon" />
+            </div>
+            <div ref={heroIcon2} className="icon-2">
+              <img src={HeroIcon2} alt="hero icon" />
+            </div>
+            <div ref={heroIcon3} className="icon-3">
+              <img src={HeroIcon3} alt="hero icon" />
+            </div>
+
+            <img
+              ref={product}
+              className="hero_img"
+              src={HeroImgLaptop}
+              alt="citric.uz"
+            />
+          </div>
+        </SwiperSlide>
+      </Swiper>
+      </div>
+
+      {/* <div className="hero_section" ref={boxRef}>
         <p className="hero_title" ref={productText}>
           {t("Dextrose Monohydrate")}
         </p>
@@ -208,7 +290,7 @@ const Main = () => {
           src={HeroImgLaptop}
           alt="citric.uz"
         />
-      </div>
+      </div> */}
       <div className="about_section">
         <div className="about_section__left" ref={left}>
           <div className="about_left_circles left_cycle">
@@ -230,7 +312,6 @@ const Main = () => {
               alt="citric.uz"
             />
           </div>
-          <AboutIcon1 />
         </div>
         <div className="about_section__right" ref={right}>
           <div className="about_right_circles right_cycle">
@@ -257,13 +338,16 @@ const Main = () => {
                 "Rivojlangan tarqatish tarmog'i, yaxshi ishlaydigan logistika, konsolidatsiya omborlari Yevropa, Xitoy va MDH mamlakatlarida joylashgan bo'lib, ularning sa'y-harakatlari oziq-ovqat ishlab chiqaruvchilarni yuqori sifatli ingredientlar va xomashyo bilan uzluksiz ta'minlashga qaratilgan."
               )}
             </p>
-            <Link onClick={() => (
-              window.scrollTo({
-                behavior: "smooth",
-                top: 0,
-                left: 0
-              })
-            )} to={"/about"}>
+            <Link
+              onClick={() =>
+                window.scrollTo({
+                  behavior: "smooth",
+                  top: 0,
+                  left: 0,
+                })
+              }
+              to={"/about"}
+            >
               <p>{t("Batafsil ma'lumot")}</p>
               <Arrow />
             </Link>

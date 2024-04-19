@@ -3,6 +3,12 @@
     display: flex;
     flex-direction: column-reverse;
   }
+  .footer-bottom{
+    flex-direction: column;
+    text-align: center;
+    font-size: 15px;
+    margin-bottom: 45px !important;
+  }
   .footer__left {
     width: 100%;
     height: max-content;

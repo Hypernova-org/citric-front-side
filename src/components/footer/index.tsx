@@ -6,7 +6,8 @@ import { useHooks } from "hooks";
 const Footer = () => {
   const { t, get } = useHooks();
   return (
-    <div className="footer container">
+    <div>
+      <div className="footer container">
       <div className="footer__left">
         <div className="left_top">
           <div className="left_top_wrappers">
@@ -57,6 +58,11 @@ const Footer = () => {
         height="100%"
         referrerPolicy="no-referrer-when-downgrade"
       ></iframe>
+    </div>
+    <div className="footer-bottom container">
+      <p>{t("© 2024 Citric uz. Barcha huquqlar himoyalangan ")}</p>
+      <a className="inline-block" href="https://www.hypernova.uz/" target="_blank">{t("Created by Hypernova")}</a>
+    </div>
     </div>
   );
 };
