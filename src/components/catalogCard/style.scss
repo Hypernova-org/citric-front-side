@@ -28,28 +28,14 @@
   }
 
   .swiper-slide-active {
-    @media only screen and (max-width: 1400px) {
-      margin-left: 1% !important;
-    }
-    @media only screen and (max-width: 992px) {
-      margin-left: 4% !important;
-    }
-    @media only screen and (max-width: 576px) {
-      margin-left: 18% !important;
-    }
-    @media only screen and (max-width: 476px) {
-      margin-left: 14% !important;
-    }
-    @media only screen and (max-width: 406px) {
-      margin-left: 10% !important;
-    }
-    @media only screen and (max-width: 375px) {
-      margin-left: 0% !important;
-    }
+    margin: 0 1px;
   }
 
   .swiper-pagination {
     bottom: 0px;
+  }
+  .swiper-slide{
+    width: 100%;
   }
 
   &__images {
