@@ -231,7 +231,7 @@ const Main = () => {
         <SwiperSlide>
           <div className="hero_section" >
             <p className="hero_title" >
-              {t("Test product")}
+              {t("Test product text")}
             </p>
             <div className="hero_circles cycle">
               <div className="cycle">
