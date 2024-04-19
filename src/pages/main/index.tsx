@@ -22,11 +22,6 @@ const Main = () => {
   const { t, get } = useHooks();
   const homeRef = useRef(null);
   const boxRef = useRef(null);
-  const product = useRef(null);
-  const productText = useRef(null);
-  const heroIcon1 = useRef(null);
-  const heroIcon2 = useRef(null);
-  const heroIcon3 = useRef(null);
   const left = useRef(null);
   const right = useRef(null);
   const rightText = useRef(null);
@@ -35,6 +30,11 @@ const Main = () => {
   useEffect(() => {
     gsap.registerPlugin(ScrollTrigger);
     const box = boxRef.current;
+    const product = document.querySelectorAll(".hero_img");
+  const productText = document.querySelectorAll(".hero_title");
+  const heroIcon1 = document.querySelectorAll(".icon-1");
+  const heroIcon2 = document.querySelectorAll(".icon-2");
+  const heroIcon3 = document.querySelectorAll(".icon-3");
     const cycles = document.querySelectorAll(".cycle");
     const rightCycles = document.querySelectorAll(".right_cycle");
     const leftCycles = document.querySelectorAll(".left_cycle");
@@ -104,13 +104,13 @@ const Main = () => {
       opacity: 0,
       y: 100,
     });
-    gsap.from(product.current, {
+    gsap.from(product, {
       duration: 1,
       y: 100,
       delay: 0.2,
     });
     gsap.fromTo(
-      productText.current,
+      productText,
       { opacity: 0, x: 400 },
       {
         duration: 1,
@@ -119,19 +119,19 @@ const Main = () => {
         delay: 1,
       }
     );
-    gsap.from(heroIcon1.current, {
+    gsap.from(heroIcon1, {
       opacity: 1,
       scale: 0,
       duration: 1,
       delay: 0.8,
     });
-    gsap.from(heroIcon2.current, {
+    gsap.from(heroIcon2, {
       opacity: 1,
       scale: 0,
       duration: 1,
       delay: 0.9,
     });
-    gsap.from(heroIcon3.current, {
+    gsap.from(heroIcon3, {
       opacity: 1,
       scale: 0,
       duration: 1,
@@ -201,7 +201,7 @@ const Main = () => {
         <SwiperSlide >
           {" "}
           <div className="hero_section" >
-            <p className="hero_title" ref={productText}>
+            <p className="hero_title">
               {t("Dextrose Monohydrate")}
             </p>
             <div className="hero_circles cycle">
@@ -211,18 +211,17 @@ const Main = () => {
                 </div>
               </div>
             </div>
-            <div ref={heroIcon1} className="icon-1">
+            <div  className="icon-1">
               <img src={HeroIcon1} alt="hero icon" />
             </div>
-            <div ref={heroIcon2} className="icon-2">
+            <div  className="icon-2">
               <img src={HeroIcon2} alt="hero icon" />
             </div>
-            <div ref={heroIcon3} className="icon-3">
+            <div className="icon-3">
               <img src={HeroIcon3} alt="hero icon" />
             </div>
 
             <img
-              ref={product}
               className="hero_img"
               src={HeroImgLaptop}
               alt="citric.uz"
@@ -230,10 +229,9 @@ const Main = () => {
           </div>
         </SwiperSlide>
         <SwiperSlide>
-          {" "}
           <div className="hero_section" >
-            <p className="hero_title" ref={productText}>
-              {t("Dextrose Monohydrate")}
+            <p className="hero_title" >
+              {t("Test product")}
             </p>
             <div className="hero_circles cycle">
               <div className="cycle">
@@ -242,18 +240,17 @@ const Main = () => {
                 </div>
               </div>
             </div>
-            <div ref={heroIcon1} className="icon-1">
+            <div className="icon-1">
               <img src={HeroIcon1} alt="hero icon" />
             </div>
-            <div ref={heroIcon2} className="icon-2">
+            <div className="icon-2">
               <img src={HeroIcon2} alt="hero icon" />
             </div>
-            <div ref={heroIcon3} className="icon-3">
+            <div  className="icon-3">
               <img src={HeroIcon3} alt="hero icon" />
             </div>
 
             <img
-              ref={product}
               className="hero_img"
               src={HeroImgLaptop}
               alt="citric.uz"
