@@ -34,7 +34,6 @@ const CatalogCard = ({ item: data, className }: any) => {
           modules={[Pagination]}
           className="mySwiper cursor-grab"
         >
-          {/* {get(data, "images", []).map((i: string) => ( */}
           <SwiperSlide>
             <img src={get(data, "image1[0].large")} alt={get(data, "name") + "-image"} className="catalog-carousel__images" />
           </SwiperSlide>
@@ -44,7 +43,6 @@ const CatalogCard = ({ item: data, className }: any) => {
           <SwiperSlide>
             <img src={get(data, "image3[0].large")} alt={get(data, "name") + "-image"} className="catalog-carousel__images" />
           </SwiperSlide>
-          {/* ))} */}
         </Swiper>
       </div>
       <div className="catalog-card__bottom" onClick={() => (
@@ -57,7 +55,7 @@ const CatalogCard = ({ item: data, className }: any) => {
       )}>
         <div className="catalog-card__info">
           <p className="catalog-card__name">{get(data, "productTitle")}</p>
-          {/* <p className="catalog-card__price">{get(data, "price")}</p> */}
+          <p className="catalog-card__price">{get(data, "price")}</p>
           <button className='addtocart' onClick={(e) => {
             e.stopPropagation()
             notification["success"]({
