@@ -34,6 +34,7 @@
   .swiper-pagination {
     bottom: 0px;
   }
+
   .swiper-slide {
     width: 100%;
   }
@@ -59,11 +60,9 @@
   }
 
   &__info {
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
-    justify-content: space-between;
-    align-items: start;
+    // display: flex;
+    // flex-direction: column;
+    // align-items: start;
   }
 
   &__name {

@@ -53,22 +53,24 @@ const CatalogCard = ({ item: data, className }: any) => {
           left: 0
         })
       )}>
-        <div className="catalog-card__info">
+        {<div className="catalog-card__info">
           <p className="catalog-card__name">{get(data, "productTitle")}</p>
-          <p className="catalog-card__price">{get(data, "price")}</p>
-          <button className='addtocart' onClick={(e) => {
-            e.stopPropagation()
-            notification["success"]({
-              message: t("Успешно добавлено!"),
-              duration: 2,
-            })
-            return (
-              addToBasket(data)
-            )
-          }}>
-            <img src={CartIcon} alt="citric.uz" className="cart-images" />
-          </button>
-        </div>
+          <div className="flex justify-between">
+           <p className="catalog-card__price">{get(data, "price")}</p>
+            <button className='addtocart' onClick={(e) => {
+              e.stopPropagation()
+              notification["success"]({
+                message: t("Успешно добавлено!"),
+                duration: 2,
+              })
+              return (
+                addToBasket(data)
+              )
+            }}>
+              <img src={CartIcon} alt="citric.uz" className="cart-images" />
+            </button>
+          </div>
+        </div>}
       </div>
     </div>
   )
