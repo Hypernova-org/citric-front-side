@@ -15,7 +15,7 @@ const BlogDetails = () => {
         opacity: 0,
         y: 50,
       }); });
-  },)
+  }, [])
   const { get, t, params } = useHooks();
   const [error, setError] = useState(false);
   const { isLoading, data } = useGet({
