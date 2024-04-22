@@ -152,13 +152,13 @@ const Catalog = () => {
                 <div>
                   {items.length ? (<div className='catalog-list'>
                     {[...allData, ...items].map((item: any) => (
-                       <CatalogCard key={get(item, 'id')} {...{ item }} /> 
+                      <CatalogCard key={get(item, 'id')} {...{ item }} />
                     ))}
-                  </div>) : ( <div className="nodata flex justify-center items-center flex-col mt-20">
+                  </div>) : (<div className="nodata flex justify-center items-center flex-col mt-20">
                     <img src={Nodata} alt="no-data-icon" />
                     <p className="mt-[10px] text-center">{t("Hech qanday ma’lumot topilmadi")}</p>
                   </div>)}
-                  {meta && page < meta.totalCount && items.length > 6 && (
+                  {meta && page < meta.totalCount && meta.pageCount != meta.currentPage && 6 <= items.length && (
                     <div className="mt-[-20px] flex justify-center">
                       <div className='flex justify-center items-center'>
                         <button className='view-more'

@@ -162,22 +162,22 @@ const About = () => {
   const { isLoading: brandLoading, data: dataBrand } = useGet({
     name: "brands",
     url: "brands",
-    onSuccess: (data) => {},
-    onError: (error) => {},
+    onSuccess: (data) => { },
+    onError: (error) => { },
   });
   const brands: Brand[] = get(dataBrand, "data", []);
   const { isLoading: categoriesLoading, data: dataVideo } = useGet({
     name: "video",
     url: "video",
-    onSuccess: (data) => {},
-    onError: (error) => {},
+    onSuccess: (data) => { },
+    onError: (error) => { },
   });
   const video: Video[] = get(dataVideo, "data", []);
   const { isLoading: achievementLoading, data: dataAchievements } = useGet({
     name: "achievements",
     url: "achievements",
-    onSuccess: (data) => {},
-    onError: (error) => {},
+    onSuccess: (data) => { },
+    onError: (error) => { },
   });
   const achievements: Achievement[] = get(dataAchievements, "data", []);
   const handleClick = () => {
@@ -242,7 +242,7 @@ const About = () => {
           {brands.map((brand, index) => (
             <div className="brands_elements_element" key={index}>
               <img
-                
+
                 src={brand.image[0].medium}
                 alt="citric.uz"
               />
@@ -301,18 +301,14 @@ const About = () => {
                     />
                   ))}
                 </div>
-                {meta && page < meta.totalCount && items.length > 6 && (
+                {meta && page < meta.totalCount && meta.pageCount != meta.currentPage && 6 <= items.length && (
                   <div className="mt-[-20px] flex justify-center">
-                    <div className="flex justify-center items-center">
-                      <button
-                        className="view-more"
+                    <div className='flex justify-center items-center'>
+                      <button className='view-more'
                         onClick={() => {
                           setPage(page + 1);
-                          setAllData([...allData, ...items]);
-                        }}
-                      >
-                        {t("Yana ko’rish")}
-                      </button>
+                          setAllData([...allData, ...items])
+                        }}>{t("Yana ko’rish")}</button>
                     </div>
                   </div>
                 )}

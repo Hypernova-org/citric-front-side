@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { Select, Input } from "antd";
 import i18next from "i18next";
@@ -34,6 +34,10 @@ const Header = () => {
   const [selectedmenu, setSelectedMenu] = useState(get(location, "pathname"));
   const searchNameDebounced = useDebounce(searchName, 600);
   const { system } = useStore();
+
+  useEffect(()=>(
+    setSelectedMenu(get(location, "pathname"))
+  ),[selectedmenu])
 
   const openMobileMenu = (open: Boolean) => {
     const body = document.getElementsByTagName("body")[0];

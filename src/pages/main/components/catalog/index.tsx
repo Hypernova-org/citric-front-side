@@ -19,7 +19,7 @@ const Catalog = () => {
     _id: "1"
   },)
 
-  const { isLoading: categoriesLoading, data: categoriesData } = useGet({
+  const { data: categoriesData } = useGet({
     name: "categories",
     url: "categories",
     onSuccess: (data) => {
@@ -35,8 +35,6 @@ const Catalog = () => {
       _id: "1"
     }, ...get(categoriesData, "data", [])
   ]
-
-  console.log(selectedCategory?._id);
 
   return (
     <div className="catalog-section">
@@ -63,6 +61,8 @@ const Catalog = () => {
             }}
           >
             {({ items, meta }) => {
+              console.log(items.length);
+              
               return (
                 <div>
                   <div className='catalog-list'>
@@ -70,7 +70,7 @@ const Catalog = () => {
                       <CatalogCard key={get(item, 'id')} {...{ item }} />
                     ))}
                   </div>
-                  {meta && page < meta.totalCount && items.length > 6 && (
+                  {meta && page < meta.totalCount&& meta.pageCount != meta.currentPage && 6 <= items.length && (
                     <div className="mt-[-20px] flex justify-center">
                       <div className='flex justify-center items-center'>
                         <button className='view-more'

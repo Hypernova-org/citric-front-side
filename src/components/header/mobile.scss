@@ -14,7 +14,7 @@
   .burger-btn {
     display: flex;
   }
-  
+
   .icon-btn {
     width: 38px;
     height: 38px;
@@ -32,33 +32,33 @@
       left: 50%;
       transform: translateX(-50%);
     }
-  
+
     .modal-container {
       top: 10px;
       width: 94%;
     }
-  
+
     .modal-top-section {
       padding: 10px 40px;
     }
-  
+
     .modal-mid-section {
       padding: 12px 40px 12px 40px;
-      height: 50vh;
+      height: 48vh;
     }
-  
+
     &__title {
       font-size: 22px;
     }
-  
+
     &__subtitle {
       font-size: 14px;
       line-height: 18px;
     }
-  
+
     &__item {
       margin-bottom: 12px;
-  
+
       .left-side {
         margin-right: 12px;
         padding: 8px;
@@ -68,14 +68,14 @@
           height: 50px;
         }
       }
-  
+
       .right-side {
         .cart-amount-controller {
           span {
             font-size: 16px;
             cursor: pointer;
           }
-  
+
           .counter-amount {
             font-size: 12px;
             margin: 0 7px;
@@ -83,17 +83,17 @@
         }
       }
     }
-  
+
     .modal-bottom-section {
       padding: 20px 40px;
-  
+
       .submit-form-btn {
         padding: 10px 0;
         font-size: 14px;
         margin-top: 15px;
       }
     }
-  
+
     .close-btn {
       width: 10px;
     }
@@ -101,11 +101,17 @@
 }
 
 @media only screen and (max-width: 375px) {
+  .cart-modal {
+    .modal-mid-section {
+      padding: 12px 40px 12px 40px;
+      height: 45vh;
+    }
+  }
 
   .logo-image {
     width: 75px;
   }
-  
+
   .icon-btn {
     width: 30px;
     height: 30px;
@@ -113,5 +119,13 @@
 
   .back-btn {
     width: 37px;
+  }
+}
+
+@media only screen and (max-width: 256px) {
+  .cart-modal {
+    .modal-mid-section {
+      height: 40vh;
+    }
   }
 }
