@@ -15,6 +15,7 @@ const App: React.FC = () => {
     location.pathname === "/catalog" ||
     location.pathname === "/contact" ||
     location.pathname.startsWith("/blog") ||
+    location.pathname.startsWith("/vacancies") ||
     location.pathname.startsWith("/product");
   return (
     <Layout className="h-full">

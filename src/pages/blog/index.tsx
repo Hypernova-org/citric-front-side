@@ -1,10 +1,21 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Pagination } from 'antd';
 import BlogCard from "components/blogCard";
 import Container from "modules/container";
 import { useHooks } from "hooks";
+import { gsap } from "gsap";
 
 const Blog = () => {
+  let mm = gsap.matchMedia();
+  
+  useEffect(() => {
+    mm.add("(min-width: 800px)", () => {
+      gsap.from('.blog_page', {
+        duration: 1,
+        opacity: 0,
+        y: 50,
+      }); });
+  }, [])
   const { t } = useHooks();
   const [page, setPage] = useState();
 

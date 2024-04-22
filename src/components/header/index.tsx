@@ -48,23 +48,23 @@ const Header = () => {
   const navItems: INav[] = [
     {
       id: 0,
-      link: "/",
-      title: "Asosiy sahifa",
-    },
-    {
-      id: 1,
       link: "/about",
       title: "Kompaniya haqida",
     },
     {
-      id: 2,
+      id: 1,
       link: "/catalog",
       title: "Katalog",
     },
     {
-      id: 3,
+      id: 2,
       link: "/blog",
       title: "Blog",
+    },
+    {
+      id: 3,
+      link: "/vacancies",
+      title: "Vacancies",
     },
     {
       id: 4,

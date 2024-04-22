@@ -1,0 +1,20 @@
+@media only screen and (max-width: 992px) {
+    .vacancy_title {
+        font-size: 24px;
+        text-align: center;
+      }
+      .vacancies {
+        display: grid;
+        grid-template-columns: repeat(1, 1fr);
+        margin: 40px 0;
+        gap: 45px;
+      }
+      .more_vacancies {
+        display: flex;
+        width: 300px;
+        padding: 16px 40px;
+        justify-content: center;
+        align-items: center;
+        gap: 10px;
+      }
+}
