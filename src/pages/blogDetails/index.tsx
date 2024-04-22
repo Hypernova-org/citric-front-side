@@ -1,9 +1,21 @@
 import ThreeBlogs from "components/threeblogs";
 import { useGet, useHooks } from "hooks";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
+import { gsap } from "gsap";
+
 
 const BlogDetails = () => {
+  let mm = gsap.matchMedia();
+  
+  useEffect(() => {
+    mm.add("(min-width: 800px)", () => {
+      gsap.from('.details_page', {
+        duration: 1,
+        opacity: 0,
+        y: 50,
+      }); });
+  }, [])
   const { get, t, params } = useHooks();
   const [error, setError] = useState(false);
   const { isLoading, data } = useGet({

@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Pagination } from "swiper/modules";
 
@@ -16,8 +16,18 @@ import "./style.scss";
 import { uniqueId } from "lodash";
 import { Link } from "react-router-dom";
 import { notification } from "antd";
+import gsap from "gsap";
 
 const ProductInner = () => {
+  let mm = gsap.matchMedia();
+  useEffect(() => {
+    mm.add("(min-width: 800px)", () => {
+      gsap.from('.inner_page', {
+        duration: 1,
+        opacity: 0,
+        y: 50,
+      }); });
+  }, [])
   const { t, get, params } = useHooks();
   const [count, setCount] = useState(1);
   const { addToBasket, updateQuantity } = useStore();
@@ -62,7 +72,7 @@ const ProductInner = () => {
   const productData = get(data, "data", []);
 
   return (
-    <div className="container ">
+    <div className="container inner_page ">
       <Link to="/catalog" className="goback-button">
         <GoBack />
         <p>{t("Orqaga")}</p>

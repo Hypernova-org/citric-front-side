@@ -17,7 +17,7 @@ import "swiper/css";
 import "swiper/css/pagination";
 
 // import required modules
-import { Pagination } from "swiper/modules";
+import { Autoplay, Pagination } from "swiper/modules";
 const Main = () => {
   const { t, get } = useHooks();
   const homeRef = useRef(null);
@@ -31,10 +31,10 @@ const Main = () => {
     gsap.registerPlugin(ScrollTrigger);
     const box = boxRef.current;
     const product = document.querySelectorAll(".hero_img");
-  const productText = document.querySelectorAll(".hero_title");
-  const heroIcon1 = document.querySelectorAll(".icon-1");
-  const heroIcon2 = document.querySelectorAll(".icon-2");
-  const heroIcon3 = document.querySelectorAll(".icon-3");
+    const productText = document.querySelectorAll(".hero_title");
+    const heroIcon1 = document.querySelectorAll(".icon-1");
+    const heroIcon2 = document.querySelectorAll(".icon-2");
+    const heroIcon3 = document.querySelectorAll(".icon-3");
     const cycles = document.querySelectorAll(".cycle");
     const rightCycles = document.querySelectorAll(".right_cycle");
     const leftCycles = document.querySelectorAll(".left_cycle");
@@ -190,74 +190,68 @@ const Main = () => {
   return (
     <div className="container" ref={homeRef}>
       <div ref={boxRef}>
-      <Swiper
-      spaceBetween={40}
-        pagination={{
-          dynamicBullets: true,
-        }}
-        modules={[Pagination]}
-        className="mySwiper"
-      >
-        <SwiperSlide >
-          {" "}
-          <div className="hero_section" >
-            <p className="hero_title">
-              {t("Dextrose Monohydrate")}
-            </p>
-            <div className="hero_circles cycle">
-              <div className="cycle">
+        <Swiper
+          spaceBetween={40}
+          loop={true}
+          autoplay={{
+            delay: 2500,
+            disableOnInteraction: false,
+          }}
+          speed={2000}
+          pagination={{
+            dynamicBullets: true,
+          }}
+          modules={[Pagination, Autoplay]}
+          className="mySwiper"
+        >
+          <SwiperSlide>
+            {" "}
+            <div className="hero_section">
+              <p className="hero_title">{t("Dextrose Monohydrate")}</p>
+              <div className="hero_circles cycle">
                 <div className="cycle">
-                  <div className="cycle"></div>
+                  <div className="cycle">
+                    <div className="cycle"></div>
+                  </div>
                 </div>
               </div>
-            </div>
-            <div  className="icon-1">
-              <img src={HeroIcon1} alt="hero icon" />
-            </div>
-            <div  className="icon-2">
-              <img src={HeroIcon2} alt="hero icon" />
-            </div>
-            <div className="icon-3">
-              <img src={HeroIcon3} alt="hero icon" />
-            </div>
+              <div className="icon-1">
+                <img src={HeroIcon1} alt="hero icon" />
+              </div>
+              <div className="icon-2">
+                <img src={HeroIcon2} alt="hero icon" />
+              </div>
+              <div className="icon-3">
+                <img src={HeroIcon3} alt="hero icon" />
+              </div>
 
-            <img
-              className="hero_img"
-              src={HeroImgLaptop}
-              alt="citric.uz"
-            />
-          </div>
-        </SwiperSlide>
-        <SwiperSlide>
-          <div className="hero_section" >
-            <p className="hero_title" >
-              {t("Test product text")}
-            </p>
-            <div className="hero_circles cycle">
-              <div className="cycle">
+              <img className="hero_img" src={HeroImgLaptop} alt="citric.uz" />
+            </div>
+          </SwiperSlide>
+          <SwiperSlide>
+            <div className="hero_section">
+              <p className="hero_title">{t("Test product text")}</p>
+              <div className="hero_circles cycle">
                 <div className="cycle">
-                  <div className="cycle"></div>
+                  <div className="cycle">
+                    <div className="cycle"></div>
+                  </div>
                 </div>
               </div>
-            </div>
-            <div className="icon-1">
-              <img src={HeroIcon1} alt="hero icon" />
-            </div>
-            <div className="icon-2">
-              <img src={HeroIcon2} alt="hero icon" />
-            </div>
-            <div  className="icon-3">
-              <img src={HeroIcon3} alt="hero icon" />
-            </div>
+              <div className="icon-1">
+                <img src={HeroIcon1} alt="hero icon" />
+              </div>
+              <div className="icon-2">
+                <img src={HeroIcon2} alt="hero icon" />
+              </div>
+              <div className="icon-3">
+                <img src={HeroIcon3} alt="hero icon" />
+              </div>
 
-            <img
-              className="hero_img"
-              src={HeroImgLaptop}
-              alt="citric.uz"
-            />
-          </div>
-        </SwiperSlide>
-      </Swiper>
+              <img className="hero_img" src={HeroImgLaptop} alt="citric.uz" />
+            </div>
+          </SwiperSlide>
+        </Swiper>
       </div>
 
       {/* <div className="hero_section" ref={boxRef}>

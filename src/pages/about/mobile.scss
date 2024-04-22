@@ -3,13 +3,26 @@
     margin: 50px 0 !important;
     font-size: 24px !important;
   }
+  .about_company{
+    flex-direction: column;
+    img{
+      width: 100% !important;
+      height: 200px !important;
+    }
+  }
   .about_video {
     height: 200px !important;
+
   }
   .poster{
     height: 200px !important;
-    object-fit: contain;
-  }
+    object-fit: 80%;
+    border-radius: 20px;
+    -webkit-border-radius: 20px;
+    -moz-border-radius: 20px;
+    -ms-border-radius: 20px;
+    -o-border-radius: 20px;
+}
   .about_page_img {
     width: 100% !important;
     height: 300px !important;
@@ -21,11 +34,15 @@
   .brands_elements {
     display: grid !important;
     grid-template-columns: repeat(2, 1fr) !important;
+    gap: 20px !important;
   }
   .brands_elements_element {
     padding: 20px !important;
-    height: 100px !important;
+    height: 150px !important;
     object-fit: contain !important;
+    img{
+      height: 80px !important;
+    }
   }
   .comment_title {
     font-size: 24px !important;

@@ -10,10 +10,21 @@ import 'swiper/css/free-mode';
 import 'swiper/css/pagination';
 import './style.scss'
 import { uniqueId } from 'lodash';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import Container from 'modules/container';
+import gsap from 'gsap';
 
 const Catalog = () => {
+  let mm = gsap.matchMedia();
+  
+  useEffect(() => {
+    mm.add("(min-width: 800px)", () => {
+      gsap.from('.catalog-page', {
+        duration: 1,
+        opacity: 0,
+        y: 50,
+      }); });
+  }, [])
   const { t, get } = useHooks()
   const [page, setPage] = useState(1);
   const [allData, setAllData]: any = useState([]);
