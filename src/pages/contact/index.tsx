@@ -15,7 +15,7 @@ const Contact = () => {
         y: 50,
       });
     });
-  }, []);
+  },);
   const { t, get } = useHooks();
   
 

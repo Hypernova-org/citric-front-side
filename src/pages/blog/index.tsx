@@ -15,7 +15,7 @@ const Blog = () => {
         opacity: 0,
         y: 50,
       }); });
-  }, [])
+  },)
   const { t } = useHooks();
   const [page, setPage] = useState();
 
