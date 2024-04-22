@@ -20,7 +20,7 @@ const Vacancies = () => {
         opacity: 0,
         y: 50,
       }); });
-  }, [])
+  }, )
   const { t } = useHooks();
   return (
     <div className="vacancies_page container">

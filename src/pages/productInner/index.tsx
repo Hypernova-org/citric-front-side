@@ -27,7 +27,7 @@ const ProductInner = () => {
         opacity: 0,
         y: 50,
       }); });
-  }, [])
+  },)
   const { t, get, params } = useHooks();
   const [count, setCount] = useState(1);
   const { addToBasket, updateQuantity } = useStore();

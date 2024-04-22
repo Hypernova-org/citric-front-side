@@ -9,7 +9,6 @@ import 'swiper/css';
 import 'swiper/css/free-mode';
 import 'swiper/css/pagination';
 import './style.scss'
-import { uniqueId } from 'lodash';
 import { useEffect, useState } from 'react';
 import Container from 'modules/container';
 import gsap from 'gsap';
