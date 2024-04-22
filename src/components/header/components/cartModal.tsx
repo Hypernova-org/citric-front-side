@@ -1,4 +1,4 @@
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { notification } from "antd";
 import { Field } from "formik";
 import { DeleteOutlined } from "@ant-design/icons";
@@ -23,7 +23,6 @@ const CartModal = ({ cartModal, showCartModal }: any) => {
     } else {
       document.body.style.overflow = "auto";
     }
-
     return () => {
       document.body.style.overflow = "auto";
     };
@@ -33,6 +32,7 @@ const CartModal = ({ cartModal, showCartModal }: any) => {
     return {
       id: get(curr, "product._id"),
       amount: curr["quantity"],
+      price: curr["totalPrice"]
     };
   }, []);
 
@@ -67,32 +67,37 @@ const CartModal = ({ cartModal, showCartModal }: any) => {
                     <div className="left-side"><img className='object-cover' src={get(product, "image1[0].small")} alt="citric.uz" /></div>
                     <div className="right-side">
                       <p>{get(product, "productTitle")}</p>
-                      <div className="cart-amount-controller">
-                        <span
-                          className="minus-amount"
-                          onClick={() => {
-                            updateQuantity(
-                              get(product, "_id"),
-                              Math.max(1, item.quantity - 1)
-                            );
-                          }}
-                        >
-                          <MinusIcon />
-                        </span>
-                        <p className="counter-amount">
-                          {get(item, "quantity")}
-                        </p>
-                        <span
-                          className="plus-amount"
-                          onClick={() =>
-                            updateQuantity(
-                              get(product, "_id"),
-                              item.quantity + 1
-                            )
-                          }
-                        >
-                          <PlusIcon />
-                        </span>
+                      <div className="flex items-center">
+                        <div className="cart-amount-controller">
+                          <button
+                            className="minus-amount"
+                            onClick={() => {
+                              updateQuantity(
+                                get(product, "_id"),
+                                Math.max(1, item.quantity - 1),
+                                get(product, "price", 0)
+                              );
+                            }}
+                          >
+                            <MinusIcon />
+                          </button>
+                          <p className="counter-amount">
+                            {get(item, "quantity")}
+                          </p>
+                          <button
+                            className="plus-amount"
+                            onClick={() =>(
+                              updateQuantity(
+                                get(product, "_id"),
+                                item.quantity + 1,
+                                get(product, "price", 0)
+                              )
+                            )}
+                          >
+                            <PlusIcon />
+                          </button>
+                        </div>
+                        {get(product, "price") && <p className="ml-[20px] text-[18px]">{t("Price")}: {+(get(item, "quantity")) * +(get(product, "price"))}</p>}
                       </div>
                     </div>
                   </div>

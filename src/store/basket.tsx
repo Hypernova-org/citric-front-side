@@ -10,6 +10,7 @@ import { storage } from "services";
 export interface IBasketItem {
   product: any;
   quantity: number;
+  totalPrice: number;
 }
 
 export interface IBasketStore {
@@ -17,7 +18,7 @@ export interface IBasketStore {
   addToBasket: (product: any) => void;
   removeFromBasket: (productId: number) => void;
   clearBasket: any;
-  updateQuantity: (productId: number, quantity: number) => void;
+  updateQuantity: (productId: number, quantity: number, price?: number) => void;
 }
 
 export const basketSlice: StateCreator<IBasketStore, [], []> = (
@@ -34,7 +35,7 @@ export const basketSlice: StateCreator<IBasketStore, [], []> = (
         if (existingItem) {
           existingItem.quantity += 1;
         } else {
-          state.basket.push({ product, quantity: 1 });
+          state.basket.push({ product, quantity: 1, totalPrice: 0 });
         }
         storage.set("basket", JSON.stringify([...state.basket]))
         return { basket: [...state.basket] };
@@ -53,13 +54,14 @@ export const basketSlice: StateCreator<IBasketStore, [], []> = (
         basket: [],
       }))
     },
-    updateQuantity: (productId, quantity) =>
+    updateQuantity: (productId, quantity, price) =>
       set((state) => {
         const updatedBasket = state.basket.map((item) =>
-          item.product._id === productId ? { ...item, quantity } : item
+          //@ts-ignore
+          item.product._id === productId ? { ...item, quantity, totalPrice: (+quantity * +price) } : item
         );
         storage.set("basket", JSON.stringify(updatedBasket))
         return { basket: updatedBasket };
-      }),
+      })
   };
 };

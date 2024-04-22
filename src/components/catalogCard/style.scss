@@ -34,7 +34,7 @@
   .swiper-pagination {
     bottom: 0px;
   }
-
+  
   .swiper-slide {
     width: 100%;
   }
@@ -60,9 +60,15 @@
   }
 
   &__info {
-    // display: flex;
+    display: flex;
     // flex-direction: column;
-    // align-items: start;
+    gap: 10px;
+    justify-content: space-between;
+    align-items: start;
+
+    button {
+      margin-top: 5px;
+    }
   }
 
   &__name {
@@ -79,6 +85,7 @@
     -webkit-box-orient: vertical;
     overflow: hidden;
     text-overflow: ellipsis;
+    width: 85%;
     @media only screen and (max-width: 768px) {
       font-size: 18px;
     }

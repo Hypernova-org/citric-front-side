@@ -61,8 +61,6 @@ const Catalog = () => {
             }}
           >
             {({ items, meta }) => {
-              console.log(items.length);
-              
               return (
                 <div>
                   <div className='catalog-list'>
