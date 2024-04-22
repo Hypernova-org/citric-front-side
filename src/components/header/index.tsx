@@ -24,6 +24,9 @@ interface INav {
 }
 
 const Header = () => {
+  const { setSelectedMenu, system } = useStore();
+
+
   const { t, get, location } = useHooks();
   const { Option } = Select;
   const [navBarState, searchBarState] = useState(false);
@@ -31,13 +34,12 @@ const Header = () => {
   const [mobileMenu, showMobileMenu] = useState<Boolean>(false);
   const [cartModal, showCartModal] = useState(false);
   const [searchName, setSearchName] = useState("");
-  const [selectedmenu, setSelectedMenu] = useState(get(location, "pathname"));
+  // const [selectedmenu, setSelectedMenu] = useState(get(location, "pathname", get(system, "menu")));
   const searchNameDebounced = useDebounce(searchName, 600);
-  const { system } = useStore();
 
-  useEffect(()=>(
-    setSelectedMenu(get(location, "pathname"))
-  ),[selectedmenu])
+  // useEffect(()=>(
+  //   setSelectedMenu(get(location, "pathname"))
+  // ),[selectedmenu])
 
   const openMobileMenu = (open: Boolean) => {
     const body = document.getElementsByTagName("body")[0];
@@ -109,7 +111,7 @@ const Header = () => {
         <ul className="header-navbar__list">
           {!navBarState ? (
             navItems.map((menu) => (
-              <li key={menu.id} className={selectedmenu == menu.link ? `header-navbar__list-item selectedMenu` : "header-navbar__list-item"} >
+              <li key={menu.id} className={get(system, "menu") == menu.link ? `header-navbar__list-item selectedMenu` : "header-navbar__list-item"} >
                 <Link
                 onClick={() => setSelectedMenu(menu.link)}
                   to={get(menu, "link")}

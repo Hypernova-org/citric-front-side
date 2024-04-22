@@ -25,6 +25,7 @@ interface Video {
 }
 
 const About = () => {
+
   let mm = gsap.matchMedia();
   const { t, get } = useHooks();
   const [page, setPage] = useState(1);

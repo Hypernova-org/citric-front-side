@@ -1,5 +1,9 @@
 import React, { useEffect, useRef } from "react";
 import { Link } from "react-router-dom";
+import { Autoplay, Pagination } from "swiper/modules";
+import useStore from "store";
+import { Swiper, SwiperSlide } from "swiper/react";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
 import ThreeBlogs from "components/threeblogs";
 import Catalog from "./components/catalog";
 import { AboutIcon1, AboutIcon2, Arrow } from "assets/images/icons";
@@ -8,17 +12,17 @@ import HeroIcon2 from "../../assets/images/icons/HeroIcon2.png";
 import HeroIcon3 from "../../assets/images/icons/HeroIcon3.png";
 import { AboutSection1, AboutSection2, HeroImgLaptop } from "assets/images";
 import { gsap } from "gsap";
-import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { useHooks } from "hooks";
-import { Swiper, SwiperSlide } from "swiper/react";
 
 // Import Swiper styles
 import "swiper/css";
 import "swiper/css/pagination";
 
 // import required modules
-import { Autoplay, Pagination } from "swiper/modules";
 const Main = () => {
+  const { setSelectedMenu } = useStore();
+  // console.log(setSelectedMenu);
+  
   const { t, get } = useHooks();
   const homeRef = useRef(null);
   const boxRef = useRef(null);
@@ -253,35 +257,6 @@ const Main = () => {
           </SwiperSlide>
         </Swiper>
       </div>
-
-      {/* <div className="hero_section" ref={boxRef}>
-        <p className="hero_title" ref={productText}>
-          {t("Dextrose Monohydrate")}
-        </p>
-        <div className="hero_circles cycle">
-          <div className="cycle">
-            <div className="cycle">
-              <div className="cycle"></div>
-            </div>
-          </div>
-        </div>
-        <div ref={heroIcon1} className="icon-1">
-          <img src={HeroIcon1} alt="hero icon" />
-        </div>
-        <div ref={heroIcon2} className="icon-2">
-          <img src={HeroIcon2} alt="hero icon" />
-        </div>
-        <div ref={heroIcon3} className="icon-3">
-          <img src={HeroIcon3} alt="hero icon" />
-        </div>
-
-        <img
-          ref={product}
-          className="hero_img"
-          src={HeroImgLaptop}
-          alt="citric.uz"
-        />
-      </div> */}
       <div className="about_section">
         <div className="about_section__left" ref={left}>
           <div className="about_left_circles left_cycle">
@@ -330,13 +305,14 @@ const Main = () => {
               )}
             </p>
             <Link
-              onClick={() =>
+              onClick={() => (
+                setSelectedMenu("/about"),
                 window.scrollTo({
                   behavior: "smooth",
                   top: 0,
                   left: 0,
                 })
-              }
+              )}
               to={"/about"}
             >
               <p>{t("Batafsil ma'lumot")}</p>

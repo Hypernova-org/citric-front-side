@@ -27,38 +27,13 @@ const ProductInner = () => {
         opacity: 0,
         y: 50,
       }); });
-  },)
+  }, [])
   const { t, get, params } = useHooks();
   const [count, setCount] = useState(1);
   const { addToBasket, updateQuantity } = useStore();
   const [error, setError] = useState(false);
 
-  const [selectedCategory, setSelectedCategory] = useState({
-    categoryName: "Hammasi",
-    _v: 999,
-    _id: "1",
-  });
-
-  const { isLoading: productsLoading, data: productsData } = useGet({
-    name: "products",
-    url: "products",
-    params: {
-      extra: {
-        category: get(selectedCategory, "_id") == "1" ? "" : get(selectedCategory, "_id"),
-      },
-    },
-    onSuccess: (data) => { },
-    onError: (error) => {
-      setError(true);
-    },
-  });
-
-  const slicedData =
-    get(productsData, "data", []).length > 3
-      ? get(productsData, "data", []).slice(0, 3)
-      : get(productsData, "data");
-
-  const { isLoading, data } = useGet({
+  const { data } = useGet({
     name: `products-${get(params, "id")}`,
     url: `products/${get(params, "id")}`,
     onSuccess: (data) => {
@@ -70,6 +45,25 @@ const ProductInner = () => {
   });
 
   const productData = get(data, "data", []);
+
+  const { data: productsData } = useGet({
+    name: "products",
+    url: "products",
+    params: {
+      extra: {
+        category: get(productData, "category._id", "1"),
+      },
+    },
+    onSuccess: (data) => { },
+    onError: (error) => {
+      setError(true);
+    },
+  });
+
+  const slicedData =
+    get(productsData, "data", []).length > 3
+      ? get(productsData, "data", []).slice(2, 5)
+      : get(productsData, "data");
 
   return (
     <div className="container inner_page ">
@@ -148,7 +142,8 @@ const ProductInner = () => {
                     addToBasket(productData),
                     updateQuantity(
                       get(productData, "_id",0),
-                      count
+                      count,
+                      get(productData, "price",0)
                     )
                   )}
                 >

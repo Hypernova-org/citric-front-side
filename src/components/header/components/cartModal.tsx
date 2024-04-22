@@ -86,7 +86,7 @@ const CartModal = ({ cartModal, showCartModal }: any) => {
                           </p>
                           <button
                             className="plus-amount"
-                            onClick={() =>(
+                            onClick={() => (
                               updateQuantity(
                                 get(product, "_id"),
                                 item.quantity + 1,
@@ -97,7 +97,7 @@ const CartModal = ({ cartModal, showCartModal }: any) => {
                             <PlusIcon />
                           </button>
                         </div>
-                        {get(product, "price") && <p className="ml-[20px] text-[18px]">{t("Price")}: {+(get(item, "quantity")) * +(get(product, "price"))}</p>}
+                        {get(product, "price") && <p className="ml-[20px] text-[18px]">{t("Price")}: {+(get(item, "quantity")) * +(get(product, "price"))} {t("so'm")}</p>}
                       </div>
                     </div>
                   </div>
