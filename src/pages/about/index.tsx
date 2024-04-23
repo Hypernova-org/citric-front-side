@@ -218,7 +218,7 @@ const About = () => {
       <p className="about_page_title">{t("Kompaniya haqida")}</p>
       <div className="about_company">
         <img src={Company} alt="" />
-        <p>{t("СITRIC.UZ - BEST INGREDIENTS FOR BETTER LIFE  CITRIC.UZ is a global technology company operating on the market of Uzbekistan since 2014, The company represents the world leaders in the production of food ingredients, A well-developed distribution network, well-established logistics, consolidation warehouses are located in Europe, whose efforts are aimed at the uninterrupted supply of high quality ingredients and raw materials to food producers! A wide range of raw materials from the world's best manufacturers and own production, high-quality service, information technology support, professionalism of staff, friendly and individual approach to each client are just a few factors that became decisive for 1500 enterprises of Uzbekistan when choosing the group of companies 'Citric uz' as a business partner, The introduction of progressive sales technologies, high-quality customer service, significant development potential gives us the right to speak with pride and optimism about the future, which is inextricably linked with the development and prosperity of our partners,")}</p>
+        <p>{t("About content")}</p>
       </div>
       <div className="video">
         {!showVideo && (

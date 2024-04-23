@@ -228,7 +228,6 @@ const Main = () => {
               <div className="icon-3">
                 <img src={HeroIcon3} alt="hero icon" />
               </div>
-
               <img className="hero_img" src={HeroImgLaptop} alt="citric.uz" />
             </div>
           </SwiperSlide>
@@ -296,12 +295,12 @@ const Main = () => {
             </p>
             <p>
               {t(
-                "Citric.uz – O‘zbekiston bozorida 2013-yildan buyon faoliyat yurituvchi global texnologik kompaniya. Kompaniya oziq-ovqat ingrediyentlarini ishlab chiqarish bo‘yicha jahon yetakchilarini ifodalaydi."
+                "O‘zbekiston bozorida 2013-yildan buyon"
               )}
             </p>
             <p>
               {t(
-                "Rivojlangan tarqatish tarmog'i, yaxshi ishlaydigan logistika, konsolidatsiya omborlari Yevropa, Xitoy va MDH mamlakatlarida joylashgan bo'lib, ularning sa'y-harakatlari oziq-ovqat ishlab chiqaruvchilarni yuqori sifatli ingredientlar va xomashyo bilan uzluksiz ta'minlashga qaratilgan."
+                "Rivojlangan"
               )}
             </p>
             <Link
