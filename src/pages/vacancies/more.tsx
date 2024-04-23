@@ -8,22 +8,22 @@ const More = ({moreModal}: any) => {
 
   return (
     <div>
-      <div className="vacancy_top">
-        <p className="vacancy_text">{get(data, "title")}</p>
-        <p className="vacancy_type">{get(data, "type")}</p>
+      <div className="">
+        <p className="text-[16px] text-[#70B32F]">{t("Ish turi")}</p>
+        <p  className="text-[32px] text-[#70B32F]">{get(data, "title")}</p>
       </div>
-      <div className="vacancy_body">
-        <p className="vacancy_desc">
+      <div className="text-[18px] text-[black] mt-10 flex flex-col gap-5">
+        <p className="">
           {get(data, "description")}
         </p>
-        <p className="vacancy_salary">
-          {get(data, "salary")}
+        <p className="">
+        {t("Maosh")}: {get(data, "salary")}
         </p>
-        <p className="vacancy_location">
-          {get(data, "adress")}
+        <p className="">
+        {t("Manzil")}: {get(data, "adress")}
         </p>
-        <p className="vacancy_time">
-          {get(data, "workingTime")}
+        <p className="">
+          {t("Ish vaqti")}: {get(data, "workingTime")}
         </p>
       </div>
     </div>

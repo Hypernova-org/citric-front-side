@@ -26,16 +26,16 @@ const Vacancy = ({data, onClick, showApplicationModal}: any) => {
       </div>
       <div className="vacancy_body">
         <p className="vacancy_desc">
-          {get(data, "title")}
+          {get(data, "description")}
         </p>
         <p className="vacancy_salary">
-          {get(data, "salary")}
+        {t("Maosh")}: {get(data, "salary")}
         </p>
         <p className="vacancy_location">
-          {get(data, "address")}
+        {t("Manzil")}: {get(data, "adress")}
         </p>
         <p className="vacancy_time">
-          {get(data, "time")}
+        {t("Ish vaqti")}: {get(data, "workingTime")}
         </p>
         <button className="vacancy_more hover:text-[#70B32F]">{t("Batafsil ma’lumot")}</button>
       </div>
