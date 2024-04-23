@@ -2,6 +2,7 @@ import { useState } from 'react'
 import { categories } from 'mock'
 import { useHooks } from 'hooks'
 import './style.scss'
+import './mobile.scss'
 
 const CategoryBtns = () => {
   const { get } = useHooks()

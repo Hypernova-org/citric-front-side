@@ -26,7 +26,7 @@ const MobileSearchModal = ({ showMobileSearchModal, mobileSearchModal, searchNam
     <div className="search-modal">
       <div className="search-modal__top">
         <div
-          className="icon-btn back-btn mr-[10px]"
+          className="icon-btn back-btn"
           onClick={() => showMobileSearchModal(false)}
         >
           <img src={BackIcon} alt="citric.uz" className="burger-icon" />

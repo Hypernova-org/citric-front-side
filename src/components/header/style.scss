@@ -160,6 +160,7 @@
   left: 0;
   padding: 20px;
   padding: 12px;
+  overflow: auto !important;
 
   &__top {
     display: flex;
@@ -188,7 +189,7 @@
 
   &__bottom {
     height: 89vh;
-    overflow-y: scroll;
+    overflow-y: auto;
     .nodata {
       position: absolute;
       top: 50%;
