@@ -12,7 +12,7 @@ import HeroIcon2 from "../../assets/images/icons/HeroIcon2.png";
 import HeroIcon3 from "../../assets/images/icons/HeroIcon3.png";
 import { AboutSection1, AboutSection2, HeroImgLaptop } from "assets/images";
 import { gsap } from "gsap";
-import { useHooks } from "hooks";
+import { useGet, useHooks } from "hooks";
 
 // Import Swiper styles
 import "swiper/css";
@@ -22,7 +22,7 @@ import "swiper/css/pagination";
 const Main = () => {
   const { setSelectedMenu } = useStore();
   // console.log(setSelectedMenu);
-  
+
   const { t, get } = useHooks();
   const homeRef = useRef(null);
   const boxRef = useRef(null);
@@ -191,6 +191,19 @@ const Main = () => {
     });
   }, []);
 
+  const { data } = useGet({
+    name: "galleries",
+    url: "galleries",
+    onSuccess: (data) => {
+    },
+    onError: (error) => {
+    },
+  });
+
+  const galleriesData = get(data, "data", []);
+
+  console.log(galleriesData);
+
   return (
     <div className="container" ref={homeRef}>
       <div ref={boxRef}>
@@ -208,52 +221,35 @@ const Main = () => {
           modules={[Pagination, Autoplay]}
           className="mySwiper"
         >
-          <SwiperSlide>
-            {" "}
-            <div className="hero_section">
-              <p className="hero_title">{t("Dextrose Monohydrate")}</p>
-              <div className="hero_circles cycle">
-                <div className="cycle">
-                  <div className="cycle">
-                    <div className="cycle"></div>
+          {
+            galleriesData.map((item: any) => (
+              console.log(item),
+              
+              <SwiperSlide>
+                {" "}
+                <div className="hero_section">
+                  <p className="hero_title">{get(item, "text", "")}</p>
+                  <div className="hero_circles cycle">
+                    <div className="cycle">
+                      <div className="cycle">
+                        <div className="cycle"></div>
+                      </div>
+                    </div>
                   </div>
-                </div>
-              </div>
-              <div className="icon-1">
-                <img src={HeroIcon1} alt="hero icon" />
-              </div>
-              <div className="icon-2">
-                <img src={HeroIcon2} alt="hero icon" />
-              </div>
-              <div className="icon-3">
-                <img src={HeroIcon3} alt="hero icon" />
-              </div>
-              <img className="hero_img" src={HeroImgLaptop} alt="citric.uz" />
-            </div>
-          </SwiperSlide>
-          <SwiperSlide>
-            <div className="hero_section">
-              <p className="hero_title">{t("Test product text")}</p>
-              <div className="hero_circles cycle">
-                <div className="cycle">
-                  <div className="cycle">
-                    <div className="cycle"></div>
+                  <div className="icon-1">
+                    <img src={HeroIcon1} alt="hero icon" />
                   </div>
+                  <div className="icon-2">
+                    <img src={HeroIcon2} alt="hero icon" />
+                  </div>
+                  <div className="icon-3">
+                    <img src={HeroIcon3} alt="hero icon" />
+                  </div>
+                  <img className="hero_img" src={get(item, "image[0].large")} alt="citric.uz" />
                 </div>
-              </div>
-              <div className="icon-1">
-                <img src={HeroIcon1} alt="hero icon" />
-              </div>
-              <div className="icon-2">
-                <img src={HeroIcon2} alt="hero icon" />
-              </div>
-              <div className="icon-3">
-                <img src={HeroIcon3} alt="hero icon" />
-              </div>
-
-              <img className="hero_img" src={HeroImgLaptop} alt="citric.uz" />
-            </div>
-          </SwiperSlide>
+              </SwiperSlide>
+            ))
+          }
         </Swiper>
       </div>
       <div className="about_section">
