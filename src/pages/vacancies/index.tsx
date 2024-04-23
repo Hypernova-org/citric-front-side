@@ -1,16 +1,17 @@
 import { useEffect, useState } from "react";
+import { Modal } from "antd";
 import gsap from "gsap";
 import Container from "modules/container";
 import { useHooks } from "hooks";
 
 import Vacancy from "./card";
 import More from "./more";
+import Application from "./application";
 
 import Nodata from "assets/images/icons/nodata.svg";
 
 import "./style.scss";
 import "./mobile.scss";
-import { Modal } from "antd";
 
 const Vacancies = () => {
   let mm = gsap.matchMedia();
@@ -18,6 +19,7 @@ const Vacancies = () => {
   const [page, setPage] = useState(1);
   const [allData, setAllData]: any = useState([]);
   const [moreModal, showMoreModal]: any = useState({ open: false, data: {} });
+  const [applicationModal, showApplicationModal]: any = useState({ open: false, data: {} });
   const commentData = get(moreModal, "data.vacancies");
 
 
@@ -44,6 +46,17 @@ const Vacancies = () => {
       >
         <More {...{moreModal}}/>
       </Modal>
+      <Modal
+        open={applicationModal.open}
+        onOk={() => showApplicationModal({ open: true, data: {} })}
+        onCancel={() => showApplicationModal({ open: false, data: {} })}
+        footer={null}
+        centered
+        width={500}
+        destroyOnClose
+      >
+        <Application {...{ showApplicationModal, applicationModal }} />
+      </Modal>
       <p className="vacancy_title">{t("Bo’sh ish o’rinlari")}</p>
       <div className="vacancies">
         <Container.All
@@ -60,14 +73,11 @@ const Vacancies = () => {
                 {items.length ? (
                   items.map((item) => (
                     <Vacancy
-                      onClick={() =>
-                        showMoreModal({ open: true, data: { item } })
-                      }
-                      title={get(item, "title", "")}
-                      time={get(item, "workingTime", "")}
-                      salary={get(item, "salary", "")}
-                      type={get(item, "description", "")}
-                      address={get(item, "adress", "")}
+                      onClick={(e:any) => (
+                        showMoreModal({ open: true, data: { item } }),
+                        e.stopPropagation()
+                      )}
+                      {...{showApplicationModal, data: item}}
                     />
                   ))
                 ) : (

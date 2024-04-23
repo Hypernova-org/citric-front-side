@@ -2,6 +2,8 @@ import { useState } from "react";
 import Container from "modules/container";
 import { useHooks } from "hooks";
 import { Arrow } from "assets/images/icons";
+import { Modal } from "antd";
+import Application from "./application";
 
 interface VacancyProps {
   title: string;
@@ -12,37 +14,39 @@ interface VacancyProps {
   onClick: any;
 }
 
-const Vacancy = (props: VacancyProps) => {
-
+const Vacancy = ({data, onClick, showApplicationModal}: any) => {
   const { t, get } = useHooks();
+  // const [applicationModal, showApplicationModal]: any = useState({ open: false, data: {} });
 
   return (
-
-    <div className="vacancy_item" onClick={props.onClick}>
+    <div className="vacancy_data cursor-pointer" onClick={onClick}>
       <div className="vacancy_top">
         <p className="vacancy_text">{t("Ish turi")}</p>
-        <p className="vacancy_type">{props.title}</p>
+        <p className="vacancy_type">{get(data, "title")}</p>
       </div>
       <div className="vacancy_body">
         <p className="vacancy_desc">
-          {props.title}
+          {get(data, "title")}
         </p>
         <p className="vacancy_salary">
-          {props.salary}
+          {get(data, "salary")}
         </p>
         <p className="vacancy_location">
-          {props.address}
+          {get(data, "address")}
         </p>
         <p className="vacancy_time">
-          {props.time}
+          {get(data, "time")}
         </p>
-        <button className="vacancy_more hover:text-[#70B32F]">Batafsil ma’lumot</button>
+        <button className="vacancy_more hover:text-[#70B32F]">{t("Batafsil ma’lumot")}</button>
       </div>
       <div className="vacancy_bottom">
-        <a href="https://t.me/Citric_422" target="_blank" rel="noreferrer" className="vacancy_btn">
-          <p>Ariza yuborish</p>
+        <div onClick={(e) => (
+          e.stopPropagation(),
+          showApplicationModal({ open: true, data: {data} })
+        )} className="vacancy_btn">
+          <p>{t("Ariza yuborish")}</p>
           <Arrow />
-        </a>
+        </div>
       </div>
     </div>
 
