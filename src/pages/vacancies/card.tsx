@@ -19,7 +19,7 @@ const Vacancy = ({data, onClick, showApplicationModal}: any) => {
   // const [applicationModal, showApplicationModal]: any = useState({ open: false, data: {} });
 
   return (
-    <div className="vacancy_data cursor-pointer" onClick={onClick}>
+    <div className="vacancy_data vacancy_item cursor-pointer" onClick={onClick}>
       <div className="vacancy_top">
         <p className="vacancy_text">{t("Ish turi")}</p>
         <p className="vacancy_type">{get(data, "title")}</p>
