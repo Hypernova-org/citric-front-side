@@ -105,6 +105,36 @@
     width: 55%;
     // height: 40%;
     height: inherit;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+
+    .add-tocart {
+      border-radius: 35px;
+      background: var(--Colors-Primary, #70b32f);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 16px 30px;
+      width: 90%;
+      transition: all ease 0.3s;
+      margin-bottom: 20px;
+      // position: absolute;
+      // bottom: 30px;
+
+      // @media only screen and (max-width: 576px) {
+      //   width: 100%;
+      //   position: relative;
+      // }
+
+      &:hover {
+        opacity: 0.7;
+      }
+
+      p {
+        color: #fff;
+      }
+    }
 
     @media only screen and (max-width: 576px) {
       width: 100%;
@@ -205,32 +235,6 @@
     }
     @media only screen and (max-width: 768px) {
       padding: 20px;
-    }
-
-    .add-tocart {
-      border-radius: 35px;
-      background: var(--Colors-Primary, #70b32f);
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      padding: 16px 30px;
-      width: 100%;
-      transition: all ease 0.3s;
-      // position: absolute;
-      // bottom: 30px;
-
-      // @media only screen and (max-width: 576px) {
-      //   width: 100%;
-      //   position: relative;
-      // }
-
-      &:hover {
-        opacity: 0.7;
-      }
-
-      p {
-        color: #fff;
-      }
     }
 
     .product-extract {

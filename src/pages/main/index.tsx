@@ -223,8 +223,6 @@ const Main = () => {
         >
           {
             galleriesData.map((item: any) => (
-              console.log(item),
-              
               <SwiperSlide>
                 {" "}
                 <div className="hero_section">

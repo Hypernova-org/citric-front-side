@@ -68,7 +68,7 @@ const CartModal = ({ cartModal, showCartModal }: any) => {
                     <div className="right-side">
                       <p>{get(product, "productTitle")}</p>
                       <div className="flex items-center">
-                        <div className="cart-amount-controller">
+                        {/* <div className="cart-amount-controller">
                           <button
                             className="minus-amount"
                             onClick={() => {
@@ -96,7 +96,7 @@ const CartModal = ({ cartModal, showCartModal }: any) => {
                           >
                             <PlusIcon />
                           </button>
-                        </div>
+                        </div> */}
                         {get(product, "price") && <p className="ml-[20px] text-[18px]">{t("Price")}: {+(get(item, "quantity")) * +(get(product, "price"))} {t("so'm")}</p>}
                       </div>
                     </div>

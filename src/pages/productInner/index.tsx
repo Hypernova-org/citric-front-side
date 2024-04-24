@@ -26,7 +26,8 @@ const ProductInner = () => {
         duration: 1,
         opacity: 0,
         y: 50,
-      }); });
+      });
+    });
   }, [])
   const { t, get, params } = useHooks();
   const [count, setCount] = useState(1);
@@ -113,7 +114,7 @@ const ProductInner = () => {
                   {get(productData, "productTitle")}
                 </p>
               </div>
-              <div className="order-section__right-mid">
+              {/* <div className="order-section__right-mid">
                 <p className="product-amount">{t("Miqdori")}:</p>
                 <div className="amount-controller">
                   <button
@@ -127,11 +128,13 @@ const ProductInner = () => {
                     <PlusIcon className="counter" />
                   </button>
                 </div>
-              </div>
+              </div> */}
               <div className="order-section__right-bottom">
                 <p className="product-extract">
                   {get(productData, "description")}
                 </p>
+              </div>
+              <div className="flex justify-center">
                 <button
                   className="add-tocart"
                   onClick={() => (
@@ -141,9 +144,9 @@ const ProductInner = () => {
                     }),
                     addToBasket(productData),
                     updateQuantity(
-                      get(productData, "_id",0),
+                      get(productData, "_id", 0),
                       count,
-                      get(productData, "price",0)
+                      get(productData, "price", 0)
                     )
                   )}
                 >

@@ -218,7 +218,9 @@ const About = () => {
       <p className="about_page_title">{t("Kompaniya haqida")}</p>
       <div className="about_company">
         <img src={Company} alt="" />
-        <p>{t("About content")}</p>
+        <p>{t("About content1")} <br />
+          {t("About content2")}
+        </p>
       </div>
       <div className="video">
         {!showVideo && (
