@@ -1,17 +1,18 @@
+import { useEffect, useState } from 'react';
+import gsap from 'gsap';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Autoplay } from 'swiper/modules';
+import Container from 'modules/container';
 import { CatalogCard, CategoryBtns } from 'components';
 import { useGet, useHooks } from 'hooks'
+
 import Nodata from "assets/images/icons/nodata.svg"
 
-import '../../components/categoryBtns/style.scss'
 import 'swiper/css';
 import 'swiper/css/free-mode';
 import 'swiper/css/pagination';
 import './style.scss'
-import { useEffect, useState } from 'react';
-import Container from 'modules/container';
-import gsap from 'gsap';
+import '../../components/categoryBtns/style.scss'
 
 const Catalog = () => {
   let mm = gsap.matchMedia();
@@ -49,6 +50,11 @@ const Catalog = () => {
       _v: 999,
       _id: "1"
     }, ...get(categoriesData, "data", [])]
+
+    useEffect(()=>(
+      setPage(1),
+      setAllData([])
+    ),[selectedCategory])
 
   return (
     <div className='catalog-page'>
@@ -173,7 +179,7 @@ const Catalog = () => {
                       <div className='flex justify-center items-center'>
                         <button className='view-more'
                           onClick={() => {
-                            setPage(page + 1);
+                            setPage(page + 1)
                             setAllData([...allData, ...items])
                           }}>{t("Yana ko’rish")}</button>
                       </div>

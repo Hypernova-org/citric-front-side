@@ -36,6 +36,11 @@ const Catalog = () => {
     }, ...get(categoriesData, "data", [])
   ]
 
+  useEffect(()=>(
+    setPage(1),
+    setAllData([])
+  ),[selectedCategory])
+
   return (
     <div className="catalog-section">
       <h2 className="catalog-heading">{t("Katalog")}</h2>
