@@ -1,10 +1,10 @@
 import { WhiteLimon } from 'assets/images/icons'
-import React from 'react'
 
 
-const Loading = () => {
+const Loading = ({style}:any) => {
+
   return (
-    <div className='loader_wrapper'>
+    <div className="loader_wrapper" style={style}>
       <div className="loader">
         <WhiteLimon/>
       </div>

@@ -2,11 +2,15 @@ import { useEffect, useState } from 'react'
 import { useGet, useHooks } from 'hooks'
 import { CatalogCard } from 'components';
 
+import Container from 'modules/container';
+import Loading from 'components/loading';
+
+import Nodata from "assets/images/icons/nodata.svg"
 import "swiper/css";
 import "swiper/css/pagination";
 import "./style.scss";
+
 import { HeroIcon1, HeroIcon2, HeroIcon3 } from "assets/images/icons";
-import Container from 'modules/container';
 
 const Catalog = () => {
   const { t, get } = useHooks()
@@ -58,21 +62,24 @@ const Catalog = () => {
             name='products'
             url='products'
             params={{
-              limit: 6,
+              limit: 8,
               page,
               extra: {
                 category: selectedCategory?._id == "1" ? "" : selectedCategory?._id
               }
             }}
           >
-            {({ items, meta }) => {
+            {({ isLoading, items, meta }) => {
               return (
                 <div>
-                  <div className='catalog-list'>
+                 {isLoading ? <Loading style={{alignItems:"flex-start", marginTop: "80px"}}/> : items.length ? (<div className='catalog-list'>
                     {[...allData, ...items].map((item: any) => (
                       <CatalogCard key={get(item, 'id')} {...{ item }} />
                     ))}
-                  </div>
+                  </div>) : (<div className="nodata flex justify-center items-center flex-col mt-20">
+                    <img src={Nodata} alt="no-data-icon" />
+                    <p className="mt-[10px] text-center">{t("Hech qanday ma’lumot topilmadi")}</p>
+                  </div>)}
                   {meta && page < meta.totalCount&& meta.pageCount != meta.currentPage && 6 <= items.length && (
                     <div className="mt-[-20px] flex justify-center">
                       <div className='flex justify-center items-center'>
