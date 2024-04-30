@@ -13,6 +13,7 @@ import 'swiper/css/free-mode';
 import 'swiper/css/pagination';
 import './style.scss'
 import '../../components/categoryBtns/style.scss'
+import Loading from 'components/loading';
 
 const Catalog = () => {
   let mm = gsap.matchMedia();
@@ -156,7 +157,7 @@ const Catalog = () => {
             name='products'
             url='products'
             params={{
-              limit: 6,
+              limit: 8,
               page,
               extra: {
                 category: selectedCategory?._id == "1" ? "" : selectedCategory?._id
@@ -166,7 +167,7 @@ const Catalog = () => {
             {({ isLoading, items, meta }) => {
               return (
                 <div>
-                  {items.length ? (<div className='catalog-list'>
+                  {isLoading ? <Loading style={{alignItems:"flex-start", marginTop: "80px"}}/> : items.length ? (<div className='catalog-list'>
                     {[...allData, ...items].map((item: any) => (
                       <CatalogCard key={get(item, 'id')} {...{ item }} />
                     ))}

@@ -21,8 +21,6 @@ import "swiper/css/pagination";
 // import required modules
 const Main = () => {
   const { setSelectedMenu } = useStore();
-  // console.log(setSelectedMenu);
-
   const { t, get } = useHooks();
   const homeRef = useRef(null);
   const boxRef = useRef(null);
@@ -199,8 +197,6 @@ const Main = () => {
   });
 
   const galleriesData = get(data, "data", []);
-
-  console.log(galleriesData);
 
   return (
     <div className="container" ref={homeRef}>
