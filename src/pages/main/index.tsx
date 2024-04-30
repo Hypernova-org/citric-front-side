@@ -194,10 +194,8 @@ const Main = () => {
   const { data } = useGet({
     name: "galleries",
     url: "galleries",
-    onSuccess: (data) => {
-    },
-    onError: (error) => {
-    },
+    onSuccess: (data) => {},
+    onError: (error) => {},
   });
 
   const galleriesData = get(data, "data", []);
@@ -221,33 +219,57 @@ const Main = () => {
           modules={[Pagination, Autoplay]}
           className="mySwiper"
         >
-          {
-            galleriesData.map((item: any) => (
-              <SwiperSlide>
-                {" "}
-                <div className="hero_section">
-                  <p className="hero_title">{get(item, "text", "")}</p>
-                  <div className="hero_circles cycle">
+          <SwiperSlide>
+            {" "}
+            <div className="hero_section">
+              <p className="hero_title">{t("")}</p>
+              <div className="hero_circles cycle">
+                <div className="cycle">
+                  <div className="cycle">
+                    <div className="cycle"></div>
+                  </div>
+                </div>
+              </div>
+              <div className="icon-1">
+                <img src={HeroIcon1} alt="hero icon" />
+              </div>
+              <div className="icon-2">
+                <img src={HeroIcon2} alt="hero icon" />
+              </div>
+              <div className="icon-3">
+                <img src={HeroIcon3} alt="hero icon" />
+              </div>
+              <img className="hero_img" src={HeroImgLaptop} alt="citric.uz" />
+            </div>
+          </SwiperSlide>
+          {galleriesData.map((item: any) => (
+            <SwiperSlide>
+              <div className="hero_section">
+                <p className="hero_title">{get(item, "text", "")}</p>
+                <div className="hero_circles cycle">
+                  <div className="cycle">
                     <div className="cycle">
-                      <div className="cycle">
-                        <div className="cycle"></div>
-                      </div>
+                      <div className="cycle"></div>
                     </div>
                   </div>
-                  <div className="icon-1">
-                    <img src={HeroIcon1} alt="hero icon" />
-                  </div>
-                  <div className="icon-2">
-                    <img src={HeroIcon2} alt="hero icon" />
-                  </div>
-                  <div className="icon-3">
-                    <img src={HeroIcon3} alt="hero icon" />
-                  </div>
-                  <img className="hero_img" src={get(item, "image[0].large")} alt="citric.uz" />
                 </div>
-              </SwiperSlide>
-            ))
-          }
+                <div className="icon-1">
+                  <img src={HeroIcon1} alt="hero icon" />
+                </div>
+                <div className="icon-2">
+                  <img src={HeroIcon2} alt="hero icon" />
+                </div>
+                <div className="icon-3">
+                  <img src={HeroIcon3} alt="hero icon" />
+                </div>
+                <img
+                  className="hero_img"
+                  src={get(item, "image[0].large")}
+                  alt="citric.uz"
+                />
+              </div>
+            </SwiperSlide>
+          ))}
         </Swiper>
       </div>
       <div className="about_section">
@@ -287,16 +309,8 @@ const Main = () => {
             <p>
               {t("Citric.uz - yaxshi hayot uchun eng yaxshi ingredientlar!")}
             </p>
-            <p>
-              {t(
-                "O‘zbekiston bozorida 2013-yildan buyon"
-              )}
-            </p>
-            <p>
-              {t(
-                "Rivojlangan"
-              )}
-            </p>
+            <p>{t("O‘zbekiston bozorida 2013-yildan buyon")}</p>
+            <p>{t("Rivojlangan")}</p>
             <Link
               onClick={() => (
                 setSelectedMenu("/about"),

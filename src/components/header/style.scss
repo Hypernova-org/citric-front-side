@@ -429,8 +429,7 @@
   }
 
   .searched-items-container.show {
-    display: block;
-    // transform: translate(-50%, 0%);
+    display: flex;
   }
 
   .show {
@@ -451,17 +450,32 @@
   }
 
   .searched-items-container {
-    display: none;
+    display: none ;
     position: fixed;
     left: 50%;
     top: 70px;
-    width: 100vw;
-    height: 60vh;
+    width: 100%;
+    justify-content: center;
+    align-items: center;
+    height: 60%;
     background-color: white;
     transition: transform 0.3s ease;
     transform: translateX(-50%);
     border-radius: 0 0 15px 15px;
     overflow-y: scroll;
+    overflow-x: hidden;
+    padding: 70px 0; 
+    .catalog-list{
+      padding: 70px 0 !important;
+      position: absolute;
+      bottom: 0;
+      align-self: center;
+      gap: 15px;
+      display: grid;
+      width: 100% !important;
+      grid-auto-flow: unset !important;
+      height: 100% !important;
+    }
 
     @media only screen and (max-width: 576px) {
       height: 100vh;

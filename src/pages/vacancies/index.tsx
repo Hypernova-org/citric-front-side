@@ -81,7 +81,7 @@ const Vacancies = () => {
                     />
                   ))
                 ) : (
-                  <div className="nodata flex justify-center items-center flex-col mt-20">
+                  <div style={{gridColumn: "2"}} className="nodata flex justify-center items-center flex-col mt-20 w-80  ">
                     <img src={Nodata} alt="no-data-icon" />
                     <p className="mt-[10px] text-center">
                       {t("Hech qanday ma’lumot topilmadi")}
