@@ -131,7 +131,7 @@ const ProductInner = () => {
               </div> */}
               <div className="order-section__right-bottom">
                 <p className="product-extract">
-                  {get(productData, "description")}
+                {get(productData, "about")}
                 </p>
               </div>
               <div className="flex justify-center">
@@ -159,12 +159,6 @@ const ProductInner = () => {
                 </button>
               </div>
             </div>
-          </div>
-          <div className="product-info">
-            <p className="product-info__title">
-              {t("Mahsulot haqida ma’lumotlar")}
-            </p>
-            <p className="product-info__desc">{get(productData, "about")}</p>
           </div>
           <div className="product-info">
             <p className="product-info__title">{t("Mahsulot afzalliklari")}</p>
