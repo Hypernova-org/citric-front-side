@@ -31,7 +31,6 @@ const Blog = () => {
         }}
       >
         {({ isLoading, items, meta }) => {
-
           return (
             <div>
               <div className="blog_cards">

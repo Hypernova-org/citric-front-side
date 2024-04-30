@@ -50,9 +50,9 @@ const BlogDetails = () => {
           <p>{t("Orqaga")}</p>
         </Link>
         <p className="details_date">
-          {get(blogData, "createdAt", "")
-            .slice(0, 10)
-            .replaceAll("-", ".")}
+            {get(blogData, "createdAt", "")
+              .slice(0, 10)
+              .replaceAll("-", ".")}
         </p>
       </div>
       {!error ? (

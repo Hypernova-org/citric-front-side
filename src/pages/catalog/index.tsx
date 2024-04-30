@@ -124,7 +124,7 @@ const Catalog = () => {
                 <div className='catalog-category__card' key={get(category, "id")}>
                   <img src={get(category, "images[0].medium")} alt={get(category, "name")} className="catalog-category__img" />
                   <p className={'category-category__title'} key={get(category, "id")}>
-                    {get(category, "title")}
+                    {get(category, "categoryName")}
                   </p>
                 </div>
               </SwiperSlide>
