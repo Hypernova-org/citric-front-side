@@ -216,7 +216,6 @@ const Main = () => {
           className="mySwiper"
         >
           <SwiperSlide>
-            {" "}
             <div className="hero_section">
               <p className="hero_title">{t("")}</p>
               <div className="hero_circles cycle">
