@@ -8,9 +8,16 @@ import {
 } from "assets/images/icons";
 import "./footer.scss";
 import "./mobile.scss";
-import { useHooks } from "hooks";
+import { useGet, useHooks } from "hooks";
 const Footer = () => {
   const { t, get } = useHooks();
+  const { data } = useGet({
+    name: "contacts",
+    url: "contacts",
+    onSuccess: (data) => {},
+    onError: (error) => {},
+  });
+  const contactsData = get(data, "data", []);
   return (
     <div className="container">
       <div className="top_cont">
@@ -45,22 +52,22 @@ const Footer = () => {
             <div className="left_top_wrappers">
               <span>
                 <p>{t("Elektron pochta")}</p>
-                <a href="mailto:citricuz@gmail.com">sales@citric.uz</a>
+                <a href={`mailto:${get(contactsData, "email")}`}>{get(contactsData, "email")}</a>
               </span>
               <span>
                 <p>{t("Qo'ng'iroqlar markazi")}</p>
-                <a href="tel:+998974224969">+99897-422-49-69</a>
+                <a href={`tel:${get(contactsData, "email")}`}>{get(contactsData, "phone")}</a>
               </span>
             </div>
             <div className="left_top_wrappers">
               <span>
                 <p>{t("Ijtimoiy tarmoqlar")}</p>
                 <div className="footer_links">
-                  <a href="https://t.me/Citric_422" target="_blank">
+                  <a href={`${get(contactsData, "telegram")}`} target="_blank">
                     <Telegram />
                   </a>
                   <a
-                    href="https://www.instagram.com/citric_uz?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw=="
+                    href={`${get(contactsData, "instagram")}`}
                     rel="noreferrer"
                     target="_blank"
                   >
@@ -68,7 +75,7 @@ const Footer = () => {
                   </a>
 
                   <a
-                    href="https://www.youtube.com/channel/UCwR2Moa-YBqvMULTp6nnrkw"
+                    href={`${get(contactsData, "facebook")}`}
                     target="_blank"
                   >
                     <Youtube />

@@ -1,5 +1,5 @@
 import { Facebook, Instagram, Telegram, Youtube } from "assets/images/icons";
-import { useHooks } from "hooks";
+import { useGet, useHooks } from "hooks";
 import React, { useEffect } from "react";
 import "./_contact.scss";
 import "./mobile.scss";
@@ -15,9 +15,15 @@ const Contact = () => {
         y: 50,
       });
     });
-  },);
+  }, []);
   const { t, get } = useHooks();
-  
+  const { data } = useGet({
+    name: "contacts",
+    url: "contacts",
+    onSuccess: (data) => {},
+    onError: (error) => {},
+  });
+  const contactsData = get(data, "data", []);
 
   return (
     <div className="container contact_page ">
@@ -31,31 +37,31 @@ const Contact = () => {
       <div className="contact_links">
         <span>
           <p>{t("Elektron pochta")}</p>
-          <a href="mailto:citricuz@gmail.com">sales@citric.uz</a>
+          <a href={`mailto:${get(contactsData, "email")}`}>
+            {get(contactsData, "email")}
+          </a>
         </span>
         <span>
           <p>{t("Qo'ng'iroqlar markazi")}</p>
-          <a href="tel:+998974224969">+99897-422-49-69</a>
+          <a href={`tel:${get(contactsData, "email")}`}>
+            {get(contactsData, "phone")}
+          </a>
         </span>
         <span>
           <p>{t("Ijtimoiy tarmoqlar")}</p>
           <div className="footer_links">
-            <a href="https://t.me/Citric_422" target="_blank" rel="noreferrer">
+            <a href={`${get(contactsData, "telegram")}`} target="_blank">
               <Telegram />
             </a>
             <a
-              href="https://www.instagram.com/citric_uz?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw=="
+              href={`${get(contactsData, "instagram")}`}
               rel="noreferrer"
               target="_blank"
             >
               <Instagram />
             </a>
 
-            <a
-              href="https://www.youtube.com/channel/UCwR2Moa-YBqvMULTp6nnrkw"
-              target="_blank"
-              rel="noreferrer"
-            >
+            <a href={`${get(contactsData, "facebook")}`} target="_blank">
               <Youtube />
             </a>
           </div>
