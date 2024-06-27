@@ -56,7 +56,7 @@ const Footer = () => {
               </span>
               <span>
                 <p>{t("Qo'ng'iroqlar markazi")}</p>
-                <a href={`tel:${get(contactsData, "email")}`}>{get(contactsData, "phone")}</a>
+                <a href={`tel:${get(contactsData, "phone")}`}>{get(contactsData, "phone")}</a>
               </span>
             </div>
             <div className="left_top_wrappers">
