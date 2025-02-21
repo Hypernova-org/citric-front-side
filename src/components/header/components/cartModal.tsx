@@ -142,7 +142,7 @@ const CartModal = ({ cartModal, showCartModal }: any) => {
               }}
               onError={(error) => {
                 notification["error"]({
-                  message: get(error, "errorMessage", t("Произошло ошибка!")),
+                  message: get(error, "errorMessage", t("Произошло ошибка! cart")),
                   duration: 2,
                 });
                 console.log("Error", error);
