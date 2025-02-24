@@ -5,6 +5,7 @@
   margin: 35px 0;
   position: relative;
   overflow: hidden;
+  
 }
 .hero_title {
   color: var(--Colors-White, #fff);
@@ -90,14 +91,9 @@
   position: absolute;
   object-fit: fill;
   z-index: 10;
-  width: 1300px;
-  top: -20%;
-  left: 5%;
-  transform: rotate(-10deg);
-  -webkit-transform: rotate(-10deg);
-  -moz-transform: rotate(-10deg);
-  -ms-transform: rotate(-10deg);
-  -o-transform: rotate(-10deg);
+  width: 1000px;
+  top: -2%;
+  left: 15%;
 }
 .hero_section svg {
   width: 105px;
@@ -295,10 +291,12 @@
     top: 10%;
     left: 5%;
   }
-  .icon-1 img, .icon-2 img, .icon-3 img{
+  .icon-1 img,
+  .icon-2 img,
+  .icon-3 img {
     width: 66.636px;
     height: 66.636px;
-  } 
+  }
   .icon-1 {
     left: 40%;
     top: 32%;
@@ -313,10 +311,11 @@
     z-index: 10;
   }
   .hero_img {
-    height: 750px;
+    height: 70%;
+    width: 100%;
     object-fit: cover;
-    top: 15%;
-    left: 5%;
+    top: 30%;
+    left: 2%;
   }
   .about_section {
     display: flex;
