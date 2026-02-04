@@ -6,14 +6,14 @@ import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { useGet, useHooks } from "hooks";
 import Container from "modules/container";
 import { CommentCard } from "components";
-import Poster from "../../assets/images/poster.png";
+
 import Company from "../../assets/images/company.png";
 import { AboutImg1, AboutImg2, AboutImg3, AboutImg4 } from "assets/images";
-import { Arrow, Comment, Download } from "assets/images/icons";
+import { Download } from "assets/images/icons";
 
 import "./mobile.scss";
 import "./_about.scss";
-import Loading from "components/loading";
+
 interface Brand {
   image: { medium: string }[];
 }
@@ -227,17 +227,17 @@ const About = () => {
           <div className="poster" onClick={handleClick}></div>
         )}
         {showVideo && (
-          <iframe
+          <video
             className="about_video"
             width="100%"
             height=""
-            loading="eager"
-            src={video[0]?.url.replace("youtu.be/", "www.youtube.com/embed/")}
-            title="YouTube video player"
-            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-            referrerPolicy="strict-origin-when-cross-origin"
-            allowFullScreen={true}
-          ></iframe>
+            controls
+            autoPlay
+            src="https://pub-59c8c80cafe44904b4de6fa0d57e13e3.r2.dev/Rixsiboy_1.mp4"
+          >
+            <source src="https://pub-59c8c80cafe44904b4de6fa0d57e13e3.r2.dev/Rixsiboy_1.mp4" type="video/mp4" />
+            Your browser does not support the video tag.
+          </video>
         )}
       </div>
       <div className="about_page_brands">
@@ -305,7 +305,7 @@ const About = () => {
                     />
                   ))}
                 </div>
-                {meta && page < meta.totalCount && meta.pageCount != meta.currentPage && 6 <= items.length && (
+                {meta && page < meta.totalCount && meta.pageCount !== meta.currentPage && 6 <= items.length && (
                   <div className="mt-[-20px] flex justify-center">
                     <div className='flex justify-center items-center'>
                       <button className='view-more'
