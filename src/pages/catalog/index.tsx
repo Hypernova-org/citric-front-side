@@ -3,7 +3,7 @@ import gsap from 'gsap';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Autoplay } from 'swiper/modules';
 import Container from 'modules/container';
-import { CatalogCard, CategoryBtns } from 'components';
+import { CatalogCard } from 'components';
 import { useGet, useHooks } from 'hooks'
 
 import Nodata from "assets/images/icons/nodata.svg"
@@ -25,7 +25,7 @@ const Catalog = () => {
         opacity: 0,
         y: 50,
       }); });
-  }, [])
+  }, [mm])
   const { t, get } = useHooks()
   const [page, setPage] = useState(1);
   const [allData, setAllData]: any = useState([]);
@@ -36,7 +36,7 @@ const Catalog = () => {
     _id: "1"
   },)
 
-  const { isLoading: categoriesLoading, data: categoriesData } = useGet({
+  const { data: categoriesData } = useGet({
     name: "categories",
     url: "categories",
     onSuccess: (data) => {
@@ -52,10 +52,10 @@ const Catalog = () => {
       _id: "1"
     }, ...get(categoriesData, "data", [])]
 
-    useEffect(()=>(
-      setPage(1),
+    useEffect(()=>{
+      setPage(1)
       setAllData([])
-    ),[selectedCategory])
+    },[selectedCategory])
 
   return (
     <div className='catalog-page'>
@@ -96,7 +96,6 @@ const Catalog = () => {
               '700': {
                 slidesPerView: 2,
                 spaceBetween: 10,
-                // centeredSlides: true
               },
             }}
             modules={[Autoplay]}
@@ -140,14 +139,13 @@ const Catalog = () => {
         </div>
       </div>
       <div className="container catalog-products">
-        {/* <h3 className="catalog-products__title">{t("Barchasi")}</h3> */}
         <div className='catalog-categories'>
           {categories.map((category: any) => (
             <button
-              className={get(selectedCategory, "_id") == get(category, "_id") ? 'selectedCategory category-btn' : 'category-btn'}
+              className={get(selectedCategory, "_id") === get(category, "_id") ? 'selectedCategory category-btn' : 'category-btn'}
               onClick={() => setSelectedCategory(category)}
               key={get(category, "id")}>
-              {get(category, "_v") == 999 ? t(get(category, "categoryName")) : get(category, "categoryName")}
+              {get(category, "_v") === 999 ? t(get(category, "categoryName")) : get(category, "categoryName")}
             </button>
           ))}
         </div>
@@ -160,34 +158,53 @@ const Catalog = () => {
               limit: 8,
               page,
               extra: {
-                category: selectedCategory?._id == "1" ? "" : selectedCategory?._id
+                category: selectedCategory?._id === "1" ? "" : selectedCategory?._id
               }
             }}
           >
             {({ isLoading, items, meta }) => {
+              const displayItems = page === 1 ? items : [...allData, ...items]
+              
               return (
                 <div>
-                  {isLoading ? <Loading style={{alignItems:"flex-start", marginTop: "80px"}}/> : items.length ? (<div className='catalog-list'>
-                    {[...allData, ...items].map((item: any) => (
-                      <CatalogCard key={get(item, 'id')} {...{ item }} />
-                    ))}
-                  </div>) : (<div className="nodata flex justify-center items-center flex-col mt-20">
-                    <img src={Nodata} alt="no-data-icon" />
-                    <p className="mt-[10px] text-center">{t("Hech qanday ma’lumot topilmadi")}</p>
-                  </div>)}
-                  {meta && page < meta.totalCount && meta.pageCount != meta.currentPage && 6 <= items.length && (
-                    <div className="mt-[-20px] flex justify-center">
+                  {/* First load - show full loading */}
+                  {isLoading && page === 1 && allData.length === 0 ? (
+                    <Loading style={{alignItems:"flex-start", marginTop: "80px"}}/>
+                  ) : items.length || allData.length ? (
+                    <>
+                      <div className='catalog-list'>
+                        {displayItems.map((item: any) => (
+                          <CatalogCard key={get(item, 'id')} {...{ item }} />
+                        ))}
+                      </div>
+                      
+                      {/* Load more loading - show below items */}
+                      {isLoading && page > 1 && (
+                        <div className="load-more-loading">
+                          <div className="spinner"></div>
+                          <span>{t("Yuklanmoqda...")}</span>
+                        </div>
+                      )}
+                    </>
+                  ) : (
+                    <div className="nodata flex justify-center items-center flex-col mt-20">
+                      <img src={Nodata} alt="no-data-icon" />
+                      <p className="mt-[10px] text-center">{t("Hech qanday ma'lumot topilmadi")}</p>
+                    </div>
+                  )}
+                  
+                  {meta && page < meta.totalCount && meta.pageCount !== meta.currentPage && 6 <= items.length && !isLoading && (
+                    <div className="flex justify-center">
                       <div className='flex justify-center items-center'>
                         <button className='view-more'
                           onClick={() => {
                             setPage(page + 1)
                             setAllData([...allData, ...items])
-                          }}>{t("Yana ko’rish")}</button>
+                          }}>{t("Yana ko'rish")}</button>
                       </div>
                     </div>
                   )}
                 </div>
-
               )
             }}
 

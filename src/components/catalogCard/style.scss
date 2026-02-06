@@ -1,101 +1,172 @@
 .catalog-card {
-  width: 96%;
-  border-radius: 25px;
-  border: 2px solid var(--Colors-Grey, #f6f6f6);
-
-  @media only screen and (max-width: 768px) {
-    width: 80%;
-  }
+  width: 100%;
+  border-radius: 20px;
+  background: #fff;
+  border: 1px solid #f0f0f0;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  overflow: hidden;
+  position: relative;
 
   &:hover {
+    box-shadow: 0 12px 40px rgba(112, 179, 47, 0.15);
+    transform: translateY(-6px);
+    border-color: rgba(112, 179, 47, 0.2);
+
+    .catalog-card__img-wrapper img {
+      transform: scale(1.05);
+    }
+
+    .addtocart {
+      opacity: 1;
+      visibility: visible;
+      transform: translateY(0);
+    }
+
     .catalog-card__name {
       color: var(--Colors-Primary, #70b32f);
     }
-
-    .catalog-card__price {
-      color: var(--Colors-Primary, #70b32f);
-    }
   }
 
-  .swiper {
-    height: 180px !important;
-    @media only screen and (max-width: 768px) {
-    }
-    // @media only screen and (max-width: 576px) {
-    //   height: 260px !important;
-    // }
-  }
-
-  .swiper-slide-active {
-    margin: 0 1px;
-  }
-
-  .swiper-pagination {
-    bottom: 0px;
-  }
-  
-  .swiper-slide {
-    width: 100%;
+  // Badge for new products (if needed)
+  &__badge {
+    position: absolute;
+    top: 16px;
+    left: 16px;
+    background: linear-gradient(135deg, #70b32f 0%, #8ed14d 100%);
+    color: #fff;
+    font-size: 11px;
+    font-weight: 600;
+    padding: 6px 12px;
+    border-radius: 20px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    z-index: 10;
+    box-shadow: 0 2px 8px rgba(112, 179, 47, 0.3);
   }
 
   &__images {
     width: 100%;
-    padding: 30px;
-    padding-top: 30px;
-    padding-bottom: 20px;
+    height: 220px;
+    padding: 16px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    position: relative;
+    background: linear-gradient(180deg, #fafafa 0%, #f5f5f5 100%);
+    cursor: pointer;
+    border-radius: 20px 20px 0 0;
 
     @media only screen and (max-width: 768px) {
-      width: 100%;
-      padding: 20px;
-      padding-top: 20px;
-      padding-bottom: 10px;
+      height: 200px;
+      padding: 12px;
     }
   }
 
+  &__img-wrapper {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    border-radius: 16px;
+  }
+
+  &__img {
+    max-width: 100%;
+    max-height: 100%;
+    object-fit: contain;
+    transition: transform 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+
+  // Hover overlay removed - only image scale effect remains
+
   &__bottom {
-    padding: 20px;
-    border-top: 1px solid #f6f6f6;
-    cursor: pointer;
+    padding: 16px 20px 20px;
+    background: #fff;
+    position: relative;
+    border-top: 1px solid #f5f5f5;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+
+    @media only screen and (max-width: 768px) {
+      padding: 14px 16px 16px;
+    }
   }
 
   &__info {
     display: flex;
-    // flex-direction: column;
-    gap: 10px;
-    justify-content: space-between;
-    align-items: start;
-
-    button {
-      margin-top: 5px;
-    }
+    flex-direction: column;
+    flex: 1;
+    min-width: 0;
   }
 
   &__name {
     color: var(--Colors-Dark-green, #0f1e00);
-    font-size: 20px;
-    font-style: normal;
-    font-weight: 400;
-    line-height: normal;
-    transition: all ease 0.3s;
+    font-size: 16px;
+    font-weight: 500;
+    line-height: 1.4;
+    transition: color 0.3s ease;
     display: -webkit-box;
-    max-height: 60px;
-    max-width: 100%;
     -webkit-line-clamp: 2;
     -webkit-box-orient: vertical;
     overflow: hidden;
     text-overflow: ellipsis;
-    width: 85%;
+    margin: 0;
+    cursor: pointer;
+
     @media only screen and (max-width: 768px) {
-      font-size: 18px;
+      font-size: 15px;
     }
   }
 
-  &__price {
-    color: var(--Colors-Dark-green, #0f1e00);
-    font-size: 24px;
-    font-style: normal;
-    font-weight: 600;
-    line-height: normal;
-    transition: all ease 0.3s;
+  // Add to cart button - appears on hover for desktop
+  .addtocart {
+    width: 40px;
+    height: 40px;
+    border-radius: 10px;
+    background: linear-gradient(135deg, #70b32f 0%, #8ed14d 100%);
+    border: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    box-shadow: 0 4px 12px rgba(112, 179, 47, 0.3);
+    flex-shrink: 0;
+
+    @media only screen and (min-width: 769px) {
+      opacity: 0;
+      visibility: hidden;
+      transform: translateX(-10px);
+    }
+
+    &:hover {
+      transform: scale(1.1);
+      box-shadow: 0 6px 20px rgba(112, 179, 47, 0.4);
+    }
+
+    &:active {
+      transform: scale(0.95);
+    }
+
+    .cart-images {
+      width: 18px;
+      height: 18px;
+      filter: brightness(0) invert(1);
+    }
+  }
+
+  // Alternative: Always visible add to cart for mobile
+  @media only screen and (max-width: 768px) {
+    .addtocart {
+      opacity: 1;
+      visibility: visible;
+      transform: none;
+    }
   }
 }

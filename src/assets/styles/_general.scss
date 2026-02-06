@@ -106,15 +106,27 @@ body {
 
 .view-more {
   text-align: center;
-  padding: 20px 110px;
-  border-radius: 35px;
-  background: var(--Colors-Grey, #f6f6f6);
-  color: var(--Colors-Dark-green, #0f1e00);
-  font-size: 18px;
-  font-style: normal;
-  font-weight: 500;
-  line-height: 20px;
-  margin-top: 30px;
+  padding: 16px 60px;
+  border-radius: 30px;
+  background: linear-gradient(135deg, #70b32f 0%, #8ed14d 100%);
+  color: #fff;
+  font-size: 16px;
+  font-weight: 600;
+  line-height: 1.5;
+  margin-top: 40px;
+  border: none;
+  cursor: pointer;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  box-shadow: 0 4px 16px rgba(112, 179, 47, 0.3);
+
+  &:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 24px rgba(112, 179, 47, 0.4);
+  }
+
+  &:active {
+    transform: translateY(0);
+  }
   transition: all ease 0.3s;
   @media only screen and (max-width: 500px) {
     font-size: 14px !important;
