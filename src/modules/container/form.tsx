@@ -12,20 +12,20 @@ import { isArray } from "lodash";
 import { UseMutationResult } from "@tanstack/react-query";
 import * as Yup from "yup";
 import { useHooks } from "hooks";
-import { QueryClient } from "@tanstack/query-core";
+import { QueryClient } from "@tanstack/react-query";
 import { AxiosRequestConfig } from "axios";
 
 type TFields = {
   name: string;
   type?:
-    | "object"
-    | "array"
-    | "number"
-    | "string"
-    | "boolean"
-    | "date"
-    | "email"
-    | undefined;
+  | "object"
+  | "array"
+  | "number"
+  | "string"
+  | "boolean"
+  | "date"
+  | "email"
+  | undefined;
   value?: any;
   required?: boolean;
   disabled?: boolean | string;
@@ -62,8 +62,8 @@ const FormContent: FC<IFormContent> = ({
   url,
   method,
   name,
-  onSuccess = () => {},
-  onError = () => {},
+  onSuccess = () => { },
+  onError = () => { },
   children,
   fields,
   params,
@@ -80,12 +80,12 @@ const FormContent: FC<IFormContent> = ({
         initialValues={
           isArray(fields)
             ? fields.reduce(
-                (prev, curr) => ({
-                  ...prev,
-                  [curr.name]: curr.value ? curr.value : "",
-                }),
-                {}
-              )
+              (prev, curr) => ({
+                ...prev,
+                [curr.name]: curr.value ? curr.value : "",
+              }),
+              {}
+            )
             : {}
         }
         enableReinitialize={true}

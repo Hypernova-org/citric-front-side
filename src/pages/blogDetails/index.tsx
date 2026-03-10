@@ -6,15 +6,16 @@ import { gsap } from "gsap";
 
 
 const BlogDetails = () => {
-  let mm = gsap.matchMedia();
-  
   useEffect(() => {
+    let mm = gsap.matchMedia();
     mm.add("(min-width: 800px)", () => {
       gsap.from('.details_page', {
         duration: 1,
         opacity: 0,
         y: 50,
-      }); });
+      });
+    });
+    return () => mm.revert();
   }, [])
   const { get, t, params } = useHooks();
   const [error, setError] = useState(false);
@@ -50,9 +51,9 @@ const BlogDetails = () => {
           <p>{t("Orqaga")}</p>
         </Link>
         <p className="details_date">
-            {get(blogData, "createdAt", "")
-              .slice(0, 10)
-              .replaceAll("-", ".")}
+          {get(blogData, "createdAt", "")
+            .slice(0, 10)
+            .replaceAll("-", ".")}
         </p>
       </div>
       {!error ? (

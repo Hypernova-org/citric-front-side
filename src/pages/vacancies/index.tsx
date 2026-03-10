@@ -14,7 +14,6 @@ import "./style.scss";
 import "./mobile.scss";
 
 const Vacancies = () => {
-  let mm = gsap.matchMedia();
   const { t, get } = useHooks();
   const [page, setPage] = useState(1);
   const [allData, setAllData]: any = useState([]);
@@ -24,6 +23,7 @@ const Vacancies = () => {
 
 
   useEffect(() => {
+    let mm = gsap.matchMedia();
     mm.add("(min-width: 800px)", () => {
       gsap.from(".vacancies_page", {
         duration: 1,
@@ -31,6 +31,7 @@ const Vacancies = () => {
         y: 50,
       });
     });
+    return () => mm.revert();
   }, []);
 
   return (
@@ -44,7 +45,7 @@ const Vacancies = () => {
         width={500}
         destroyOnClose
       >
-        <More {...{moreModal}}/>
+        <More {...{ moreModal }} />
       </Modal>
       <Modal
         open={applicationModal.open}
@@ -73,15 +74,15 @@ const Vacancies = () => {
                 {items.length ? (
                   items.map((item) => (
                     <Vacancy
-                      onClick={(e:any) => (
+                      onClick={(e: any) => (
                         showMoreModal({ open: true, data: { item } }),
                         e.stopPropagation()
                       )}
-                      {...{showApplicationModal, data: item}}
+                      {...{ showApplicationModal, data: item }}
                     />
                   ))
                 ) : (
-                  <div style={{gridColumn: "2"}} className="nodata flex justify-center items-center flex-col mt-20 w-80  ">
+                  <div style={{ gridColumn: "2" }} className="nodata flex justify-center items-center flex-col mt-20 w-80  ">
                     <img src={Nodata} alt="no-data-icon" />
                     <p className="mt-[10px] text-center">
                       {t("Hech qanday ma’lumot topilmadi")}

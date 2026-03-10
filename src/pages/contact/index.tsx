@@ -5,9 +5,8 @@ import "./_contact.scss";
 import "./mobile.scss";
 import gsap from "gsap";
 const Contact = () => {
-  let mm = gsap.matchMedia();
-
   useEffect(() => {
+    let mm = gsap.matchMedia();
     mm.add("(min-width: 800px)", () => {
       gsap.from(".contact_page", {
         duration: 1,
@@ -15,13 +14,14 @@ const Contact = () => {
         y: 50,
       });
     });
+    return () => mm.revert();
   }, []);
   const { t, get } = useHooks();
   const { data } = useGet({
     name: "contacts",
     url: "contacts",
-    onSuccess: (data) => {},
-    onError: (error) => {},
+    onSuccess: (data) => { },
+    onError: (error) => { },
   });
   const contactsData = get(data, "data", []);
 

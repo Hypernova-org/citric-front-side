@@ -26,7 +26,6 @@ interface Video {
 
 const About = () => {
 
-  let mm = gsap.matchMedia();
   const { t, get } = useHooks();
   const [page, setPage] = useState(1);
   const [allData, setAllData]: any = useState([]);
@@ -35,6 +34,7 @@ const About = () => {
 
   useEffect(() => {
     gsap.registerPlugin(ScrollTrigger);
+    let mm = gsap.matchMedia();
     const title = document.querySelectorAll(".about_page_title");
     const video = document.querySelectorAll(".video");
     const brands = document.querySelectorAll(".about_page_brands");

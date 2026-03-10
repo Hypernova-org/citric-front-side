@@ -16,16 +16,17 @@ import '../../components/categoryBtns/style.scss'
 import Loading from 'components/loading';
 
 const Catalog = () => {
-  let mm = gsap.matchMedia();
-  
   useEffect(() => {
+    let mm = gsap.matchMedia();
     mm.add("(min-width: 800px)", () => {
       gsap.from('.catalog-page', {
         duration: 1,
         opacity: 0,
         y: 50,
-      }); });
-  }, [mm])
+      });
+    });
+    return () => mm.revert();
+  }, []);
   const { t, get } = useHooks()
   const [page, setPage] = useState(1);
   const [allData, setAllData]: any = useState([]);
@@ -52,10 +53,10 @@ const Catalog = () => {
       _id: "1"
     }, ...get(categoriesData, "data", [])]
 
-    useEffect(()=>{
-      setPage(1)
-      setAllData([])
-    },[selectedCategory])
+  useEffect(() => {
+    setPage(1)
+    setAllData([])
+  }, [selectedCategory])
 
   return (
     <div className='catalog-page'>
@@ -164,12 +165,12 @@ const Catalog = () => {
           >
             {({ isLoading, items, meta }) => {
               const displayItems = page === 1 ? items : [...allData, ...items]
-              
+
               return (
                 <div>
                   {/* First load - show full loading */}
                   {isLoading && page === 1 && allData.length === 0 ? (
-                    <Loading style={{alignItems:"flex-start", marginTop: "80px"}}/>
+                    <Loading style={{ alignItems: "flex-start", marginTop: "80px" }} />
                   ) : items.length || allData.length ? (
                     <>
                       <div className='catalog-list'>
@@ -177,7 +178,7 @@ const Catalog = () => {
                           <CatalogCard key={get(item, 'id')} {...{ item }} />
                         ))}
                       </div>
-                      
+
                       {/* Load more loading - show below items */}
                       {isLoading && page > 1 && (
                         <div className="load-more-loading">
@@ -192,7 +193,7 @@ const Catalog = () => {
                       <p className="mt-[10px] text-center">{t("Hech qanday ma'lumot topilmadi")}</p>
                     </div>
                   )}
-                  
+
                   {meta && page < meta.totalCount && meta.pageCount !== meta.currentPage && 6 <= items.length && !isLoading && (
                     <div className="flex justify-center">
                       <div className='flex justify-center items-center'>

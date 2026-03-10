@@ -7,9 +7,8 @@ import { gsap } from "gsap";
 import Nodata from "assets/images/icons/nodata.svg";
 
 const Blog = () => {
-  let mm = gsap.matchMedia();
-
   useEffect(() => {
+    let mm = gsap.matchMedia();
     mm.add("(min-width: 800px)", () => {
       gsap.from(".blog_page", {
         duration: 1,
@@ -17,7 +16,8 @@ const Blog = () => {
         y: 50,
       });
     });
-  });
+    return () => mm.revert();
+  }, []);
   const { t } = useHooks();
   const [page, setPage] = useState();
 

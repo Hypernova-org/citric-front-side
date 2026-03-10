@@ -19,8 +19,8 @@ import { notification } from "antd";
 import gsap from "gsap";
 
 const ProductInner = () => {
-  let mm = gsap.matchMedia();
   useEffect(() => {
+    let mm = gsap.matchMedia();
     mm.add("(min-width: 800px)", () => {
       gsap.from('.inner_page', {
         duration: 1,
@@ -28,6 +28,7 @@ const ProductInner = () => {
         y: 50,
       });
     });
+    return () => mm.revert();
   }, [])
   const { t, get, params } = useHooks();
   const [count, setCount] = useState(1);
@@ -131,7 +132,7 @@ const ProductInner = () => {
               </div> */}
               <div className="order-section__right-bottom">
                 <p className="product-extract">
-                {get(productData, "about")}
+                  {get(productData, "about")}
                 </p>
               </div>
               <div className="flex justify-center">
